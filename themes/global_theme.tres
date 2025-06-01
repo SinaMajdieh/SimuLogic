@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bg02305v4o615"]
+
+[ext_resource type="FontFile" uid="uid://106o2v2h16wm" path="res://assets/fonts/jet_brains_mono/JetBrainsMono-SemiBold.ttf" id="1_ofusn"]
+
+[resource]
+Button/colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+Label/colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+PopupMenu/colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+PopupMenu/fonts/font = ExtResource("1_ofusn")
+TextEdit/colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)

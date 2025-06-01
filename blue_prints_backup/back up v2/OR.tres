@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=10 format=3]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_0q2qs"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_a3qrq"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_mn0en"]
+[ext_resource type="Resource" uid="uid://cw6cbclfeg7b6" path="res://blue_prints_backup/back up v2/NAND.tres" id="4_r18k7"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="5_rujll"]
+
+[sub_resource type="Resource" id="Resource_ey08k"]
+script = ExtResource("1_0q2qs")
+background_color = Color(0, 0.501961, 0.501961, 1)
+
+[sub_resource type="Resource" id="Resource_4h27l"]
+script = ExtResource("2_a3qrq")
+name = "INPUT-0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_hp4dl"]
+script = ExtResource("2_a3qrq")
+name = "INPUT-1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_tenkl"]
+script = ExtResource("2_a3qrq")
+name = "OUTPUT-0"
+type = 1
+path = ""
+state = false
+
+[resource]
+script = ExtResource("3_mn0en")
+name = "OR"
+type = 3
+input_pins = Array[ExtResource("2_a3qrq")]([SubResource("Resource_4h27l"), SubResource("Resource_hp4dl")])
+output_pins = Array[ExtResource("2_a3qrq")]([SubResource("Resource_tenkl")])
+sub_chips = Array[ExtResource("3_mn0en")]([ExtResource("4_r18k7"), ExtResource("5_rujll"), ExtResource("5_rujll")])
+connections = Dictionary[String, Array]({
+"Container/Chips/NAND/Container/Outputs/nand-3": ["Container/Outputs/OUTPUT-0"],
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Chips/NAND/Container/Inputs/nand-1"],
+"Container/Chips/NOT2/Container/Outputs/B": ["Container/Chips/NAND/Container/Inputs/nand-2"],
+"Container/Inputs/INPUT-0": ["Container/Chips/NOT/Container/Inputs/A"],
+"Container/Inputs/INPUT-1": ["Container/Chips/NOT2/Container/Inputs/A"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_ey08k")

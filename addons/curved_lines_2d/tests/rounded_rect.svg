@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100.79375mm"
+   height="131.50662mm"
+   viewBox="0 0 100.79375 131.50663"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="rounded_rect.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="0.80978535"
+     inkscape:cx="448.88438"
+     inkscape:cy="382.20005"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-26.721938,0.39687499)">
+    <rect
+       opacity="0.9"
+       fill="#cb2d2d"
+       fill-opacity="0.410587"
+       stroke="#002b9d"
+       stroke-width="0.79375"
+       paint-order="markers fill stroke"
+       id="rect1"
+       width="100"
+       height="100"
+       x="27.118813"
+       y="30.712872"
+       ry="10"
+       rx="4.0431104" />
+    <rect
+       style="opacity:0.99;fill:#cb2d2d;fill-opacity:0.410587;fill-rule:evenodd;stroke:#002b9d;stroke-width:0.79375;stroke-linejoin:round;stroke-miterlimit:80;paint-order:markers fill stroke"
+       id="rect2"
+       width="32.019802"
+       height="11.762377"
+       x="81.683167"
+       y="0" />
+  </g>
+</svg>

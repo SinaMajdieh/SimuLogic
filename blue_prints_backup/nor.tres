@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="1_3bnb4"]
+[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="2_l85xd"]
+[ext_resource type="Resource" path="res://blue_prints/or.tres" id="3_pbfog"]
+[ext_resource type="Resource" path="res://blue_prints/not.tres" id="4_c3rfl"]
+
+[sub_resource type="Resource" id="Resource_5f6lw"]
+script = ExtResource("1_3bnb4")
+name = "Input-0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_6xgqb"]
+script = ExtResource("1_3bnb4")
+name = "Input-1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_yd7wd"]
+script = ExtResource("1_3bnb4")
+name = "Output-0"
+type = 1
+path = ""
+state = true
+
+[resource]
+script = ExtResource("2_l85xd")
+name = "nor"
+type = 3
+input_pins = Array[ExtResource("1_3bnb4")]([SubResource("Resource_5f6lw"), SubResource("Resource_6xgqb")])
+output_pins = Array[ExtResource("1_3bnb4")]([SubResource("Resource_yd7wd")])
+sub_chips = Array[ExtResource("2_l85xd")]([ExtResource("3_pbfog"), ExtResource("4_c3rfl")])
+connections = Dictionary[String, Array]({
+"Container/Chips/Inverter/Container/Outputs/B": ["Container/Outputs/Output-0"],
+"Container/Chips/or/Container/Outputs/Output-0": ["Container/Chips/Inverter/Container/Inputs/A"],
+"Container/Inputs/Input-0": ["Container/Chips/or/Container/Inputs/Input-0"],
+"Container/Inputs/Input-1": ["Container/Chips/or/Container/Inputs/Input-1"]
+})
+position = Vector2(0, 0)

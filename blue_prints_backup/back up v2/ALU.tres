@@ -1,0 +1,162 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=25 format=3]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_ns8st"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_n6l1d"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_p6u8r"]
+[ext_resource type="Resource" path="res://blue_prints_backup/back up v2/ADDER (4-bit).tres" id="4_mkhbu"]
+[ext_resource type="Resource" path="res://blue_prints_backup/back up v2/XOR.tres" id="5_lg3c0"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="6_64cpe"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="7_txq3x"]
+
+[sub_resource type="Resource" id="Resource_jq4sg"]
+script = ExtResource("1_ns8st")
+background_color = Color(0.27451, 0.509804, 0.705882, 1)
+
+[sub_resource type="Resource" id="Resource_jl1lo"]
+script = ExtResource("2_n6l1d")
+name = "A3"
+type = 0
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_vbh2p"]
+script = ExtResource("2_n6l1d")
+name = "A2"
+type = 0
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_asuic"]
+script = ExtResource("2_n6l1d")
+name = "A1"
+type = 0
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_2s7tk"]
+script = ExtResource("2_n6l1d")
+name = "A0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_bc6gd"]
+script = ExtResource("2_n6l1d")
+name = "B3"
+type = 0
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_e71rg"]
+script = ExtResource("2_n6l1d")
+name = "B2"
+type = 0
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_ln4rh"]
+script = ExtResource("2_n6l1d")
+name = "B1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_32xwq"]
+script = ExtResource("2_n6l1d")
+name = "B0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_cbsal"]
+script = ExtResource("2_n6l1d")
+name = "subtract"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_sbdc7"]
+script = ExtResource("2_n6l1d")
+name = "C3"
+type = 1
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_1lv1m"]
+script = ExtResource("2_n6l1d")
+name = "C2"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_xurqa"]
+script = ExtResource("2_n6l1d")
+name = "C1"
+type = 1
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_51tga"]
+script = ExtResource("2_n6l1d")
+name = "C0"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_mciev"]
+script = ExtResource("2_n6l1d")
+name = "carry"
+type = 1
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_iqeq2"]
+script = ExtResource("2_n6l1d")
+name = "negative"
+type = 1
+path = ""
+state = true
+
+[sub_resource type="Resource" id="Resource_bqbje"]
+script = ExtResource("2_n6l1d")
+name = "zero"
+type = 1
+path = ""
+state = false
+
+[resource]
+script = ExtResource("3_p6u8r")
+name = "ALU"
+type = 3
+input_pins = Array[ExtResource("2_n6l1d")]([SubResource("Resource_jl1lo"), SubResource("Resource_vbh2p"), SubResource("Resource_asuic"), SubResource("Resource_2s7tk"), SubResource("Resource_bc6gd"), SubResource("Resource_e71rg"), SubResource("Resource_ln4rh"), SubResource("Resource_32xwq"), SubResource("Resource_cbsal")])
+output_pins = Array[ExtResource("2_n6l1d")]([SubResource("Resource_sbdc7"), SubResource("Resource_1lv1m"), SubResource("Resource_xurqa"), SubResource("Resource_51tga"), SubResource("Resource_mciev"), SubResource("Resource_iqeq2"), SubResource("Resource_bqbje")])
+sub_chips = Array[ExtResource("3_p6u8r")]([ExtResource("4_mkhbu"), ExtResource("5_lg3c0"), ExtResource("5_lg3c0"), ExtResource("5_lg3c0"), ExtResource("5_lg3c0"), ExtResource("6_64cpe"), ExtResource("6_64cpe"), ExtResource("6_64cpe"), ExtResource("6_64cpe"), ExtResource("7_txq3x"), ExtResource("7_txq3x"), ExtResource("7_txq3x")])
+connections = Dictionary[String, Array]({
+"Container/Chips/@PanelContainer@2672/Container/Outputs/C": ["Container/Chips/@PanelContainer@2690/Container/Inputs/A"],
+"Container/Chips/@PanelContainer@2690/Container/Outputs/C": ["Container/Outputs/zero"],
+"Container/Chips/ADDER (4-bit)/Container/Outputs/C0": ["Container/Chips/NOT4/Container/Inputs/A", "Container/Outputs/C0"],
+"Container/Chips/ADDER (4-bit)/Container/Outputs/C1": ["Container/Chips/NOT3/Container/Inputs/A", "Container/Outputs/C1"],
+"Container/Chips/ADDER (4-bit)/Container/Outputs/C2": ["Container/Chips/NOT2/Container/Inputs/A", "Container/Outputs/C2"],
+"Container/Chips/ADDER (4-bit)/Container/Outputs/C3": ["Container/Chips/NOT/Container/Inputs/A", "Container/Outputs/C3", "Container/Outputs/negative"],
+"Container/Chips/ADDER (4-bit)/Container/Outputs/CARRY OUT": ["Container/Outputs/carry"],
+"Container/Chips/AND/Container/Outputs/C": ["Container/Chips/@PanelContainer@2672/Container/Inputs/A"],
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Chips/AND/Container/Inputs/A"],
+"Container/Chips/NOT2/Container/Outputs/B": ["Container/Chips/AND/Container/Inputs/B"],
+"Container/Chips/NOT3/Container/Outputs/B": ["Container/Chips/@PanelContainer@2672/Container/Inputs/B"],
+"Container/Chips/NOT4/Container/Outputs/B": ["Container/Chips/@PanelContainer@2690/Container/Inputs/B"],
+"Container/Chips/XOR/Container/Outputs/xor-o": ["Container/Chips/ADDER (4-bit)/Container/Inputs/B3"],
+"Container/Chips/XOR2/Container/Outputs/xor-o": ["Container/Chips/ADDER (4-bit)/Container/Inputs/B2"],
+"Container/Chips/XOR3/Container/Outputs/xor-o": ["Container/Chips/ADDER (4-bit)/Container/Inputs/B1"],
+"Container/Chips/XOR4/Container/Outputs/xor-o": ["Container/Chips/ADDER (4-bit)/Container/Inputs/B0"],
+"Container/Inputs/A0": ["Container/Chips/ADDER (4-bit)/Container/Inputs/A0"],
+"Container/Inputs/A1": ["Container/Chips/ADDER (4-bit)/Container/Inputs/A1"],
+"Container/Inputs/A2": ["Container/Chips/ADDER (4-bit)/Container/Inputs/A2"],
+"Container/Inputs/A3": ["Container/Chips/ADDER (4-bit)/Container/Inputs/A3"],
+"Container/Inputs/B0": ["Container/Chips/XOR4/Container/Inputs/xor-1"],
+"Container/Inputs/B1": ["Container/Chips/XOR3/Container/Inputs/xor-1"],
+"Container/Inputs/B2": ["Container/Chips/XOR2/Container/Inputs/xor-1"],
+"Container/Inputs/B3": ["Container/Chips/XOR/Container/Inputs/xor-1"],
+"Container/Inputs/subtract": ["Container/Chips/XOR4/Container/Inputs/xor-2", "Container/Chips/XOR3/Container/Inputs/xor-2", "Container/Chips/XOR2/Container/Inputs/xor-2", "Container/Chips/XOR/Container/Inputs/xor-2", "Container/Chips/ADDER (4-bit)/Container/Inputs/CARRY IN"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_jq4sg")

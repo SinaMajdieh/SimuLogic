@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://di37drxubefgv"]
+
+[ext_resource type="Script" uid="uid://4bansuei2rdm" path="res://scripts/chip/chip_model.gd" id="1_su0yu"]
+[ext_resource type="Script" uid="uid://osvk7hstwgfs" path="res://scripts/chip/chip_body.gd" id="2_sl27e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owa1i"]
+bg_color = Color(0.270588, 0.631373, 0.898039, 0.788235)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7nt4l"]
+font_size = 15
+
+[node name="Component" type="PanelContainer" groups=["chip"]]
+custom_minimum_size = Vector2(50, 25)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.0
+offset_right = 47.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_owa1i")
+script = ExtResource("1_su0yu")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Inputs" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[node name="Chips" type="VBoxContainer" parent="Container" groups=["chip_body"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+script = ExtResource("2_sl27e")
+
+[node name="Name" type="Label" parent="Container/Chips"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Chip Name"
+label_settings = SubResource("LabelSettings_7nt4l")
+horizontal_alignment = 1
+
+[node name="Outputs" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_enter"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exit"]
+[connection signal="renamed" from="." to="." method="_on_renamed"]

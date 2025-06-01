@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://cndph6e61jsfs"]
+
+[ext_resource type="Script" uid="uid://bv7yjd18uslxt" path="res://scripts/pin/work_bench_pin.gd" id="1_0qbqn"]
+[ext_resource type="Texture2D" uid="uid://bswyxp3rfb034" path="res://assets/images/high_state.png" id="2_gox8h"]
+[ext_resource type="Texture2D" uid="uid://b45jtklfjov8t" path="res://assets/images/low_state.png" id="3_5dytk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qbqn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gox8h"]
+
+[node name="Control" type="MarginContainer" node_paths=PackedStringArray("label", "button", "button_gui")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -18.0
+offset_right = 54.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_0qbqn")
+label = NodePath("HBoxContainer/HBoxContainer/LineEdit")
+button = NodePath("HBoxContainer/HBoxContainer/CheckButton")
+button_gui = NodePath("HBoxContainer/HBoxContainer/CheckButton")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_0qbqn")
+theme_override_icons/checked = ExtResource("2_gox8h")
+theme_override_icons/unchecked = ExtResource("3_5dytk")
+theme_override_icons/checked_disabled = ExtResource("2_gox8h")
+theme_override_icons/unchecked_disabled = ExtResource("3_5dytk")
+theme_override_icons/checked_mirrored = ExtResource("2_gox8h")
+theme_override_icons/unchecked_mirrored = ExtResource("3_5dytk")
+theme_override_icons/checked_disabled_mirrored = ExtResource("2_gox8h")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("3_5dytk")
+icon_alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gox8h")
+text = "INPUT-1"
+placeholder_text = "Pin Name"
+expand_to_text_length = true
+flat = true
+select_all_on_focus = true
+caret_blink = true
+
+[connection signal="mouse_entered" from="HBoxContainer/HBoxContainer/CheckButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/HBoxContainer/CheckButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/CheckButton" to="." method="_on_pressed"]
+[connection signal="text_changed" from="HBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0w1bae56yu7"]
+
+[ext_resource type="Script" uid="uid://b3o300p75240y" path="res://scripts/working bench/wire_preview.gd" id="1_v1y0p"]
+
+[node name="WirePreview" type="Line2D"]
+width = 5.0
+default_color = Color(1, 0.533333, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 32
+antialiased = true
+script = ExtResource("1_v1y0p")
+metadata/_custom_type_script = "uid://b3o300p75240y"

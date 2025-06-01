@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="79.32814"
+   height="37.971886"
+   viewBox="0 0 20.988904 10.046728"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="body.fill.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="0.79375"
+     inkscape:cx="-493.22835"
+     inkscape:cy="-91.338583"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient37"
+       id="linearGradient38"
+       x1="105.05788"
+       y1="184.75392"
+       x2="93.736855"
+       y2="190.94427"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.318399,0.30747627,-0.31746823,1.3612426,175.6845,-107.30722)" />
+    <linearGradient
+       id="linearGradient37"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#76765d;stop-opacity:1;"
+         offset="0"
+         id="stop37" />
+      <stop
+         style="stop-color:#2e2e23;stop-opacity:1;"
+         offset="1"
+         id="stop38" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-235.47916,-172.77292)">
+    <path
+       id="path37"
+       style="fill:url(#linearGradient38);fill-opacity:1;stroke-width:0.363961;stroke-linecap:square;stroke-miterlimit:80;stroke-dashoffset:2.09998;paint-order:stroke markers fill"
+       d="m 256.46806,178.79711 c -0.35363,1.60134 -0.62573,3.51708 -3.1456,3.76218 -1.95963,0.0187 -12.73174,0.50174 -15.55627,0.10327 -1.53269,-0.80029 -3.74089,-2.38328 -0.95152,-6.48386 1.82101,-2.36172 4.44447,-3.32178 8.11419,-3.40578 4.53066,0.35287 9.56415,3.7197 11.5392,6.02419 z"
+       sodipodi:nodetypes="cccccc" />
+  </g>
+</svg>

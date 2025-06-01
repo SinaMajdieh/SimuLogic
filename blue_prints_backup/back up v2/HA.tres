@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=11 format=3]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_qwr4f"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_ea1nf"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_sog1x"]
+[ext_resource type="Resource" path="res://blue_prints_backup/back up v2/XOR.tres" id="4_036a3"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="5_re30q"]
+
+[sub_resource type="Resource" id="Resource_pyj1s"]
+script = ExtResource("1_qwr4f")
+background_color = Color(0, 0.501961, 0.501961, 1)
+
+[sub_resource type="Resource" id="Resource_2jfpq"]
+script = ExtResource("2_ea1nf")
+name = "A"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_4c1ka"]
+script = ExtResource("2_ea1nf")
+name = "B"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_csjjx"]
+script = ExtResource("2_ea1nf")
+name = "SUM"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_8sea0"]
+script = ExtResource("2_ea1nf")
+name = "CARRY"
+type = 1
+path = ""
+state = false
+
+[resource]
+script = ExtResource("3_sog1x")
+name = "HA"
+type = 3
+input_pins = Array[ExtResource("2_ea1nf")]([SubResource("Resource_2jfpq"), SubResource("Resource_4c1ka")])
+output_pins = Array[ExtResource("2_ea1nf")]([SubResource("Resource_csjjx"), SubResource("Resource_8sea0")])
+sub_chips = Array[ExtResource("3_sog1x")]([ExtResource("4_036a3"), ExtResource("5_re30q")])
+connections = Dictionary[String, Array]({
+"Container/Chips/AND/Container/Outputs/C": ["Container/Outputs/CARRY"],
+"Container/Chips/XOR/Container/Outputs/xor-o": ["Container/Outputs/SUM"],
+"Container/Inputs/A": ["Container/Chips/XOR/Container/Inputs/xor-1", "Container/Chips/AND/Container/Inputs/B"],
+"Container/Inputs/B": ["Container/Chips/XOR/Container/Inputs/xor-2", "Container/Chips/AND/Container/Inputs/A"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_pyj1s")

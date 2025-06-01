@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_ixqp0"]
+[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="2_rj8ly"]
+[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="3_ansut"]
+[ext_resource type="Resource" path="res://blue_prints/and.tres" id="4_qstdl"]
+[ext_resource type="Resource" path="res://blue_prints/not.tres" id="5_qnote"]
+
+[sub_resource type="Resource" id="Resource_c211y"]
+script = ExtResource("1_ixqp0")
+background_color = Color(0, 0.501961, 0.501961, 1)
+
+[sub_resource type="Resource" id="Resource_a2l4x"]
+script = ExtResource("2_rj8ly")
+name = "INPUT-0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_q35as"]
+script = ExtResource("2_rj8ly")
+name = "INPUT-1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_0ik51"]
+script = ExtResource("2_rj8ly")
+name = "OUTPUT-0"
+type = 0
+path = ""
+state = false
+
+[resource]
+script = ExtResource("3_ansut")
+name = "NAND"
+type = 3
+input_pins = Array[ExtResource("2_rj8ly")]([SubResource("Resource_a2l4x"), SubResource("Resource_q35as")])
+output_pins = Array[ExtResource("2_rj8ly")]([SubResource("Resource_0ik51")])
+sub_chips = Array[ExtResource("3_ansut")]([ExtResource("4_qstdl"), ExtResource("5_qnote")])
+connections = Dictionary[String, Array]({
+"Container/Chips/AND/Container/Outputs/C": ["Container/Chips/NOT/Container/Inputs/A"],
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Outputs/OUTPUT-0"],
+"Container/Inputs/INPUT-0": ["Container/Chips/AND/Container/Inputs/A"],
+"Container/Inputs/INPUT-1": ["Container/Chips/AND/Container/Inputs/B"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_c211y")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://gt16vuy6uny6"]
+
+[ext_resource type="Script" uid="uid://bma5w6hnkchfu" path="res://scripts/working bench/wire.gd" id="1_cnw3p"]
+
+[node name="Wire" type="Line2D" node_paths=PackedStringArray("area")]
+points = PackedVector2Array(525, -10)
+width = 5.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 32
+antialiased = true
+script = ExtResource("1_cnw3p")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

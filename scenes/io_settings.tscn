@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbj8451n0hcmd"]
+
+[ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="1_gikwd"]
+[ext_resource type="Script" uid="uid://b5cfh7m5cyi2n" path="res://scripts/io_settings.gd" id="1_yvoob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvoob"]
+shader = ExtResource("1_gikwd")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_yvoob"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ny0bi"]
+events = [SubResource("InputEventKey_yvoob")]
+
+[node name="IO" type="Control" node_paths=PackedStringArray("i_spinbox", "o_spinbox", "sim_frame_spinbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvoob")
+i_spinbox = NodePath("CenterContainer/HBoxContainer/Layout/Output/input")
+o_spinbox = NodePath("CenterContainer/HBoxContainer/Layout/Output/output")
+sim_frame_spinbox = NodePath("CenterContainer/HBoxContainer/Layout/Output/SimFrame")
+
+[node name="Bacground" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_yvoob")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Layout" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Input" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputNumbers" type="Label" parent="CenterContainer/HBoxContainer/Layout/Input"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Input Pins"
+
+[node name="OutputNumbers" type="Label" parent="CenterContainer/HBoxContainer/Layout/Input"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Outout Pins"
+
+[node name="SimFrame" type="Label" parent="CenterContainer/HBoxContainer/Layout/Input"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Simulation Frame (ms)"
+
+[node name="Output" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Layout"]
+layout_mode = 2
+
+[node name="input" type="SpinBox" parent="CenterContainer/HBoxContainer/Layout/Output"]
+layout_mode = 2
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="output" type="SpinBox" parent="CenterContainer/HBoxContainer/Layout/Output"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="SimFrame" type="SpinBox" parent="CenterContainer/HBoxContainer/Layout/Output"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 10000.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Save" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+
+[node name="Cancel" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_ny0bi")
+text = "Cancel"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Save" to="." method="_on_submit"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Cancel" to="." method="_on_cancel"]

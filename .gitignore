@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.import/
+.export/
+export.cfg
+export_preset.cfg
+
+# Project
+.blue_prints_backup/
+*.tmp
+*.log
+*.bak

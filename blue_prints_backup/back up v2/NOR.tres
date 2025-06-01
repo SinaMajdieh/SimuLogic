@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=10 format=3]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_m18ey"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_aakvs"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_70q45"]
+[ext_resource type="Resource" path="res://blue_prints_backup/back up v2/OR.tres" id="4_lvtfs"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="5_qgyk3"]
+
+[sub_resource type="Resource" id="Resource_kf631"]
+script = ExtResource("1_m18ey")
+background_color = Color(0, 0.501961, 0.501961, 1)
+
+[sub_resource type="Resource" id="Resource_kib5e"]
+script = ExtResource("2_aakvs")
+name = "nor-1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_enw7x"]
+script = ExtResource("2_aakvs")
+name = "nor-2"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_geh2k"]
+script = ExtResource("2_aakvs")
+name = "nor-o"
+type = 1
+path = ""
+state = true
+
+[resource]
+script = ExtResource("3_70q45")
+name = "NOR"
+type = 3
+input_pins = Array[ExtResource("2_aakvs")]([SubResource("Resource_kib5e"), SubResource("Resource_enw7x")])
+output_pins = Array[ExtResource("2_aakvs")]([SubResource("Resource_geh2k")])
+sub_chips = Array[ExtResource("3_70q45")]([ExtResource("4_lvtfs"), ExtResource("5_qgyk3")])
+connections = Dictionary[String, Array]({
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Outputs/nor-o"],
+"Container/Chips/OR/Container/Outputs/OUTPUT-0": ["Container/Chips/NOT/Container/Inputs/A"],
+"Container/Inputs/nor-1": ["Container/Chips/OR/Container/Inputs/INPUT-0"],
+"Container/Inputs/nor-2": ["Container/Chips/OR/Container/Inputs/INPUT-1"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_kf631")

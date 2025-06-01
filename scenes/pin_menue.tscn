@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bln0hn234evs5"]
+
+[node name="PopupMenu" type="PopupMenu"]
+visible = true
+unfocusable = true
+item_count = 2
+item_0/id = 1
+item_1/text = "Edit"
+item_1/id = 0

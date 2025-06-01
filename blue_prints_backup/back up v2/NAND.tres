@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=10 format=3 uid="uid://cw6cbclfeg7b6"]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_ixqp0"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_rj8ly"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_ansut"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="4_qstdl"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="5_qnote"]
+
+[sub_resource type="Resource" id="Resource_r7yeu"]
+script = ExtResource("1_ixqp0")
+background_color = Color(0, 0.501961, 0.501961, 1)
+
+[sub_resource type="Resource" id="Resource_1gq7t"]
+script = ExtResource("2_rj8ly")
+name = "nand-1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_pnw1c"]
+script = ExtResource("2_rj8ly")
+name = "nand-2"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_b4crv"]
+script = ExtResource("2_rj8ly")
+name = "nand-3"
+type = 1
+path = ""
+state = true
+
+[resource]
+script = ExtResource("3_ansut")
+name = "NAND"
+type = 3
+input_pins = Array[ExtResource("2_rj8ly")]([SubResource("Resource_1gq7t"), SubResource("Resource_pnw1c")])
+output_pins = Array[ExtResource("2_rj8ly")]([SubResource("Resource_b4crv")])
+sub_chips = Array[ExtResource("3_ansut")]([ExtResource("4_qstdl"), ExtResource("5_qnote")])
+connections = Dictionary[String, Array]({
+"Container/Chips/AND/Container/Outputs/C": ["Container/Chips/NOT/Container/Inputs/A"],
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Outputs/nand-3"],
+"Container/Inputs/nand-1": ["Container/Chips/AND/Container/Inputs/A"],
+"Container/Inputs/nand-2": ["Container/Chips/AND/Container/Inputs/B"]
+})
+position = Vector2(0, 0)
+description = SubResource("Resource_r7yeu")
