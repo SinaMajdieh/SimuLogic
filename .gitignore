@@ -13,3 +13,4 @@ blue_prints_backup/
 *.tmp
 *.log
 *.bak
+*.uid
