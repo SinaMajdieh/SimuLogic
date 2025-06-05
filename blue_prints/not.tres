@@ -10,6 +10,8 @@ script = ExtResource("1_lau1o")
 background_color = Color(0, 0.501961, 0.501961, 1)
 sub_chip_positions = Array[Vector2]([])
 wires = Array[ExtResource("2_crsub")]([])
+input_pins_positions = Array[Vector2]([])
+output_pins_positions = Array[Vector2]([])
 metadata/_custom_type_script = "uid://d37ex0tf7tcwa"
 
 [sub_resource type="Resource" id="Resource_8y5h3"]

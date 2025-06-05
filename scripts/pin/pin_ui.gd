@@ -27,9 +27,9 @@ static var pin_ui_scene: PackedScene = preload("res://scenes/pin/pin_ui.tscn")
 # Sets the pin color and updates its UI appearance accordingly.
 # ======================
 @export var pin_color: Color:
-    set(value):
-        pin_color = value
-        update_button_gui()
+	set(value):
+		pin_color = value
+		update_button_gui()
 
 # ======================
 # UPDATE TOOLTIP ON RENAME
@@ -37,7 +37,7 @@ static var pin_ui_scene: PackedScene = preload("res://scenes/pin/pin_ui.tscn")
 # Modifies the tooltip text when the pin name changes.
 # ======================
 func _on_renamed() -> void:
-    button_gui.tooltip_text = name
+	button_gui.tooltip_text = name
 
 # ======================
 # INITIALIZE PIN UI
@@ -45,8 +45,8 @@ func _on_renamed() -> void:
 # Sets initial properties and updates the visual state.
 # ======================
 func _ready() -> void:
-    update_button_gui()
-    button_gui.tooltip_text = name
+	update_button_gui()
+	button_gui.tooltip_text = name
 
 # ======================
 # UPDATE PIN APPEARANCE
@@ -54,15 +54,15 @@ func _ready() -> void:
 # Adjusts the visual state based on logic values.
 # ======================
 func update_button_gui() -> void:
-    if not button_gui:
-        return
-    
-    if not logic:
-        button_gui.button_pressed = false
-        button_gui.modulate = ColorMan.get_muted_color(pin_color)
-    else:
-        button_gui.button_pressed = logic.state
-        button_gui.modulate = ColorMan.get_glowing_color(pin_color) if logic.state else ColorMan.get_muted_color(pin_color)
+	if not button_gui:
+		return
+	
+	if not logic:
+		button_gui.button_pressed = false
+		button_gui.modulate = ColorMan.get_muted_color(pin_color)
+	else:
+		button_gui.button_pressed = logic.state
+		button_gui.modulate = ColorMan.get_glowing_color(pin_color) if logic.state else ColorMan.get_muted_color(pin_color)
 
 # ======================
 # GET PIN CENTER POSITION
@@ -70,8 +70,8 @@ func update_button_gui() -> void:
 # Returns the center position of the pin for alignment and interactions.
 # ======================
 func get_center() -> Vector2:
-    var global_scale: Vector2 = get_global_transform().get_scale()
-    return (global_position + (size * global_scale / 2))
+	var global_scale: Vector2 = get_global_transform().get_scale()
+	return (global_position + (size * global_scale / 2))
 
 # ======================
 # HANDLE PIN CLICK INTERACTION
@@ -79,8 +79,8 @@ func get_center() -> Vector2:
 # Toggles the pin state when clicked and notifies the input bus.
 # ======================
 func _on_pressed() -> void:
-    button_gui.button_pressed = not button_gui.button_pressed
-    InputBus.notify_pin_clicked(self)
+	button_gui.button_pressed = not button_gui.button_pressed
+	InputBus.notify_pin_clicked(self)
 
 # ======================
 # CREATE PIN UI INSTANCE
@@ -88,10 +88,10 @@ func _on_pressed() -> void:
 # Instantiates and initializes a UI component for a given logic pin.
 # ======================
 static func build_ui(pin: Pin) -> PinUI:
-    var ui: PinUI = pin_ui_scene.instantiate()
-    ui.logic = pin
-    ui.name = pin.name
-    return ui
+	var ui: PinUI = pin_ui_scene.instantiate()
+	ui.logic = pin
+	ui.name = pin.name
+	return ui
 
 # ======================
 # CLEANUP PIN LOGIC ON REMOVAL
@@ -99,6 +99,6 @@ static func build_ui(pin: Pin) -> PinUI:
 # Ensures the logic component is safely removed when the UI is deleted.
 # ======================
 func _on_tree_exited() -> void:
-    if logic and logic.get_parent():
-        logic.get_parent().remove_child(logic)
-    logic.queue_free()
+	if logic and logic.get_parent():
+		logic.get_parent().remove_child(logic)
+	logic.queue_free()

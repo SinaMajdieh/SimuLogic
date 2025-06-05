@@ -134,9 +134,10 @@ func connect_to(target_pin: Pin) -> void:
     pin_state_updated.connect(target_pin.update_pin_state)
     target_pin.receive_state_from.append(self)
 
-    if target_pin.pin_type == PinType.INPUT and ui and target_pin.ui:
-        target_pin.ui.pin_color = ui.pin_color
-    
+    if ui and target_pin.ui:
+        if target_pin.pin_type == PinType.INPUT or target_pin.ui is InteractablePin:
+            target_pin.ui.pin_color = ui.pin_color
+
     target_pin.update_pin_state()
     Logger.log(Logger.Logs.CONNECTIONS, "Connecting %s to %s" % [name, target_pin.name])
 

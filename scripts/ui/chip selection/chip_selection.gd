@@ -51,7 +51,7 @@ func add_chip_button(bp: ChipBlueprint) -> void:
 	chips[bp.name] = bp
 	
 	# Avoid adding duplicate buttons for existing chips
-	if not has_node(bp.name):
+	if not button_container.has_node(bp.name):
 		add_button(bp.name)
 
 # ======================

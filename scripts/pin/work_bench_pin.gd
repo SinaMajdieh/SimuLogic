@@ -43,6 +43,8 @@ func _on_line_edit_text_changed(new_text: String) -> void:
     if new_text.is_empty():
         return
     name = new_text
+    if logic:
+        logic.name = new_text
 
 # ======================
 # GET PIN CENTER POSITION

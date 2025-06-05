@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6c0j1gg2tr0e"]
+[gd_scene load_steps=13 format=3 uid="uid://b6c0j1gg2tr0e"]
 
 [ext_resource type="Script" uid="uid://cn023yp1omta2" path="res://scripts/ui/panel/create_chip.gd" id="1_3v0kc"]
 [ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="2_shir3"]
+[ext_resource type="Texture2D" uid="uid://cualgy8bghde7" path="res://assets/images/dice_colored.png" id="3_p5mv4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shir3"]
 shader = ExtResource("2_shir3")
@@ -12,13 +13,28 @@ shader_parameter/color_over = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ry54"]
 bg_color = Color(0, 0, 0, 0.65098)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ufpm"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yc88e"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kruix"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckj2l"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5mv4"]
+content_margin_left = 10.0
+
 [sub_resource type="InputEventKey" id="InputEventKey_shir3"]
 keycode = 4194305
 
 [sub_resource type="Shortcut" id="Shortcut_tflu4"]
 events = [SubResource("InputEventKey_shir3")]
 
-[node name="CreateChip" type="Control" node_paths=PackedStringArray("line_edit", "submit", "color_pick", "chip_type_options_button")]
+[node name="CreateChip" type="Control" node_paths=PackedStringArray("line_edit", "submit", "color_pick", "chip_type_options_button", "color_variation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,8 +44,9 @@ grow_vertical = 2
 script = ExtResource("1_3v0kc")
 line_edit = NodePath("CenterContainer/PanelContainer/Layout/Input/LineEdit")
 submit = NodePath("CenterContainer/PanelContainer/Layout/Buttons/Save")
-color_pick = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/ColorPickerButton")
-chip_type_options_button = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/OptionButton")
+color_pick = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ColorPickerButton")
+chip_type_options_button = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ChipType")
+color_variation = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ColorVariation")
 
 [node name="Background" type="PanelContainer" parent="."]
 material = SubResource("ShaderMaterial_shir3")
@@ -61,11 +78,11 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
+[node name="ChipTypeLabel" type="Label" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
 layout_mode = 2
 text = "Chip Type :"
 
-[node name="OptionButton" type="OptionButton" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
+[node name="ChipType" type="OptionButton" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
 layout_mode = 2
 selected = 0
 allow_reselect = true
@@ -85,7 +102,26 @@ popup/item_5/id = 5
 popup/item_6/text = "Custom"
 popup/item_6/id = 6
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection"]
+[node name="ColorVariation" type="CheckBox" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
+visible = false
+layout_mode = 2
+tooltip_text = "Changes the chosen color ever so slightly"
+theme_override_colors/font_color = Color(0.423529, 0.439216, 0.52549, 1)
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5ufpm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yc88e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kruix")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ckj2l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p5mv4")
+disabled = true
+toggle_mode = false
+text = "Color Variation"
+
+[node name="RandomColor" type="Button" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Randomize Color"
+icon = ExtResource("3_p5mv4")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -120,6 +156,7 @@ size_flags_horizontal = 3
 shortcut = SubResource("Shortcut_tflu4")
 text = "Cancel"
 
-[connection signal="item_selected" from="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ChipType" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/RandomColor" to="." method="_on_random_color_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Layout/Buttons/Save" to="." method="_on_submit"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Layout/Buttons/Cancel" to="." method="_on_cancel"]

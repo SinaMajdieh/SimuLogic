@@ -27,6 +27,6 @@ static func save_blueprint(bp: ChipBlueprint, file_name: String) -> void:
 
     # Handle possible errors and provide debug feedback
     if error != OK:
-        Logger.log(Logger.Logs.ERRORS, "Failed to save resource: %s" % error)
+        Logger.log(Logger.Logs.ERRORS, "Failed to save resource: %s" % error, true)
     else:
-        Logger.log(Logger.Logs.MAIN, "Chip saved as %s.tres" % file_name)
+        Logger.log(Logger.Logs.MAIN, "Chip saved as %s.tres" % file_name, true)

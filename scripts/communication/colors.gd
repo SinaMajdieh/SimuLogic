@@ -15,14 +15,16 @@ extends Node
 # Useful for inactive states or UI elements that need a subdued appearance.
 # ======================
 func get_muted_color(color: Color) -> Color:
-    var h: float = color.h  # Extract hue
-    var s: float = color.s  # Extract saturation
-    var v: float = color.v  # Extract brightness
+    var mix_ratio: float = 0.3  # Adjust how much black is blended in
 
-    s *= 0.4  # Reduce saturation (less intensity)
-    v *= 0.5  # Reduce brightness (darker look)
+    # Blend the color components with black
+    return Color(
+        color.r * (1.0 - mix_ratio),  # Reduce red intensity
+        color.g * (1.0 - mix_ratio),  # Reduce green intensity
+        color.b * (1.0 - mix_ratio),  # Reduce blue intensity
+        color.a  # Maintain original alpha transparency
+    )
 
-    return Color.from_hsv(h, s, v, color.a)  # Return modified color
 
 # ======================
 # GENERATE GLOWING COLOR
@@ -31,11 +33,29 @@ func get_muted_color(color: Color) -> Color:
 # Useful for active states or UI elements that need emphasis.
 # ======================
 func get_glowing_color(color: Color) -> Color:
-    var h: float = color.h  # Extract hue
-    var s: float = color.s  # Extract saturation
-    var v: float = color.v  # Extract brightness
+    var glow_intensity: float = 1.5  # Adjust for stronger glow
 
-    s = clamp(s * 1.2, 0, 1)  # Increase saturation (more vivid)
-    v = clamp(v * 1.5, 0, 1)  # Increase brightness (stronger glow)
+    # Amplify the color components while clamping values to prevent overflow
+    return Color(
+        min(color.r * glow_intensity, 1.0),  # Boost red intensity
+        min(color.g * glow_intensity, 1.0),  # Boost green intensity
+        min(color.b * glow_intensity, 1.0),  # Boost blue intensity
+        color.a  # Maintain original alpha transparency
+    )
 
-    return Color.from_hsv(h, s, v, color.a)  # Return modified color
+# ======================
+# COLOR VARIATION FUNCTION:
+# ----------------------
+# This function modifies a base color by introducing slight hue shifts.
+# It optionally generates a completely randomized color.
+# ======================
+
+func get_variation_color(base_color: Color, randomized: bool = false) -> Color:
+    if randomized:
+        return Color(randf(), randf(), randf())  # Generate a completely random color
+    
+    # Apply a slight random shift to the hue while keeping other properties unchanged
+    var hue_shift: float = randf_range(-0.05, 0.05)
+    var new_hue: float = fmod(base_color.h + hue_shift, 1.0)
+
+    return Color.from_hsv(new_hue, base_color.s, base_color.v)

@@ -95,6 +95,38 @@ func _process(_delta: float) -> void:
     if not source_pin or not target_pin:
         WorkBenchComm.remove_wire(self)
         return
+    keep_ends()
+
+# ======================
+# MAINTAIN WIRE ENDPOINT ALIGNMENT:
+# ----------------------
+# This function ensures that the wire remains properly attached
+# to its source and target pins while adjusting intermediate points.
+# It updates collision shapes if necessary.
+# ======================
+
+func keep_ends() -> void:
+    # Retrieve the latest positions of the source and target pins
+    var new_start: Vector2 = to_local(source_pin.ui.get_center())
+    var new_end: Vector2 = to_local(target_pin.ui.get_center())
+
+    var shape_changed: bool = false  # Tracks whether shape adjustments were made
+
+    # Adjust the first segment if the start position has changed
+    if points[0] != new_start and points.size() > 2:
+        points[1] = adjust_point(points[1], new_start)
+        shape_changed = true
+
+    # Adjust the last segment if the end position has changed
+    if points[-1] != new_end and points.size() > 2:
+        points[-2] = adjust_point(points[-2], new_end)
+        shape_changed = true
+
+    # If changes were made, update endpoints and collision shape
+    if shape_changed:
+        points[0] = new_start
+        points[-1] = new_end
+        update_collision_shape()
 
 # ======================
 # CREATE A NEW WIRE INSTANCE
@@ -107,6 +139,23 @@ static func new_wire(wire_source_pin: Pin, wire_target_pin: Pin, wire_points: Ar
     wire.target_pin = wire_target_pin
     wire.points = wire_points
     return wire
+
+# ======================
+# POINT ALIGNMENT FUNCTION:
+# ----------------------
+# This function adjusts a given point to align with a reference point.
+# It ensures movement follows the axis with the greatest difference.
+# ======================
+
+func adjust_point(point: Vector2, reference: Vector2) -> Vector2:
+    # Compute the difference between the point and reference along both axes
+    var diff_x: float = abs(reference.x - point.x)
+    var diff_y: float = abs(reference.y - point.y)
+
+    # Align the point based on the larger axis difference
+    if diff_x > diff_y:
+        return Vector2(point.x, reference.y)  # Maintain X, adjust Y
+    return Vector2(reference.x, point.y)  # Maintain Y, adjust X
 
 # ======================
 # CONSTRAIN WIRE ALIGNMENT
@@ -139,7 +188,7 @@ func constrain_line() -> void:
     else:
         adjustment_point.x = first.x
 
-    constrained_points.insert(1, adjustment_point)
+    #constrained_points.insert(1, adjustment_point)
     points = constrained_points
 
 # ======================

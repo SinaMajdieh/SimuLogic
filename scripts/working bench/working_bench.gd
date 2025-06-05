@@ -72,7 +72,7 @@ func get_current_viewing_path() -> Array[String]:
 # ----------------------
 # Adjusts simulation frame duration while ensuring valid limits.
 # ======================
-func change_sim_frame(length: float) -> void:
+func change_sim_frame(length: int) -> void:
 	length = clamp(1, length, 10_000_000)
 	simulation_frame = length
 
@@ -157,8 +157,6 @@ func export(chip_name: String, chip_color: Color) -> void:
 	Comm.add_chip_to_selection(bp)
 
 	empty_workbench()
-	input_pin_container.remove_pins()
-	output_pin_container.remove_pins()
 
 # ======================
 # IMPORT CHIP BLUEPRINT
@@ -210,6 +208,8 @@ func empty_workbench() -> void:
 	input_pin_container.clear_connections()
 	output_pin_container.clear_connections()
 	sub_chips_container.remove_all()
+	input_pin_container.remove_pins()
+	output_pin_container.remove_pins()
 
 # ======================
 # PROCESS SIMULATION FRAME
@@ -227,3 +227,28 @@ func _process(_delta: float) -> void:
 		Comm.update_frame += 1
 		$PreciseTimer.start_timer(simulation_frame)
 		next_process = false
+
+# ======================
+# GRID DRAWING SYSTEM:
+# ----------------------
+# This function renders a dynamic grid based on predefined spacing.
+# It ensures visualization remains consistent across different viewport sizes.
+# ======================
+
+func draw_grid() -> void:
+	# Draw vertical grid lines
+	for x in range(0, int(size.x), WorkBenchComm.grid_spacing):
+		draw_line(Vector2(x, 0), Vector2(x, size.y), grid_color)
+
+	# Draw horizontal grid lines
+	for y in range(0, int(size.y), WorkBenchComm.grid_spacing):
+		draw_line(Vector2(0, y), Vector2(size.x, y), grid_color)
+
+# ======================
+# RENDER GRID CONDITIONALLY
+# ----------------------
+# Calls grid drawing function only when grid visibility is enabled.
+# ======================
+func _draw() -> void:
+	if WorkBenchComm.show_grid:
+		draw_grid()

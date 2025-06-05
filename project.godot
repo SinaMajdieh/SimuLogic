@@ -30,7 +30,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/curved_lines_2d/plugin.cfg", "res://addons/postfx/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
