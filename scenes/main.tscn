@@ -1,0 +1,153 @@
+[gd_scene load_steps=14 format=3 uid="uid://bd8of46yd7mqr"]
+
+[ext_resource type="PackedScene" uid="uid://wq7npml480cg" path="res://scenes/ui/bread_crumb.tscn" id="1_eb6dy"]
+[ext_resource type="Script" uid="uid://i7mw571w2btc" path="res://scripts/working bench/infinite.gd" id="2_trceg"]
+[ext_resource type="PackedScene" uid="uid://cy7j5u7se7823" path="res://scenes/work_bench.tscn" id="3_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://dcvyoavw267e8" path="res://scenes/ui/chip/imported_chips_container.tscn" id="4_jkv2x"]
+[ext_resource type="Script" uid="uid://dg7jui82ima1c" path="res://scripts/ui/chip selection/chip_selection.gd" id="5_jbj1t"]
+[ext_resource type="Theme" uid="uid://8hph682i0fq2" path="res://themes/menu_button.tres" id="6_muem4"]
+[ext_resource type="Script" uid="uid://33rvbvmjvmm0" path="res://scripts/ui/menue.gd" id="7_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://bpc5fr3nc217f" path="res://scenes/ui/chip/chip_button.tscn" id="8_0ld40"]
+[ext_resource type="Script" uid="uid://cogfu1scr34w1" path="res://scripts/ui/pin/input_pin_button.gd" id="9_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://dl027x45wdqg4" path="res://scenes/panels/tool_tip.tscn" id="10_yc10j"]
+[ext_resource type="PackedScene" uid="uid://b6c0j1gg2tr0e" path="res://scenes/panels/create_chip.tscn" id="11_jscy8"]
+[ext_resource type="PackedScene" uid="uid://cbj8451n0hcmd" path="res://scenes/panels/io_settings.tscn" id="12_pm3ni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dvkv"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="Main" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dvkv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TopBar" type="HBoxContainer" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="BreadCrumb" parent="UI/TopBar" instance=ExtResource("1_eb6dy")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.39
+
+[node name="Zoom" type="Label" parent="UI/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Zoom"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorkSpaceContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+stretch = true
+
+[node name="WorkSpaceSubViewport" type="SubViewport" parent="WorkSpaceContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 3
+screen_space_aa = 1
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="Infinite" type="Control" parent="WorkSpaceContainer/WorkSpaceSubViewport" node_paths=PackedStringArray("chips_canvas", "sub_viewport_container", "zoom_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_trceg")
+chips_canvas = NodePath("WorkBench")
+sub_viewport_container = NodePath("../..")
+zoom_label = NodePath("../../../UI/TopBar/Zoom")
+
+[node name="WorkBench" parent="WorkSpaceContainer/WorkSpaceSubViewport/Infinite" instance=ExtResource("3_a8y0u")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100000, 100000)
+layout_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="ImportedChipsContainer" parent="WorkSpaceContainer/WorkSpaceSubViewport/Infinite/WorkBench" instance=ExtResource("4_jkv2x")]
+visible = false
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ChipSelection" type="ScrollContainer" parent="." node_paths=PackedStringArray("button_container")]
+layout_mode = 2
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.5
+vertical_scroll_mode = 0
+script = ExtResource("5_jbj1t")
+button_container = NodePath("ButtonLayout")
+
+[node name="ButtonLayout" type="HBoxContainer" parent="ChipSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="MenuButton" type="MenuButton" parent="ChipSelection/ButtonLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_muem4")
+text = "Menu"
+flat = false
+item_count = 3
+popup/item_0/text = "Menu"
+popup/item_0/id = 2
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "Create"
+popup/item_1/id = 0
+popup/item_2/text = "IO"
+popup/item_2/id = 1
+script = ExtResource("7_dp3eg")
+
+[node name="InputPin" parent="ChipSelection/ButtonLayout" instance=ExtResource("8_0ld40")]
+layout_mode = 2
+text = "Input Pin"
+script = ExtResource("9_gqmmt")
+type = 0
+
+[node name="OutputPin" parent="ChipSelection/ButtonLayout" instance=ExtResource("8_0ld40")]
+layout_mode = 2
+text = "Output Pin"
+script = ExtResource("9_gqmmt")
+type = 1
+
+[node name="ToolTip" parent="." instance=ExtResource("10_yc10j")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panels" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CreateChip" parent="Panels" instance=ExtResource("11_jscy8")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="IO" parent="Panels" instance=ExtResource("12_pm3ni")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+mouse_filter = 2
+
+[connection signal="resized" from="ChipSelection/ButtonLayout/MenuButton" to="ChipSelection/ButtonLayout/MenuButton" method="_on_resized"]
+[connection signal="add_pin" from="ChipSelection/ButtonLayout/InputPin" to="WorkSpaceContainer/WorkSpaceSubViewport/Infinite/WorkBench/ImportedChipsContainer" method="add_pin"]
+[connection signal="add_pin" from="ChipSelection/ButtonLayout/OutputPin" to="WorkSpaceContainer/WorkSpaceSubViewport/Infinite/WorkBench/ImportedChipsContainer" method="add_pin"]

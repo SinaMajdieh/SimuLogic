@@ -1,25 +1,45 @@
 class_name PreciseTimer
 extends Node
 
-# Stores the starting time in microseconds
-var start_time: int
+# ======================
+# HIGH-PRECISION TIMER:
+# ----------------------
+# This class manages a microsecond-accurate timer.
+# It tracks elapsed time and emits a signal when the duration expires.
+# ======================
 
-# Duration for the timer in microseconds
+# === TIMER STATE TRACKING ===
+# Stores the starting time and target duration in microseconds.
+var start_time: int
 var target_duration: int
 
-# Tracks whether the timer is actively running
+# === TIMER ACTIVE STATUS ===
+# Determines whether the timer is currently running.
 var timer_active: bool = false
 
-# Signal emitted when the timer reaches its duration
+# ======================
+# SIGNAL DEFINITIONS
+# ----------------------
+# Emits an event when the timer reaches the specified duration.
+# ======================
 signal time_out()
 
-# Starts the timer with the specified duration in microseconds
+# ======================
+# START TIMER
+# ----------------------
+# Initializes the timer with a specified duration in microseconds.
+# ======================
 func start_timer(duration_usec: int) -> void:
     start_time = Time.get_ticks_usec()  # Capture the current system timestamp
     target_duration = duration_usec
     timer_active = true  # Activate the timer
 
-# Continuously checks if the timer has completed
+# ======================
+# TIMER PROCESSING LOOP
+# ----------------------
+# Continuously checks if the timer has completed.
+# Emits a signal when the duration is reached.
+# ======================
 func _process(_delta: float) -> void:
     if timer_active and Time.get_ticks_usec() - start_time >= target_duration:
         timer_active = false  # Stop the timer

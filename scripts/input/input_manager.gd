@@ -1,16 +1,30 @@
 class_name InputManager
 extends Node
 
-# Defines the available input modes
+# ======================
+# INPUT MODE MANAGEMENT:
+# ----------------------
+# This class manages different input modes for user interactions.
+# It toggles between wiring, moving, and removing modes dynamically.
+# ======================
+
+# === INPUT MODE ENUMERATION ===
+# Defines available input modes for interaction.
 enum Mode {WIRING, MOVING, REMOVING}
 
-# Tracks the current input mode
+# === CURRENT MODE TRACKING ===
+# Stores the active input mode.
 var current_mode: Mode = Mode.WIRING
 
-# Determines whether input processing is active
+# === INPUT PROCESSING STATUS ===
+# Controls whether input handling is currently enabled.
 var is_active: bool = true
 
-# Updates the active input mode and applies changes to child InputMode nodes
+# ======================
+# UPDATE ACTIVE INPUT MODE
+# ----------------------
+# Switches to a new input mode and applies the changes to child InputMode instances.
+# ======================
 func update_active_mode(mode: Mode) -> void:
     current_mode = mode
     
@@ -22,12 +36,20 @@ func update_active_mode(mode: Mode) -> void:
             else:
                 mode_instance.deactivate()
 
-# Handles input events to toggle input modes
+# ======================
+# HANDLE INPUT EVENTS
+# ----------------------
+# Detects key presses and toggles input modes accordingly.
+# ======================
 func _input(event: InputEvent) -> void:
     if event is InputEventKey and event.is_pressed():
         toggle_mode(event.keycode)
 
-# Toggles the input mode based on key presses
+# ======================
+# TOGGLE INPUT MODE
+# ----------------------
+# Switches between different input modes when specific keys are pressed.
+# ======================
 func toggle_mode(keycode: Key) -> void:
     if not is_active:
         return
@@ -40,11 +62,19 @@ func toggle_mode(keycode: Key) -> void:
         KEY_R:
             update_active_mode(Mode.REMOVING)
 
-# Initializes the input manager and sets the default mode
+# ======================
+# INITIALIZE INPUT MANAGER
+# ----------------------
+# Sets the default input mode upon startup.
+# ======================
 func _ready() -> void:
     update_active_mode(current_mode)
 
-# Stops input processing and deactivates all input modes
+# ======================
+# STOP INPUT PROCESSING
+# ----------------------
+# Disables input handling and deactivates all input modes.
+# ======================
 func stop_processing_input() -> void:
     is_active = false
     
@@ -53,7 +83,11 @@ func stop_processing_input() -> void:
         if mode_instance:
             mode_instance.deactivate()
 
-# Resumes input processing and reactivates the current mode
+# ======================
+# RESUME INPUT PROCESSING
+# ----------------------
+# Enables input handling and reactivates the last selected mode.
+# ======================
 func continue_processing_input() -> void:
     is_active = true
     update_active_mode(current_mode)

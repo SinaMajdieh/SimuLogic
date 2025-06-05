@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbj8451n0hcmd"]
+
+[ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="1_gikwd"]
+[ext_resource type="Script" uid="uid://b5cfh7m5cyi2n" path="res://scripts/ui/panel/io_settings.gd" id="1_yvoob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvoob"]
+shader = ExtResource("1_gikwd")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_yvoob"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ny0bi"]
+events = [SubResource("InputEventKey_yvoob")]
+
+[node name="IO" type="Control" node_paths=PackedStringArray("sim_frame_spinbox", "grid_spacing_spinbox", "show_grid_checkbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvoob")
+sim_frame_spinbox = NodePath("Center/Panel/MainLayout/Simulation/SimFrame2")
+grid_spacing_spinbox = NodePath("Center/Panel/MainLayout/GridSizeContainer/GridSize")
+show_grid_checkbox = NodePath("Center/Panel/MainLayout/ShowGridContainer/ShowGrid")
+
+[node name="Bacground" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_yvoob")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+layout_mode = 2
+
+[node name="MainLayout" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+
+[node name="GridSizeContainer" type="HBoxContainer" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="GridSpacing" type="Label" parent="Center/Panel/MainLayout/GridSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+text = "Grid Size"
+
+[node name="GridSize" type="SpinBox" parent="Center/Panel/MainLayout/GridSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 1.0
+max_value = 10000.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="ShowGridContainer" type="HBoxContainer" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="ShowGrid" type="CheckButton" parent="Center/Panel/MainLayout/ShowGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Show Grid"
+
+[node name="HSlider" type="HSeparator" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="Simulation" type="HBoxContainer" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="SimFrame" type="Label" parent="Center/Panel/MainLayout/Simulation"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+text = "Simulation Frame (ms)"
+
+[node name="SimFrame2" type="SpinBox" parent="Center/Panel/MainLayout/Simulation"]
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 1.0
+max_value = 1e+07
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Save" type="Button" parent="Center/Panel/MainLayout/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+
+[node name="Cancel" type="Button" parent="Center/Panel/MainLayout/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_ny0bi")
+text = "Cancel"
+
+[connection signal="pressed" from="Center/Panel/MainLayout/Buttons/Save" to="." method="_on_submit"]
+[connection signal="pressed" from="Center/Panel/MainLayout/Buttons/Cancel" to="." method="_on_cancel"]

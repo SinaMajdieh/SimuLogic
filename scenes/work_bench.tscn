@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://cy7j5u7se7823"]
+
+[ext_resource type="Script" uid="uid://b6wv050rt3hh5" path="res://scripts/working bench/working_bench.gd" id="1_pdxho"]
+[ext_resource type="Script" uid="uid://bba63tdhkgpeh" path="res://scripts/pin/pin_manager.gd" id="3_1bg2q"]
+[ext_resource type="Script" uid="uid://cpl5ekyj8xtjm" path="res://scripts/chip/chips_manager.gd" id="3_a5pla"]
+[ext_resource type="Script" uid="uid://cdp0ifrkk45gk" path="res://scripts/wire/wire_manager.gd" id="3_agj7r"]
+[ext_resource type="PackedScene" uid="uid://t0w1bae56yu7" path="res://scenes/wire/wire_preview.tscn" id="4_agj7r"]
+[ext_resource type="PackedScene" uid="uid://csc52ych6nj08" path="res://scenes/input/input_manager.tscn" id="6_gqfpb"]
+[ext_resource type="Script" uid="uid://ctjt5t6g8dd0r" path="res://scripts/timer.gd" id="7_ihl7h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcgij"]
+bg_color = Color(0.180392, 0.180392, 0.243137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41598, 0.41598, 0.41598, 1)
+
+[node name="WorkingBench" type="PanelContainer" node_paths=PackedStringArray("wire_container")]
+offset_right = 100000.0
+offset_bottom = 100000.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kcgij")
+script = ExtResource("1_pdxho")
+input_pin_count = 0
+output_pin_count = 0
+wire_container = NodePath("Wires")
+
+[node name="InputManager" parent="." instance=ExtResource("6_gqfpb")]
+
+[node name="Wires" type="Node2D" parent="."]
+script = ExtResource("3_agj7r")
+
+[node name="WirePreview" parent="Wires" instance=ExtResource("4_agj7r")]
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Chips" type="Control" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("3_a5pla")
+
+[node name="Inputs" type="Control" parent="Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+script = ExtResource("3_1bg2q")
+
+[node name="Outputs" type="Control" parent="Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("3_1bg2q")
+type = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="PreciseTimer" type="Node" parent="."]
+script = ExtResource("7_ihl7h")
+metadata/_custom_type_script = "uid://ctjt5t6g8dd0r"
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="timeout" from="Timer" to="." method="sim_frame_ended"]

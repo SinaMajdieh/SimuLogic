@@ -5,6 +5,7 @@
 .export/
 export.cfg
 export_presets.cfg
+addons/
 
 # Project
 blue_prints_backup/

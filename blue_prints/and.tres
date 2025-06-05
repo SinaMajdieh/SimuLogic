@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_vnk4u"]
 [ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="2_g6pw0"]
-[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/chip/wire_data.gd" id="2_jacjq"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_jacjq"]
 [ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="3_jacjq"]
 
 [sub_resource type="Resource" id="Resource_vnk4u"]
 script = ExtResource("1_vnk4u")
 background_color = Color(0, 0.501961, 0.501961, 1)
-sub_chip_positions = Dictionary[String, Vector2]({})
+sub_chip_positions = Array[Vector2]([])
 wires = Array[ExtResource("2_jacjq")]([])
 metadata/_custom_type_script = "uid://d37ex0tf7tcwa"
 
@@ -39,7 +39,6 @@ metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
 [resource]
 script = ExtResource("3_jacjq")
 name = "AND"
-name_tag = "AND"
 type = 0
 input_pins = Array[ExtResource("2_g6pw0")]([SubResource("Resource_g6pw0"), SubResource("Resource_jacjq")])
 output_pins = Array[ExtResource("2_g6pw0")]([SubResource("Resource_f78v7")])

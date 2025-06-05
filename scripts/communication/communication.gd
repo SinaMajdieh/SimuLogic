@@ -1,27 +1,71 @@
 extends Node
 
-var update_frame: int = -1 
+# ======================
+# SIMULATION MANAGEMENT:
+# ----------------------
+# This class manages simulation properties, chip interactions, and signal emissions.
+# It tracks timing parameters and facilitates communication within the workbench environment.
+# ======================
 
-## Signals for handling chip interactions and exporting workbench data.
-signal add_chip_to_selection_signal(schematic: ChipBlueprint)
-signal import_chip_signal(bp: ChipBlueprint)
-signal export_screen(active:bool)
-signal io_screen(active:bool)
-signal sim_frame_changed(lenght:float)
+# === FRAME TIMING PARAMETERS ===
+# Tracks simulation frame updates and gate delays.
+var update_frame: int = -1  # Stores the current simulation frame index.
+var gate_delay: int = 1  # Defines processing delay for logic gates.
 
-## Emits a signal to add a chip schematic to the selection.
+# === GLOBAL WIREFRAME PREVIEW ===
+# Stores a reference to the wire preview component for dynamic visualization.
+var wire_preview: WirePreview
+
+# ======================
+# SIGNAL DEFINITIONS
+# ----------------------
+# Defines communication signals for chip interactions, workbench exports, and frame updates.
+# ======================
+
+signal add_chip_to_selection_signal(schematic: ChipBlueprint)  # Adds a chip to the selection menu.
+signal import_chip_signal(bp: ChipBlueprint)  # Imports a chip blueprint.
+signal export_screen(active: bool)  # Controls workbench export screen visibility.
+signal io_screen(active: bool)  # Toggles the input/output configuration screen.
+signal sim_frame_changed(length: float)  # Updates simulation timing settings.
+
+# ======================
+# ADD CHIP TO SELECTION MENU
+# ----------------------
+# Emits a signal to register a chip schematic for selection in the menu.
+# ======================
 func add_chip_to_selection(schematic: ChipBlueprint) -> void:
-	add_chip_to_selection_signal.emit(schematic)
+    add_chip_to_selection_signal.emit(schematic)
 
-func set_export_screen(active:bool=true) -> void:
-	export_screen.emit(active)
+# ======================
+# TOGGLE EXPORT SCREEN
+# ----------------------
+# Emits a signal to open or close the chip export interface.
+# Default state is active when called without parameters.
+# ======================
+func set_export_screen(active: bool = true) -> void:
+    export_screen.emit(active)
 
-func set_io_screen_screen(active:bool=true) -> void:
-	io_screen.emit(active)
+# ======================
+# TOGGLE INPUT/OUTPUT CONFIGURATION SCREEN
+# ----------------------
+# Emits a signal to control the visibility of the IO settings interface.
+# Default state is active when called without parameters.
+# ======================
+func set_io_screen_screen(active: bool = true) -> void:
+    io_screen.emit(active)
 
-func set_sim_frame(lenght:float) -> void:
-	sim_frame_changed.emit(lenght)
+# ======================
+# UPDATE SIMULATION FRAME SETTINGS
+# ----------------------
+# Emits a signal to modify simulation timing based on the provided frame length.
+# ======================
+func set_sim_frame(length: float) -> void:
+    sim_frame_changed.emit(length)
 
-## Emits a signal to import a chip blueprint.
+# ======================
+# IMPORT CHIP BLUEPRINT
+# ----------------------
+# Emits a signal to instantiate and load a chip from its blueprint.
+# ======================
 func import_chip(bp: ChipBlueprint) -> void:
-	import_chip_signal.emit(bp)
+    import_chip_signal.emit(bp)

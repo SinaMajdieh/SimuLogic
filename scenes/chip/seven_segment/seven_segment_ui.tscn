@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckc1tt5rw306e"]
+
+[ext_resource type="Script" uid="uid://di8vapssmj1m4" path="res://scripts/chip/seven segment/seven_segment_ui.gd" id="1_o11wk"]
+[ext_resource type="Script" uid="uid://osvk7hstwgfs" path="res://scripts/chip/chip_body.gd" id="2_yr5ri"]
+[ext_resource type="PackedScene" uid="uid://1udf7btxn8ut" path="res://scenes/chip/seven_segment/seven_segment_display.tscn" id="3_ne6sk"]
+[ext_resource type="Script" uid="uid://ctjt5t6g8dd0r" path="res://scripts/timer.gd" id="4_hfs1f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owa1i"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7nt4l"]
+font_size = 15
+
+[node name="Component" type="PanelContainer" node_paths=PackedStringArray("seven_segment_display", "input_container", "output_container", "sub_chip_container", "name_tag") groups=["chip"]]
+custom_minimum_size = Vector2(50, 25)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.0
+offset_right = 47.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_owa1i")
+script = ExtResource("1_o11wk")
+seven_segment_display = NodePath("Container/Chips/7Segment")
+input_container = NodePath("Container/Inputs")
+output_container = NodePath("Container/Outputs")
+sub_chip_container = NodePath("Container/Chips")
+name_tag = NodePath("Container/Chips/Name")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Inputs" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[node name="Chips" type="VBoxContainer" parent="Container" groups=["chip_body"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+script = ExtResource("2_yr5ri")
+
+[node name="Name" type="Label" parent="Container/Chips"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+text = "Chip Name"
+label_settings = SubResource("LabelSettings_7nt4l")
+horizontal_alignment = 1
+
+[node name="7Segment" parent="Container/Chips" instance=ExtResource("3_ne6sk")]
+layout_mode = 2
+
+[node name="Outputs" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[node name="PreciseTimer" type="Node" parent="."]
+script = ExtResource("4_hfs1f")
+metadata/_custom_type_script = "uid://ctjt5t6g8dd0r"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_enter"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exit"]
+[connection signal="renamed" from="." to="." method="_on_renamed"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exited"]

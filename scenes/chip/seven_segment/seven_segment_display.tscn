@@ -1,0 +1,160 @@
+[gd_scene load_steps=2 format=3 uid="uid://1udf7btxn8ut"]
+
+[ext_resource type="Script" uid="uid://dx2qbrd8wdn4k" path="res://scripts/chip/seven segment/seven_segment_display.gd" id="1_jxjsm"]
+
+[node name="7Segment" type="CenterContainer" node_paths=PackedStringArray("display_segments")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 143.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jxjsm")
+off_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+on_color = Color(1, 0.333333, 0.333333, 1)
+display_segments = [NodePath("MarginContainer/Grid/AspectRatioContainer7/Sign"), NodePath("MarginContainer/Grid/AspectRatioContainer2/Segment A"), NodePath("MarginContainer/Grid/AspectRatioContainer6/Segment B"), NodePath("MarginContainer/Grid/AspectRatioContainer12/Segment C"), NodePath("MarginContainer/Grid/AspectRatioContainer14/Segment D"), NodePath("MarginContainer/Grid/AspectRatioContainer10/Segment E"), NodePath("MarginContainer/Grid/AspectRatioContainer4/Segment F"), NodePath("MarginContainer/Grid/AspectRatioContainer8/Segment G")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer16" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 5.0
+
+[node name="Segment A" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer2"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer17" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.2
+alignment_horizontal = 2
+
+[node name="Segment F" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer4"]
+custom_minimum_size = Vector2(10, 50)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.2
+alignment_horizontal = 0
+
+[node name="Segment B" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer6"]
+custom_minimum_size = Vector2(10, 50)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer7" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+ratio = 5.0
+
+[node name="Sign" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer7"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer18" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer8" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 5.0
+
+[node name="Segment G" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer8"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer9" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer19" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer10" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.2
+alignment_horizontal = 2
+
+[node name="Segment E" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer10"]
+custom_minimum_size = Vector2(10, 50)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer11" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer12" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.2
+alignment_horizontal = 0
+
+[node name="Segment C" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer12"]
+custom_minimum_size = Vector2(10, 50)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer13" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer20" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+
+[node name="AspectRatioContainer14" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 5.0
+
+[node name="Segment D" type="ColorRect" parent="MarginContainer/Grid/AspectRatioContainer14"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="AspectRatioContainer15" type="AspectRatioContainer" parent="MarginContainer/Grid"]
+layout_mode = 2

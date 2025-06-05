@@ -1,57 +1,90 @@
 extends Node
 
-## Stores the selected pin and wire preview instance.
+# ======================
+# PIN SELECTION & WIRE PREVIEW SYSTEM:
+# ----------------------
+# This class manages pin selection and wire connections in the workbench.
+# It listens for pin interactions, initiates wire previews, and finalizes connections.
+# ======================
+
+# === PIN SELECTION VARIABLES ===
+# Tracks the currently selected pin for wire connections.
 var selected_pin: Pin = null
-var wire_preview: WirePreview = null
 
-## Initializes connections.
+# ======================
+# INITIALIZE PIN INTERACTIONS
+# ----------------------
+# Connects pin click events to ensure proper wiring operations.
+# ======================
 func _ready() -> void:
-	InputBus.pin_clicked.connect(_on_pin_clicked)
+    InputBus.pin_clicked.connect(_on_pin_clicked)
 
-## Handles pin selection and connection logic.
-func _on_pin_clicked(pin: Pin) -> void:
-	if not get_parent().is_active:
-		return
+# ======================
+# HANDLE PIN SELECTION & CONNECTIONS
+# ----------------------
+# Determines whether to start a wire preview or finalize a connection.
+# ======================
+func _on_pin_clicked(pin: PinUI) -> void:
+    if not get_parent().is_active:  # Ensure the workbench is active
+        return
 
-	if selected_pin:
-		_selected_pin_connect(pin)
-	else:
-		_start_preview(pin)
+    if selected_pin:
+        _selected_pin_connect(pin)  # Finalize wire connection
+    else:
+        _start_preview(pin)  # Start wire preview
 
-## Connects selected pin to target pin and finalizes wire preview.
-func _selected_pin_connect(pin: Pin) -> void:
-	selected_pin.connect_to(pin)
-	#print_debug("Connected %s -> %s" % [selected_pin.name, pin.name])
+# ======================
+# FINALIZE WIRE CONNECTION
+# ----------------------
+# Establishes a connection between the selected pin and the target pin.
+# Converts the wire preview into a permanent connection.
+# ======================
+func _selected_pin_connect(pin: PinUI) -> void:
+    selected_pin.connect_to(pin.logic)
 
-	if wire_preview:
-		wire_preview.finalize_connection(pin)  # Convert preview line to permanent connection
+    # Convert wire preview into actual wire connection
+    if Comm.wire_preview:
+        Comm.wire_preview.finalize_connection(pin)
 
-	selected_pin = null
-	wire_preview = null
+    # Clear selection after connection
+    selected_pin = null
 
-## Starts a new wire preview for the selected pin.
-func _start_preview(pin: Pin) -> void:
-	selected_pin = pin
-	wire_preview = WirePreview.wire_preview_scene.instantiate()
-	add_child(wire_preview)
-	wire_preview.start_preview(pin)
+# ======================
+# START WIRE PREVIEW
+# ----------------------
+# Begins a wire preview when a pin is selected.
+# ======================
+func _start_preview(pin: PinUI) -> void:
+    selected_pin = pin.logic
+    Comm.wire_preview.start_preview(pin)
 
-## Handles input events for wire interactions.
+# ======================
+# HANDLE USER INPUT EVENTS
+# ----------------------
+# Responds to mouse interactions for wire creation and cancellation.
+# ======================
 func _input(event: InputEvent) -> void:
-	if not get_parent().is_active:
-		return
+    if not get_parent().is_active:  # Ignore input if workbench is inactive
+        return
 
-	if event is InputEventMouseButton and event.is_pressed():
-		if wire_preview:
-			wire_preview.add_joint(wire_preview.next_joint)
+    # Add a joint to the wire when clicking
+    if event is InputEventMouseButton and event.is_pressed():
+        if Comm.wire_preview:
+            Comm.wire_preview.add_joint(Comm.wire_preview.next_joint)
 
-	elif event is InputEventKey and event.is_pressed():
-		if event.keycode == KEY_ESCAPE:
-			_cancel_preview()
+    # Cancel the wire preview when pressing Escape
+    elif event is InputEventKey and event.is_pressed():
+        if event.keycode == KEY_ESCAPE:
+            _cancel_preview()
 
-## Cancels the wire preview safely.
+# ======================
+# CANCEL WIRE PREVIEW
+# ----------------------
+# Safely clears the wire preview and resets the selection state.
+# ======================
 func _cancel_preview() -> void:
-	if wire_preview:
-		wire_preview.cancel()
-	wire_preview = null
-	selected_pin = null
+    if Comm.wire_preview:
+        Comm.wire_preview.cancel()
+
+    # Reset selection state
+    selected_pin = null
