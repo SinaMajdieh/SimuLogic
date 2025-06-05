@@ -1,16 +1,33 @@
 class_name InputMode
 extends Node
 
-## Defines the mode type associated with this input mode.
+# ======================
+# GENERIC INPUT MODE:
+# ----------------------
+# This class serves as the base for input modes in the system.
+# It defines activation states and links to the input manager.
+# ======================
+
+# === MODE TYPE DEFINITION ===
+# Specifies the mode type associated with this input mode.
 @export var mode: InputManager.Mode
 
-## Tracks whether this mode is active.
+# === MODE ACTIVITY TRACKING ===
+# Determines whether the mode is currently active.
 var is_active: bool = false
 
-## Activates the input mode.
+# ======================
+# ACTIVATE INPUT MODE
+# ----------------------
+# Enables the input mode, allowing interactions.
+# ======================
 func activate() -> void:
-	is_active = true
+    is_active = true
 
-## Deactivates the input mode.
+# ======================
+# DEACTIVATE INPUT MODE
+# ----------------------
+# Disables the input mode, stopping interactions.
+# ======================
 func deactivate() -> void:
-	is_active = false
+    is_active = false

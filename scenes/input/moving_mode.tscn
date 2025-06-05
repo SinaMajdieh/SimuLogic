@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dti5dbeeqx24h"]
 
-[ext_resource type="Script" uid="uid://3vvo23mjl5dm" path="res://scripts/input/moving/moving_input_manager.gd" id="1_lstri"]
-[ext_resource type="Script" uid="uid://c70vasb21vrma" path="res://scripts/input/moving/chip_movement.gd" id="2_orank"]
-[ext_resource type="Script" uid="uid://dcdnuslwl4si6" path="res://scripts/input/moving/pin_select.gd" id="3_epeyd"]
+[ext_resource type="Script" uid="uid://dg7cpwrbnm5fg" path="res://scripts/input/moving/moving_input_manager.gd" id="1_lstri"]
+[ext_resource type="Script" uid="uid://g17w26xdkvwn" path="res://scripts/input/moving/chip_movement.gd" id="2_orank"]
+[ext_resource type="Script" uid="uid://c55quh60w62a1" path="res://scripts/input/moving/pin_select.gd" id="3_epeyd"]
 
 [node name="MovingMode" type="Node"]
 script = ExtResource("1_lstri")

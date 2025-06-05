@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gt16vuy6uny6"]
 
-[ext_resource type="Script" uid="uid://bma5w6hnkchfu" path="res://scripts/working bench/wire.gd" id="1_cnw3p"]
+[ext_resource type="Script" uid="uid://bma5w6hnkchfu" path="res://scripts/wire/wire.gd" id="1_cnw3p"]
 
 [node name="Wire" type="Line2D" node_paths=PackedStringArray("area")]
 points = PackedVector2Array(525, -10)

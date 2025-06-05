@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://csc52ych6nj08"]
 
-[ext_resource type="Script" uid="uid://bfw4as32sm7tj" path="res://scripts/input/input_manager.gd" id="1_nl4k5"]
+[ext_resource type="Script" uid="uid://bjtx3hl7rek5q" path="res://scripts/input/input_manager.gd" id="1_nl4k5"]
 [ext_resource type="PackedScene" uid="uid://dti5dbeeqx24h" path="res://scenes/input/moving_mode.tscn" id="2_b8awa"]
 [ext_resource type="PackedScene" uid="uid://dc281i48wxhnn" path="res://scenes/input/wiring_mode.tscn" id="3_4363f"]
-[ext_resource type="Script" uid="uid://ckplbon7r54et" path="res://scripts/input/removing/removing_input_manager.gd" id="4_b8awa"]
+[ext_resource type="Script" uid="uid://sb0ynwv7dq41" path="res://scripts/input/removing/removing_input_manager.gd" id="4_b8awa"]
 
 [node name="InputManager" type="Node"]
 script = ExtResource("1_nl4k5")

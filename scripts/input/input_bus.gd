@@ -1,34 +1,70 @@
 class_name InputBusManager
 extends Node
 
-## Signals for handling key input events.
-signal pin_clicked(pin: Pin)
-signal chip_clicked(chip: Chip, click_position: Vector2)
-signal work_bench_clicked(click_position: Vector2)
+# ======================
+# INPUT EVENT SIGNAL DISPATCHER:
+# ----------------------
+# This class serves as the central hub for input event management.
+# It listens for interactions with pins, chips, and wires, emitting signals accordingly.
+# ======================
 
-signal wire_clicked(wire: Chip, clicked_position:Vector2)
-signal new_wire(wire: Wire)
+# ======================
+# SIGNAL DEFINITIONS
+# ----------------------
+# Defines communication signals triggered by user interactions.
+# These signals notify other components when an event occurs.
+# ======================
 
-## Emits a signal when a pin is clicked.
-func notify_pin_clicked(pin: Pin) -> void:
-	# print_debug("Pin clicked: %s" % pin.name)
-	pin_clicked.emit(pin)
+# Signals for pin interactions
+signal pin_clicked(pin: PinUI)  # Triggered when a pin is clicked
+signal pin_body_clicked(pin: PinUI, click_position: Vector2)  # Triggered when a pin body is clicked
 
-## Emits a signal when a chip is clicked, providing the click position.
-func notify_chip_clicked(chip: Chip, click_position: Vector2) -> void:
-	# print_debug("Chip clicked: %s at %s " % [chip.name, click_position])
-	chip_clicked.emit(chip, click_position)
+# Signals for chip interactions
+signal chip_clicked(chip: ChipUI, click_position: Vector2)  # Triggered when a chip is clicked
+signal work_bench_clicked(click_position: Vector2)  # Triggered when the workbench is clicked
 
-## Emits a signal when a wire is clicked.
-func notify_wire_clicked(wire: Wire, clicked_position:Vector2) -> void:
-	wire_clicked.emit(wire, clicked_position)
+# Signals for wire interactions
+signal wire_clicked(wire: Wire, clicked_position: Vector2)  # Triggered when a wire is clicked
+signal new_wire(wire: Wire)  # Triggered when a new wire is created
 
+# ======================
+# PIN EVENT DISPATCHING
+# ----------------------
+# Emits signals when a pin is clicked, notifying connected components.
+# ======================
 
-## Emits a signal when the working bench is clicked.
-func notify_work_bench_clicked(click_position: Vector2) -> void:
-	work_bench_clicked.emit(click_position)
+func notify_pin_clicked(pin: PinUI) -> void:
+    pin_clicked.emit(pin)
 
-## Emits a signal when a new wire is created.
+func notify_pin_body_clicked(pin: PinUI, click_position: Vector2) -> void:
+    pin_body_clicked.emit(pin, click_position)
+
+# ======================
+# CHIP EVENT DISPATCHING
+# ----------------------
+# Emits signals when a chip is clicked, forwarding its position.
+# ======================
+
+func notify_chip_clicked(chip: ChipUI, click_position: Vector2) -> void:
+    chip_clicked.emit(chip, click_position)
+
+# ======================
+# WIRE EVENT DISPATCHING
+# ----------------------
+# Emits signals when a wire is clicked or a new wire is created.
+# ======================
+
+func notify_wire_clicked(wire: Wire, clicked_position: Vector2) -> void:
+    wire_clicked.emit(wire, clicked_position)
+
 func notify_new_wire(wire: Wire) -> void:
-	#print_debug("New wire created")
-	new_wire.emit(wire)
+    new_wire.emit(wire)
+
+# ======================
+# WORKBENCH EVENT DISPATCHING
+# ----------------------
+# Emits signals when the workbench is clicked.
+# ======================
+
+func notify_work_bench_clicked(click_position: Vector2) -> void:
+    work_bench_clicked.emit(click_position)

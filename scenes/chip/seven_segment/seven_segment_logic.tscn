@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqgj7dd6aovsg"]
+
+[ext_resource type="Script" uid="uid://p76c6p50ha48" path="res://scripts/chip/seven segment/seven_segment_model.gd" id="1_f7bd6"]
+[ext_resource type="Script" uid="uid://bf1637k5mn0lo" path="res://scripts/timer.gd" id="2_h1eto"]
+
+[node name="Component" type="Node" node_paths=PackedStringArray("input_container", "output_container", "sub_chip_container")]
+script = ExtResource("1_f7bd6")
+input_container = NodePath("Container/Inputs")
+output_container = NodePath("Container/Outputs")
+sub_chip_container = NodePath("Container/Chips")
+
+[node name="Container" type="Node" parent="."]
+
+[node name="Inputs" type="Node" parent="Container"]
+
+[node name="Chips" type="Node" parent="Container"]
+
+[node name="Outputs" type="Node" parent="Container"]
+
+[node name="PreciseTimer" type="Node" parent="."]
+script = ExtResource("2_h1eto")
+metadata/_custom_type_script = "uid://ctjt5t6g8dd0r"

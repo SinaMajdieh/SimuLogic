@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdpqbbogydux4"]
+
+[ext_resource type="Script" uid="uid://chkyngxewamgw" path="res://scripts/pin/pin.gd" id="1_p5ucl"]
+
+[node name="FakePin" type="Node"]
+script = ExtResource("1_p5ucl")

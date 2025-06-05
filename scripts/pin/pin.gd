@@ -1,144 +1,202 @@
 class_name Pin
-extends MarginContainer
+extends Node
 
-## Preloaded pin scene for dynamic instantiation.
-static var pin_scene: PackedScene = preload("res://scenes/pin/pin.tscn")
-static var interactable_pin_scene: PackedScene = preload("res://scenes/pin/work_bench_pin.tscn")
+# ======================
+# PIN LOGIC COMPONENT:
+# ----------------------
+# This class manages pin logic within the simulation.
+# It defines pin types, tracks connections, and processes state changes dynamically.
+# ======================
 
-@export var input_manager: Node
-@export var button_gui:CheckButton
+# === PRELOADED PIN SCENES ===
+# Defines scenes used for instantiating pin logic components.
+static var pin_logic_scene: PackedScene = preload("res://scenes/pin/pin_logic.tscn")
+static var interactable_pin_logic_scene: PackedScene = preload("res://scenes/pin/work_bench_pin.tscn")
 
+# === PIN UI REFERENCE ===
+# Stores the UI representation of the pin.
+var ui: PinUI
+
+# === PIN STATE TRACKING ===
+# Tracks frame updates and queued state changes.
 var last_update_frame: int = -1
-var queued_value = []
+var queued_value: Array = []
 
-## Enum defining pin types.
+# === PIN TYPE ENUMERATION ===
+# Defines available pin types.
 enum PinType {INPUT, OUTPUT}
 
-## References the chip this pin belongs to.
+# === CHIP REFERENCE ===
+# Stores the parent chip this pin belongs to.
 var parent_chip: Chip
 
-## Tracks connected pins and sources that update this pin.
+# === CONNECTION TRACKING ===
+# Lists pins that are connected and those providing state updates.
 var connected_to: Array[Pin] = []
 var receive_state_from: Array[Pin] = []
 
-## Pin type definition with setter.
+# ======================
+# PIN TYPE MANAGEMENT
+# ----------------------
+# Sets and retrieves the pin type (input or output).
+# ======================
 var pin_type: PinType:
-	set(new_type):
-		pin_type = new_type
+    set(new_type):
+        pin_type = new_type
 
-## Current state of the pin.
+# ======================
+# PIN STATE MANAGEMENT
+# ----------------------
+# Stores and updates pin state, triggering UI changes upon modification.
+# ======================
 var state: bool = false:
-	set(new_state):
-		if new_state == state:
-			return
-		state = new_state
-		button_gui.button_pressed = new_state  # Ensures visual sync with CheckButton state
-		pin_state_updated.emit()
+    set(new_state):
+        if new_state == state:
+            return
+        state = new_state
+        if ui:
+            ui.update_button_gui()
+        pin_state_updated.emit()
 
-## Signal emitted when pin state changes.
+# ======================
+# DETERMINE PIN TYPE
+# ----------------------
+# Checks whether the pin is an input or output.
+# ======================
+func is_input_pin() -> bool:
+    return pin_type == PinType.INPUT
+
+func is_output_pin() -> bool:
+    return pin_type == PinType.OUTPUT
+
+# ======================
+# SIGNAL DEFINITIONS
+# ----------------------
+# Defines event signals for pin state changes.
+# ======================
 signal pin_state_updated()
 
-## Changes the state of the pin.
+# ======================
+# UPDATE PIN STATE
+# ----------------------
+# Modifies pin state and handles queued updates.
+# ======================
 func change_state(new_state: bool) -> void:
-	#print("update request for pin %s at %d" % [parent_chip.name+" "+name, Comm.update_frame])
-	if Comm.update_frame != last_update_frame:
-			#print("%s updated last at %d and now wanna update at %d" % [parent_chip.name+" "+name, last_update_frame, Comm.update_frame])
-			Logger.log(Logger.Logs.PIN_STATE, "%s->%s updated to %s at frame %d" % [parent_chip.name, name, state, Comm.update_frame])
-			last_update_frame = Comm.update_frame
-			if not queued_value.is_empty():
-				#print("clearing %s update queue" % [parent_chip.name+" "+name])
-				Logger.log(Logger.Logs.PIN_STATE, "%s->%s updated queued to %s at frame %d" % [parent_chip.name, name, state, Comm.update_frame])
-				queued_value = []
-			state = new_state
-	else:
-		queued_value.push_front(new_state)
-		#print("%s queud %s" % [parent_chip.name+" "+name, queued_value])
-		add_to_group("queued")
+    if Comm.update_frame != last_update_frame:
+        Logger.log(Logger.Logs.PIN_STATE, "%s->%s updated to %s at frame %d" % [parent_chip.name, name, state, Comm.update_frame])
+        last_update_frame = Comm.update_frame
+        queued_value.clear()
+        state = new_state
+    else:
+        queued_value.push_front(new_state)
+        add_to_group("queued")
 
-## Get pin state of the pins it can receive state from
+# ======================
+# RETRIEVE STATE FROM SOURCES
+# ----------------------
+# Gathers pin states from connected sources.
+# ======================
 func receive_state() -> bool:
-	for pin in receive_state_from:
-		if not pin:
-			receive_state_from.erase(pin)
-		if pin.state:
-			return true
-	return false
+    for pin in receive_state_from:
+        if not pin:
+            receive_state_from.erase(pin)
+        if pin.state:
+            return true
+    return false
 
-## Updates pin state based on an external source.
+# ======================
+# HANDLE PIN STATE UPDATES
+# ----------------------
+# Changes pin state based on incoming signals.
+# ======================
 func update_pin_state() -> void:
-	change_state(receive_state())
+    change_state(receive_state())
 
-func queued_update()-> void:
-	remove_from_group("queued")
-	if queued_value.is_empty():
-		return
-	#print("%s queued update applied %s" % [parent_chip.name+" "+name, queued_value[0]])
-	change_state(queued_value[0])
+# ======================
+# PROCESS QUEUED STATE UPDATES
+# ----------------------
+# Handles state updates as frames advance.
+# ======================
+func queued_update() -> void:
+    remove_from_group("queued")
+    if queued_value.is_empty():
+        return
+    change_state(queued_value[0])
 
-## Establishes a connection between this pin and a target pin.
+# ======================
+# ESTABLISH PIN CONNECTIONS
+# ----------------------
+# Links the pin to a target pin for state updates.
+# Updates UI color when applicable.
+# ======================
 func connect_to(target_pin: Pin) -> void:
-	connected_to.append(target_pin)
-	pin_state_updated.connect(target_pin.update_pin_state)
-	target_pin.receive_state_from.append(self)
-	target_pin.update_pin_state()
-	Logger.log(Logger.Logs.CONNECTIONS, "connecting %s to %s" % [name, target_pin.name])
+    connected_to.append(target_pin)
+    pin_state_updated.connect(target_pin.update_pin_state)
+    target_pin.receive_state_from.append(self)
 
-## Disconnects from a specified target pin.
+    if ui and target_pin.ui:
+        if target_pin.pin_type == PinType.INPUT or target_pin.ui is InteractablePin:
+            target_pin.ui.pin_color = ui.pin_color
+
+    target_pin.update_pin_state()
+    Logger.log(Logger.Logs.CONNECTIONS, "Connecting %s to %s" % [name, target_pin.name])
+
+# ======================
+# DISCONNECT FROM TARGET PIN
+# ----------------------
+# Removes connections between pins and updates state tracking.
+# ======================
 func disconnect_from(target_pin: Pin) -> void:
-	if target_pin:
-		Logger.log(Logger.Logs.CONNECTIONS, "Disconnecting %s from %s" % [name, target_pin.name])
-		if target_pin.pin_state_updated.is_connected(update_pin_state):
-			target_pin.pin_state_updated.disconnect(update_pin_state)
-		receive_state_from.erase(target_pin)
-		target_pin.connected_to.erase(self)
-		update_pin_state()
+    if target_pin:
+        Logger.log(Logger.Logs.CONNECTIONS, "Disconnecting %s from %s" % [name, target_pin.name])
+        if target_pin.pin_state_updated.is_connected(update_pin_state):
+            target_pin.pin_state_updated.disconnect(update_pin_state)
+        receive_state_from.erase(target_pin)
+        target_pin.connected_to.erase(self)
+        update_pin_state()
 
-## Clears all existing connections.
+# ======================
+# CLEAR ALL PIN CONNECTIONS
+# ----------------------
+# Removes all established connections safely.
+# ======================
 func clear_connections() -> void:
-	for pin in connected_to.duplicate():
-		pin.disconnect_from(self)
+    for pin in connected_to.duplicate():
+        pin.disconnect_from(self)
+    for pin in receive_state_from.duplicate():
+        disconnect_from(pin)
 
-	for pin in receive_state_from.duplicate():
-		disconnect_from(pin)
+    connected_to.clear()
+    receive_state_from.clear()
 
-	connected_to.clear()
-	receive_state_from.clear()
+# ======================
+# BUILD PIN UI COMPONENT
+# ----------------------
+# Instantiates the UI representation of the pin.
+# ======================
+func build_ui(interactable: bool = false) -> void:
+    if ui:
+        return
+    ui = InteractablePin.build_ui(self) if interactable else PinUI.build_ui(self)
+    ui.logic = self
 
-## Populates pin attributes based on a `PinData` instance.
+# ======================
+# APPLY PIN BLUEPRINT DATA
+# ----------------------
+# Configures pin attributes based on a `PinData` object.
+# ======================
 func synthesize(pin_data: PinData) -> void:
-	name = pin_data.name
-	pin_type = pin_data.type
+    name = pin_data.name
+    pin_type = pin_data.type
 
-
-## Generates a `PinData` object from the pin’s current state.
-func generate_data() -> PinData:
-	var pin_data := PinData.new()
-	pin_data.name = name
-	pin_data.type = pin_type
-	pin_data.state = state
-	return pin_data
-
-## Handles click interactions.
-func _on_pressed() -> void:
-	button_gui.button_pressed = not button_gui.button_pressed  # Prevent button toggling unless the pin state actually changes
-	InputBus.notify_pin_clicked(self)
-
-
-## Displays tooltip when hovered.
-func _on_mouse_entered() -> void:
-	pass
-	#ToolTip.show_tooltip(name)
-
-## Hides tooltip when mouse exits.
-func _on_mouse_exited() -> void:
-	pass
-	#ToolTip.hide_tooltip()
-
-func _on_renamed() -> void:
-	button_gui.tooltip_text = name
-
-func _ready() -> void:
-	button_gui.tooltip_text = name
-
-func get_center() -> Vector2:
-	return global_position + size / 2
+# ======================
+# SERIALIZE PIN DATA
+# ----------------------
+# Converts the pin's attributes into a `PinData` object.
+# ======================
+func serialize() -> PinData:
+    var pin_data := PinData.new()
+    pin_data.name = name
+    pin_data.type = pin_type
+    pin_data.state = state
+    return pin_data

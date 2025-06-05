@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://t0w1bae56yu7"]
 
-[ext_resource type="Script" uid="uid://b3o300p75240y" path="res://scripts/working bench/wire_preview.gd" id="1_v1y0p"]
+[ext_resource type="Script" uid="uid://b3o300p75240y" path="res://scripts/wire/wire_preview.gd" id="1_v1y0p"]
 
 [node name="WirePreview" type="Line2D"]
 width = 5.0

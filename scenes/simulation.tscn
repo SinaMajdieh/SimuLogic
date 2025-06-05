@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://hvf6csvi2sqs"]
+
+[ext_resource type="Script" path="res://scripts/simulation.gd" id="1_y5vwh"]
+
+[node name="Sim" type="Node" node_paths=PackedStringArray("input_container", "output_container", "chip_container")]
+script = ExtResource("1_y5vwh")
+input_container = NodePath("Container/Inputs")
+output_container = NodePath("Container/Outputs")
+chip_container = NodePath("Container/Chips")
+
+[node name="Container" type="Node" parent="."]
+
+[node name="Inputs" type="Node" parent="Container"]
+
+[node name="Outputs" type="Node" parent="Container"]
+
+[node name="Chips" type="Node" parent="Container"]

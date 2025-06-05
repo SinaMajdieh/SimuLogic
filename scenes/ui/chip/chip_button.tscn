@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpc5fr3nc217f"]
+
+[ext_resource type="Script" uid="uid://b4c6l6i6a1d8g" path="res://scripts/ui/chip/chip_button.gd" id="1_n3f3k"]
+
+[node name="ChipButton" type="Button"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "Chip"
+script = ExtResource("1_n3f3k")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

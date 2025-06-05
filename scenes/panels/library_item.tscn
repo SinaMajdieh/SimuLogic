@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv37oeprk4ju7"]
+
+[ext_resource type="Script" uid="uid://cfblbj17mkv4x" path="res://scripts/ui/panel/library_item.gd" id="1_wlo62"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_43obm"]
+
+[node name="LibraryItem" type="CheckButton"]
+theme_override_icons/icon = SubResource("MeshTexture_43obm")
+theme_override_icons/checked = SubResource("MeshTexture_43obm")
+theme_override_icons/unchecked = SubResource("MeshTexture_43obm")
+theme_override_icons/checked_disabled = SubResource("MeshTexture_43obm")
+theme_override_icons/unchecked_disabled = SubResource("MeshTexture_43obm")
+theme_override_icons/checked_mirrored = SubResource("MeshTexture_43obm")
+theme_override_icons/unchecked_mirrored = SubResource("MeshTexture_43obm")
+theme_override_icons/checked_disabled_mirrored = SubResource("MeshTexture_43obm")
+theme_override_icons/unchecked_disabled_mirrored = SubResource("MeshTexture_43obm")
+text = "And"
+script = ExtResource("1_wlo62")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

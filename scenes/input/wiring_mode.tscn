@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc281i48wxhnn"]
 
-[ext_resource type="Script" uid="uid://ddx0mj2s47pt7" path="res://scripts/input/wiring/wiring_mode.gd" id="1_ofx6d"]
-[ext_resource type="Script" uid="uid://c8e5jr7luod43" path="res://scripts/input/wiring/pin_wiring.gd" id="2_ofx6d"]
+[ext_resource type="Script" uid="uid://doq5wiqpwtai0" path="res://scripts/input/wiring/wiring_mode.gd" id="1_ofx6d"]
+[ext_resource type="Script" uid="uid://phbxwau1u80h" path="res://scripts/input/wiring/pin_wiring.gd" id="2_ofx6d"]
 
 [node name="WiringMode" type="Node"]
 script = ExtResource("1_ofx6d")
