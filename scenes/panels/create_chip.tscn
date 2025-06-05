@@ -49,6 +49,7 @@ chip_type_options_button = NodePath("CenterContainer/PanelContainer/Layout/ChipC
 color_variation = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ColorVariation")
 
 [node name="Background" type="PanelContainer" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_shir3")
 layout_mode = 1
 anchors_preset = 15
@@ -158,5 +159,6 @@ text = "Cancel"
 
 [connection signal="item_selected" from="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ChipType" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/RandomColor" to="." method="_on_random_color_pressed"]
+[connection signal="text_changed" from="CenterContainer/PanelContainer/Layout/Input/LineEdit" to="." method="_on_chip_name_text_changed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Layout/Buttons/Save" to="." method="_on_submit"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Layout/Buttons/Cancel" to="." method="_on_cancel"]

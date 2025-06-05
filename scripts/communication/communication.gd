@@ -7,6 +7,10 @@ extends Node
 # It tracks timing parameters and facilitates communication within the workbench environment.
 # ======================
 
+# === CHIP BLUEPRINT DIRECTORY ===
+# Defines the default location where chip blueprints are stored.
+@export var chips_schematic_path: String = "res://blue_prints/"
+
 # === FRAME TIMING PARAMETERS ===
 # Tracks simulation frame updates and gate delays.
 var update_frame: int = -1  # Stores the current simulation frame index.
@@ -26,6 +30,7 @@ signal add_chip_to_selection_signal(schematic: ChipBlueprint)  # Adds a chip to 
 signal import_chip_signal(bp: ChipBlueprint)  # Imports a chip blueprint.
 signal export_screen(active: bool)  # Controls workbench export screen visibility.
 signal io_screen(active: bool)  # Toggles the input/output configuration screen.
+signal library_panel(active: bool)  # Toggles the library screen. 
 signal sim_frame_changed(length: float)  # Updates simulation timing settings.
 
 # ======================
@@ -53,6 +58,15 @@ func set_export_screen(active: bool = true) -> void:
 # ======================
 func set_io_screen_screen(active: bool = true) -> void:
     io_screen.emit(active)
+
+# ======================
+# TOGGLE LIBRARY SCREEN
+# ----------------------
+# Emits a signal to control the visibility of the library interface.
+# Default state is active when called without parameters.
+# ======================
+func set_library_panel(active: bool = true) -> void:
+    library_panel.emit(active)
 
 # ======================
 # UPDATE SIMULATION FRAME SETTINGS

@@ -16,10 +16,6 @@ static var chip_button_scene: PackedScene = preload("res://scenes/ui/chip/chip_b
 # Dictionary storing available chips and their corresponding blueprints.
 var chips: Dictionary[String, ChipBlueprint] = {}
 
-# === CHIP BLUEPRINT DIRECTORY ===
-# Defines the default location where chip blueprints are stored.
-@export var chips_schematic_path: String = "res://blue_prints/"
-
 # === BUTTON CONTAINER REFERENCE ===
 # Holds all chip selection buttons within the scrollable menu.
 @export var button_container: HBoxContainer
@@ -60,7 +56,7 @@ func add_chip_button(bp: ChipBlueprint) -> void:
 # Reads chip blueprints stored in the designated directory and registers them for selection.
 # Only `.tres` or `.res` files are considered valid chip blueprints.
 # ======================
-func read_chips(directory_path: String = chips_schematic_path) -> void:
+func read_chips(directory_path: String = Comm.chips_schematic_path) -> void:
 	var dir: DirAccess = DirAccess.open(directory_path)
 	if dir:
 		var files: PackedStringArray = dir.get_files()

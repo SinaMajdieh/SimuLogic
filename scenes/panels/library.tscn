@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj23bdffs2cox"]
+
+[ext_resource type="Script" uid="uid://bxky1p43egddk" path="res://scripts/ui/panel/library.gd" id="1_43obm"]
+[ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="2_xktus"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtgb4"]
+shader = ExtResource("2_xktus")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[node name="Library" type="Control" node_paths=PackedStringArray("built_in", "custom")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43obm")
+built_in = NodePath("Center/Background/Items/BuiltInContainer/VBoxContainer")
+custom = NodePath("Center/Background/Items/CustomeContainer/VBoxContainer")
+
+[node name="Blur" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_dtgb4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="Center/Background"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Background/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Library"
+horizontal_alignment = 1
+
+[node name="BuiltInTitle" type="Label" parent="Center/Background/Items"]
+layout_mode = 2
+text = "Built-in"
+
+[node name="HSeparator" type="HSeparator" parent="Center/Background/Items"]
+layout_mode = 2
+
+[node name="BuiltInContainer" type="ScrollContainer" parent="Center/Background/Items"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center/Background/Items/BuiltInContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="CustomTitle" type="Label" parent="Center/Background/Items"]
+layout_mode = 2
+text = "Custom"
+
+[node name="HSeparator2" type="HSeparator" parent="Center/Background/Items"]
+layout_mode = 2
+
+[node name="CustomeContainer" type="ScrollContainer" parent="Center/Background/Items"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center/Background/Items/CustomeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HSeparator3" type="Control" parent="Center/Background/Items"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Background/Items"]
+layout_mode = 2
+
+[node name="Add" type="Button" parent="Center/Background/Items/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Add"
+
+[node name="View" type="Button" parent="Center/Background/Items/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "View"
+
+[node name="Close" type="Button" parent="Center/Background/Items/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[connection signal="pressed" from="Center/Background/Items/Buttons/Add" to="." method="add"]
+[connection signal="pressed" from="Center/Background/Items/Buttons/View" to="." method="_on_view_pressed"]
+[connection signal="pressed" from="Center/Background/Items/Buttons/Close" to="." method="_on_close_pressed"]

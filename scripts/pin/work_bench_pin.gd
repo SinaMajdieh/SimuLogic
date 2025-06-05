@@ -42,6 +42,8 @@ func _ready() -> void:
 func _on_line_edit_text_changed(new_text: String) -> void:
     if new_text.is_empty():
         return
+    new_text = new_text.to_upper()
+    label.text = new_text
     name = new_text
     if logic:
         logic.name = new_text

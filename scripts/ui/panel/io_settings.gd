@@ -1,4 +1,4 @@
-extends Control
+extends PanelBase
 
 # ======================
 # SIMULATION SETTINGS UI:
@@ -24,23 +24,13 @@ func reset() -> void:
     show_grid_checkbox.button_pressed = WorkBenchComm.show_grid
 
 # ======================
-# TOGGLE SETTINGS SCREEN VISIBILITY
-# ----------------------
-# Opens or closes the simulation settings panel.
-# Resets values when displayed.
-# ======================
-func screen_state(open: bool) -> void:
-    reset()
-    visible = open
-
-# ======================
 # INITIALIZE SETTINGS UI
 # ----------------------
 # Ensures initial values are correct and connects interaction signals.
 # ======================
 func _ready() -> void:
     reset()  # Ensure SpinBoxes start with correct values
-    Comm.io_screen.connect(screen_state)  # Connect screen visibility toggle
+    Comm.io_screen.connect(set_open)  # Connect screen visibility toggle
 
 # ======================
 # APPLY USER-DEFINED SETTINGS

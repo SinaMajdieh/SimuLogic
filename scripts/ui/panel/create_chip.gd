@@ -72,7 +72,7 @@ func input_is_valid() -> bool:
 # HANDLE EXPORT SUBMISSION
 # ----------------------
 # Validates input and triggers chip export.
-# Closes the popup and resets fields upon success.
+# Closes the set_open and resets fields upon success.
 # ======================
 func _on_submit() -> void:
 	if not input_is_valid():
@@ -82,16 +82,16 @@ func _on_submit() -> void:
 	if color_variation.button_pressed and not color_variation.disabled:
 		final_color = ColorMan.get_variation_color(final_color)
 	WorkBenchComm.export(line_edit.text, final_color)  # Export chip
-	popup(false)  # Hide export UI
+	set_open(false)  # Hide export UI
 	reset()  # Reset input fields
 
 # ======================
 # CANCEL EXPORT REQUEST
 # ----------------------
-# Hides the export popup without taking action.
+# Hides the export set_open without taking action.
 # ======================
 func _on_cancel() -> void:
-	popup(false)
+	set_open(false)
 
 # ======================
 # UPDATE COLOR SELECTION
@@ -111,10 +111,10 @@ func _on_option_button_item_selected(index: int) -> void:
 # ======================
 # CONTROL EXPORT POPUP VISIBILITY
 # ----------------------
-# Shows or hides the export popup, adjusting workbench processing accordingly.
+# Shows or hides the export set_open, adjusting workbench processing accordingly.
 # ======================
-func popup(active: bool) -> void:
-	match active:
+func set_open(open: bool) -> void:
+	match open:
 		true:
 			visible = true
 			WorkBenchComm.work_bench.process_mode = Node.PROCESS_MODE_DISABLED  # Pause workbench processing
@@ -128,7 +128,7 @@ func popup(active: bool) -> void:
 # Connects signals for managing export screen visibility upon startup.
 # ======================
 func _ready() -> void:
-	Comm.export_screen.connect(popup)
+	Comm.export_screen.connect(set_open)
 
 
 # ======================
@@ -145,3 +145,7 @@ func _on_random_color_pressed() -> void:
 
 	# Apply a randomized color variation
 	color_pick.color = ColorMan.get_variation_color(color_pick.color, true)
+
+
+func _on_chip_name_text_changed(new_text:String) -> void:
+	line_edit.text = new_text.to_upper()

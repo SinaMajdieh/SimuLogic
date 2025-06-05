@@ -113,13 +113,15 @@ func keep_ends() -> void:
     var shape_changed: bool = false  # Tracks whether shape adjustments were made
 
     # Adjust the first segment if the start position has changed
-    if points[0] != new_start and points.size() > 2:
-        points[1] = adjust_point(points[1], new_start)
+    if points[0] != new_start:
+        if points.size() > 2:
+            points[1] = adjust_point(points[1], new_start)
         shape_changed = true
 
     # Adjust the last segment if the end position has changed
-    if points[-1] != new_end and points.size() > 2:
-        points[-2] = adjust_point(points[-2], new_end)
+    if points[-1] != new_end:
+        if points.size() > 2:
+            points[-2] = adjust_point(points[-2], new_end)
         shape_changed = true
 
     # If changes were made, update endpoints and collision shape

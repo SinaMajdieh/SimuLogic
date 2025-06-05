@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd8of46yd7mqr"]
+[gd_scene load_steps=15 format=3 uid="uid://bd8of46yd7mqr"]
 
 [ext_resource type="PackedScene" uid="uid://wq7npml480cg" path="res://scenes/ui/bread_crumb.tscn" id="1_eb6dy"]
 [ext_resource type="Script" uid="uid://i7mw571w2btc" path="res://scripts/working bench/infinite.gd" id="2_trceg"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dl027x45wdqg4" path="res://scenes/panels/tool_tip.tscn" id="10_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b6c0j1gg2tr0e" path="res://scenes/panels/create_chip.tscn" id="11_jscy8"]
 [ext_resource type="PackedScene" uid="uid://cbj8451n0hcmd" path="res://scenes/panels/io_settings.tscn" id="12_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://bj23bdffs2cox" path="res://scenes/panels/library.tscn" id="13_trceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dvkv"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -104,15 +105,17 @@ size_flags_vertical = 3
 theme = ExtResource("6_muem4")
 text = "Menu"
 flat = false
-item_count = 3
+item_count = 4
 popup/item_0/text = "Menu"
-popup/item_0/id = 2
+popup/item_0/id = 3
 popup/item_0/disabled = true
 popup/item_0/separator = true
 popup/item_1/text = "Create"
 popup/item_1/id = 0
-popup/item_2/text = "IO"
+popup/item_2/text = "Library"
 popup/item_2/id = 1
+popup/item_3/text = "IO"
+popup/item_3/id = 2
 script = ExtResource("7_dp3eg")
 
 [node name="InputPin" parent="ChipSelection/ButtonLayout" instance=ExtResource("8_0ld40")]
@@ -147,6 +150,10 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 mouse_filter = 2
+
+[node name="Library" parent="Panels" instance=ExtResource("13_trceg")]
+visible = false
+layout_mode = 1
 
 [connection signal="resized" from="ChipSelection/ButtonLayout/MenuButton" to="ChipSelection/ButtonLayout/MenuButton" method="_on_resized"]
 [connection signal="add_pin" from="ChipSelection/ButtonLayout/InputPin" to="WorkSpaceContainer/WorkSpaceSubViewport/Infinite/WorkBench/ImportedChipsContainer" method="add_pin"]

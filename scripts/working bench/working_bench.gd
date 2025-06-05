@@ -191,7 +191,7 @@ func import(schematic: ChipBlueprint, save_current: bool = true) -> void:
 # ======================
 func go_to_workbench(index: int) -> void:
 	if index >= chip_stack.size():
-		Logger.log_with_time(Logger.Logs.ERRORS, "Cannot go back more, Chip Stack is empty", true)
+		Logger.log_with_time(Logger.Logs.ERRORS, "Cannot go to chip stack %d" % index, true)
 		return
 	
 	var target_chip: ChipBlueprint = chip_stack[index]
