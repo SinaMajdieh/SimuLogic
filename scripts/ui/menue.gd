@@ -58,7 +58,7 @@ func _on_resized() -> void:
 # Disables or enables the "CREATE" option based on workbench state.
 # ======================
 func _process(_delta: float) -> void:
-    if WorkBenchComm.work_bench.chip_stack.size() > 0:
+    if WorkBenchComm.work_bench.chip_stack.size() > 0 and not Arch.editale_chips:
         popup.set_item_disabled(popup.get_item_index(items.CREATE), true)
     else:
         popup.set_item_disabled(popup.get_item_index(items.CREATE), false)

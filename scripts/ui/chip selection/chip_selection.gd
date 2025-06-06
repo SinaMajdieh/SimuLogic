@@ -56,16 +56,10 @@ func add_chip_button(bp: ChipBlueprint) -> void:
 # Reads chip blueprints stored in the designated directory and registers them for selection.
 # Only `.tres` or `.res` files are considered valid chip blueprints.
 # ======================
-func read_chips(directory_path: String = Comm.chips_schematic_path) -> void:
-	var dir: DirAccess = DirAccess.open(directory_path)
-	if dir:
-		var files: PackedStringArray = dir.get_files()
-		for file_name in files:
-			# Filter only blueprint files
-			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
-				var resource: Resource = load("%s%s" % [directory_path, file_name]) as ChipBlueprint
-				if resource:
-					add_chip_button(resource)
+func load_chips() -> void:
+	var schematics: Array[ChipBlueprint] = Arch.load_schematics()
+	for schematic in schematics:
+		add_chip_button(schematic)
 
 # ======================
 # INITIALIZE CHIP SELECTION MENU
@@ -74,8 +68,8 @@ func read_chips(directory_path: String = Comm.chips_schematic_path) -> void:
 # Loads all available chip blueprints from storage at startup.
 # ======================
 func _ready() -> void:
-	Comm.add_chip_to_selection_signal.connect(add_chip_button)  # Allow dynamic chip addition
-	read_chips()  # Load chip blueprints from storage
+	Arch.new_schematic_added.connect(add_chip_button)  # Allow dynamic chip addition
+	load_chips()  # Load chip blueprints from storage
 
 # ======================
 # IMPORT CHIP TO WORKBENCH

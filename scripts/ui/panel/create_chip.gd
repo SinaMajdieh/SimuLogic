@@ -1,4 +1,4 @@
-extends Control
+extends PanelBase
 
 # ======================
 # CHIP EXPORT UI:
@@ -14,6 +14,7 @@ extends Control
 @export var color_pick: ColorPickerButton  # Color picker for chip type selection
 @export var chip_type_options_button: OptionButton  # Dropdown menu for chip type selection
 @export var color_variation: CheckBox # Checkbox to add variation to chip color
+@export var message_label: Label
 
 # ======================
 # CHIP TYPE ENUMERATION
@@ -51,6 +52,8 @@ var chip_type_color_map: Dictionary[int, Color] = {
 # ======================
 func reset() -> void:
 	line_edit.text = ""  # Clear chip name input
+	message_label.text = ""
+	message_label.visible = false
 	chip_type_options_button.select(chip_type_options.LOGIC)  # Default to LOGIC chip type
 	_on_option_button_item_selected(chip_type_options.LOGIC)  # Apply default color
 
@@ -59,14 +62,14 @@ func reset() -> void:
 # ----------------------
 # Ensures chip name is provided and there are chips in the workbench before exporting.
 # ======================
-func input_is_valid() -> bool:
+func input_is_valid() -> ValidationResult:
 	if line_edit.text.is_empty():
-		return false  # Ensure chip name is not empty
+		return ValidationResult.new(false, "Name required") # Ensure chip name is not empty
 	
 	if WorkBenchComm.work_bench.sub_chips_container.get_child_count() == 0:
-		return false  # Ensure there are chips available for export
+		return ValidationResult.new(false, "Work bench is empty")  # Ensure there are chips available for export
 	
-	return true
+	return ValidationResult.new(true)
 
 # ======================
 # HANDLE EXPORT SUBMISSION
@@ -75,8 +78,11 @@ func input_is_valid() -> bool:
 # Closes the set_open and resets fields upon success.
 # ======================
 func _on_submit() -> void:
-	if not input_is_valid():
-		Logger.log_with_time(Logger.Logs.ERRORS, "Input validation failed.")
+	var validation: ValidationResult = input_is_valid()
+	if not validation.valid:
+		message_label.text = validation.message 
+		message_label.visible = true
+		Logger.log_with_time(Logger.Logs.ERRORS, validation.message, true)
 		return
 	var final_color: Color = color_pick.color
 	if color_variation.button_pressed and not color_variation.disabled:
@@ -108,19 +114,6 @@ func _on_option_button_item_selected(index: int) -> void:
 		color_pick.disabled = false  # Enable custom color selection
 		color_variation.disabled = true
 
-# ======================
-# CONTROL EXPORT POPUP VISIBILITY
-# ----------------------
-# Shows or hides the export set_open, adjusting workbench processing accordingly.
-# ======================
-func set_open(open: bool) -> void:
-	match open:
-		true:
-			visible = true
-			WorkBenchComm.work_bench.process_mode = Node.PROCESS_MODE_DISABLED  # Pause workbench processing
-		false:
-			visible = false
-			WorkBenchComm.work_bench.process_mode = Node.PROCESS_MODE_ALWAYS  # Resume workbench processing
 
 # ======================
 # INITIALIZE EXPORT SCREEN SIGNALS
@@ -149,3 +142,4 @@ func _on_random_color_pressed() -> void:
 
 func _on_chip_name_text_changed(new_text:String) -> void:
 	line_edit.text = new_text.to_upper()
+	line_edit.caret_column = len(new_text)

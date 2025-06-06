@@ -7,10 +7,6 @@ extends Node
 # It tracks timing parameters and facilitates communication within the workbench environment.
 # ======================
 
-# === CHIP BLUEPRINT DIRECTORY ===
-# Defines the default location where chip blueprints are stored.
-@export var chips_schematic_path: String = "res://blue_prints/"
-
 # === FRAME TIMING PARAMETERS ===
 # Tracks simulation frame updates and gate delays.
 var update_frame: int = -1  # Stores the current simulation frame index.
@@ -26,20 +22,12 @@ var wire_preview: WirePreview
 # Defines communication signals for chip interactions, workbench exports, and frame updates.
 # ======================
 
-signal add_chip_to_selection_signal(schematic: ChipBlueprint)  # Adds a chip to the selection menu.
 signal import_chip_signal(bp: ChipBlueprint)  # Imports a chip blueprint.
 signal export_screen(active: bool)  # Controls workbench export screen visibility.
 signal io_screen(active: bool)  # Toggles the input/output configuration screen.
 signal library_panel(active: bool)  # Toggles the library screen. 
 signal sim_frame_changed(length: float)  # Updates simulation timing settings.
 
-# ======================
-# ADD CHIP TO SELECTION MENU
-# ----------------------
-# Emits a signal to register a chip schematic for selection in the menu.
-# ======================
-func add_chip_to_selection(schematic: ChipBlueprint) -> void:
-    add_chip_to_selection_signal.emit(schematic)
 
 # ======================
 # TOGGLE EXPORT SCREEN

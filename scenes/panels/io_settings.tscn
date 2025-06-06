@@ -15,7 +15,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_ny0bi"]
 events = [SubResource("InputEventKey_yvoob")]
 
-[node name="IO" type="Control" node_paths=PackedStringArray("sim_frame_spinbox", "grid_spacing_spinbox", "show_grid_checkbox")]
+[node name="IO" type="Control" node_paths=PackedStringArray("sim_frame_spinbox", "grid_spacing_spinbox", "show_grid_checkbox", "editable_chips_checkbox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,7 @@ script = ExtResource("1_yvoob")
 sim_frame_spinbox = NodePath("Center/Panel/MainLayout/Simulation/SimFrame2")
 grid_spacing_spinbox = NodePath("Center/Panel/MainLayout/GridSizeContainer/GridSize")
 show_grid_checkbox = NodePath("Center/Panel/MainLayout/ShowGridContainer/ShowGrid")
+editable_chips_checkbox = NodePath("Center/Panel/MainLayout/EditableChipsContainer/EditableChips")
 
 [node name="Bacground" type="PanelContainer" parent="."]
 material = SubResource("ShaderMaterial_yvoob")
@@ -78,6 +79,17 @@ size_flags_horizontal = 3
 text = "Show Grid"
 
 [node name="HSlider" type="HSeparator" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="EditableChipsContainer" type="HBoxContainer" parent="Center/Panel/MainLayout"]
+layout_mode = 2
+
+[node name="EditableChips" type="CheckButton" parent="Center/Panel/MainLayout/EditableChipsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Editable Chips"
+
+[node name="HSlider2" type="HSeparator" parent="Center/Panel/MainLayout"]
 layout_mode = 2
 
 [node name="Simulation" type="HBoxContainer" parent="Center/Panel/MainLayout"]

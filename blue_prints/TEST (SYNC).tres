@@ -1,0 +1,362 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=56 format=3]
+
+[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_tojs6"]
+[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_ud80k"]
+[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_6p5lw"]
+[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_njvvr"]
+[ext_resource type="Resource" path="res://blue_prints/REGISTER (1-BIT).tres" id="5_uhmru"]
+[ext_resource type="Resource" path="res://blue_prints/ALU.tres" id="6_0ocoi"]
+
+[sub_resource type="Resource" id="Resource_0ptpt"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O3"
+target_pin = "Container/Chips/ALU/Container/Inputs/A3"
+points = PackedVector2Array(50336.4, 49955.1, 50771.4, 49955.1, 50771.4, 50226.1, 50820.4, 50226.1)
+
+[sub_resource type="Resource" id="Resource_ipama"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O2"
+target_pin = "Container/Chips/ALU/Container/Inputs/A2"
+points = PackedVector2Array(50336.4, 49994.1, 50745.4, 49994.1, 50745.4, 50252.1, 50820.4, 50252.1)
+
+[sub_resource type="Resource" id="Resource_smbmy"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O1"
+target_pin = "Container/Chips/ALU/Container/Inputs/A1"
+points = PackedVector2Array(50336.4, 50033.1, 50719.4, 50033.1, 50719.4, 50278.1, 50820.4, 50278.1)
+
+[sub_resource type="Resource" id="Resource_lspfj"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O0"
+target_pin = "Container/Chips/ALU/Container/Inputs/A0"
+points = PackedVector2Array(50336.4, 50072.1, 50693.4, 50072.1, 50693.4, 50304.1, 50820.4, 50304.1)
+
+[sub_resource type="Resource" id="Resource_1w8fo"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O3"
+target_pin = "Container/Chips/ALU/Container/Inputs/B3"
+points = PackedVector2Array(50336.4, 50125.1, 50670.4, 50125.1, 50670.4, 50330.1, 50820.4, 50330.1)
+
+[sub_resource type="Resource" id="Resource_kfda8"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O2"
+target_pin = "Container/Chips/ALU/Container/Inputs/B2"
+points = PackedVector2Array(50336.4, 50164.1, 50653.4, 50164.1, 50653.4, 50356.1, 50820.4, 50356.1)
+
+[sub_resource type="Resource" id="Resource_dwert"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O1"
+target_pin = "Container/Chips/ALU/Container/Inputs/B1"
+points = PackedVector2Array(50336.4, 50203.1, 50637.4, 50203.1, 50637.4, 50382.1, 50820.4, 50382.1)
+
+[sub_resource type="Resource" id="Resource_6hek8"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O0"
+target_pin = "Container/Chips/ALU/Container/Inputs/B0"
+points = PackedVector2Array(50336.4, 50242.1, 50618.4, 50242.1, 50618.4, 50408.1, 50820.4, 50408.1)
+
+[sub_resource type="Resource" id="Resource_07wv2"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/ALU/Container/Outputs/O0"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D0"
+points = PackedVector2Array(50894.4, 50329.1, 50923.4, 50329.1, 50923.4, 50472.1, 50000.4, 50472.1, 50000.4, 50027.1, 50130.4, 50027.1)
+
+[sub_resource type="Resource" id="Resource_u12v3"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/ALU/Container/Outputs/O1"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D1"
+points = PackedVector2Array(50894.4, 50296.1, 50940.4, 50296.1, 50940.4, 50485.1, 49984.4, 50485.1, 49984.4, 50001.1, 50130.4, 50001.1)
+
+[sub_resource type="Resource" id="Resource_8r24q"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/ALU/Container/Outputs/O2"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D2"
+points = PackedVector2Array(50894.4, 50262.1, 50960.4, 50262.1, 50960.4, 50501.1, 49962.4, 50501.1, 49962.4, 49975.1, 50130.4, 49975.1)
+
+[sub_resource type="Resource" id="Resource_xepnt"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/ALU/Container/Outputs/O3"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D3"
+points = PackedVector2Array(50894.4, 50229.1, 50981.4, 50229.1, 50981.4, 50521.1, 49944.4, 50521.1, 49944.4, 49949.1, 50130.4, 49949.1)
+
+[sub_resource type="Resource" id="Resource_vdlgt"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/STORE"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/STORE"
+points = PackedVector2Array(49719.4, 50411.1, 50046.4, 50411.1, 50046.4, 50053.1, 50130.4, 50053.1)
+
+[sub_resource type="Resource" id="Resource_e18mr"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/CLOCK"
+target_pin = "Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/CLOCK"
+points = PackedVector2Array(49719.4, 50457.1, 50073.4, 50457.1, 50073.4, 50079.1, 50130.4, 50079.1)
+
+[sub_resource type="Resource" id="Resource_d3loi"]
+script = ExtResource("1_tojs6")
+background_color = Color(0.685473, 0.898897, 0.719894, 1)
+sub_chip_positions = Array[Vector2]([Vector2(50110.4, 49929.1), Vector2(50110.4, 50099.1), Vector2(50800.4, 50206.1)])
+wires = Array[ExtResource("2_ud80k")]([SubResource("Resource_0ptpt"), SubResource("Resource_ipama"), SubResource("Resource_smbmy"), SubResource("Resource_lspfj"), SubResource("Resource_1w8fo"), SubResource("Resource_kfda8"), SubResource("Resource_dwert"), SubResource("Resource_6hek8"), SubResource("Resource_07wv2"), SubResource("Resource_u12v3"), SubResource("Resource_8r24q"), SubResource("Resource_xepnt"), SubResource("Resource_vdlgt"), SubResource("Resource_e18mr")])
+input_pins_positions = Array[Vector2]([Vector2(-301.566, 78.082), Vector2(-301.566, 124.082), Vector2(-301.566, 170.082), Vector2(-301.566, 216.082), Vector2(-308.566, 390.082), Vector2(-308.566, 436.082)])
+output_pins_positions = Array[Vector2]([])
+
+[sub_resource type="Resource" id="Resource_slyl6"]
+script = ExtResource("3_6p5lw")
+name = "D3"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_8ghur"]
+script = ExtResource("3_6p5lw")
+name = "D2"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_432i8"]
+script = ExtResource("3_6p5lw")
+name = "D1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_v7qdo"]
+script = ExtResource("3_6p5lw")
+name = "D0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_68upr"]
+script = ExtResource("3_6p5lw")
+name = "STORE"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_y50sn"]
+script = ExtResource("3_6p5lw")
+name = "CLOCK"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_hbojm"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/D3"
+target_pin = "Container/Chips/REGISTER (1-BIT)/Container/Inputs/DATA"
+points = PackedVector2Array(49871.4, 50054.1, 50197.4, 50054.1, 50197.4, 50163.1, 50325.4, 50163.1)
+
+[sub_resource type="Resource" id="Resource_284kq"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/D2"
+target_pin = "Container/Chips/REGISTER (1-BIT)2/Container/Inputs/DATA"
+points = PackedVector2Array(49871.4, 50100.1, 50171.4, 50100.1, 50171.4, 50255.1, 50325.4, 50255.1)
+
+[sub_resource type="Resource" id="Resource_88b2x"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/D1"
+target_pin = "Container/Chips/REGISTER (1-BIT)3/Container/Inputs/DATA"
+points = PackedVector2Array(49871.4, 50146.1, 50149.4, 50146.1, 50149.4, 50347.1, 50325.4, 50347.1)
+
+[sub_resource type="Resource" id="Resource_ybd0t"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/D0"
+target_pin = "Container/Chips/REGISTER (1-BIT)4/Container/Inputs/DATA"
+points = PackedVector2Array(49871.4, 50192.1, 50128.4, 50192.1, 50128.4, 50439.1, 50325.4, 50439.1)
+
+[sub_resource type="Resource" id="Resource_efyvw"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/CLOCK"
+target_pin = "Container/Chips/REGISTER (1-BIT)/Container/Inputs/CLOCK"
+points = PackedVector2Array(49871.4, 50592.1, 50288.4, 50592.1, 50288.4, 50215.1, 50325.4, 50215.1)
+
+[sub_resource type="Resource" id="Resource_xlv50"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/CLOCK"
+target_pin = "Container/Chips/REGISTER (1-BIT)2/Container/Inputs/CLOCK"
+points = PackedVector2Array(49871.4, 50592.1, 49871.4, 50592.1, 50288.4, 50592.1, 50288.4, 50307.1, 50325.4, 50307.1)
+
+[sub_resource type="Resource" id="Resource_wvwj1"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/CLOCK"
+target_pin = "Container/Chips/REGISTER (1-BIT)3/Container/Inputs/CLOCK"
+points = PackedVector2Array(49871.4, 50592.1, 49871.4, 50592.1, 49871.4, 50592.1, 50288.4, 50592.1, 50288.4, 50399.1, 50325.4, 50399.1)
+
+[sub_resource type="Resource" id="Resource_o1bug"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/CLOCK"
+target_pin = "Container/Chips/REGISTER (1-BIT)4/Container/Inputs/CLOCK"
+points = PackedVector2Array(49871.4, 50592.1, 49871.4, 50592.1, 49871.4, 50592.1, 49871.4, 50592.1, 50288.4, 50592.1, 50288.4, 50491.1, 50325.4, 50491.1)
+
+[sub_resource type="Resource" id="Resource_7o5lx"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/STORE"
+target_pin = "Container/Chips/REGISTER (1-BIT)/Container/Inputs/STORE"
+points = PackedVector2Array(49871.4, 50546.1, 50269.4, 50546.1, 50269.4, 50189.1, 50325.4, 50189.1)
+
+[sub_resource type="Resource" id="Resource_35b1b"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/STORE"
+target_pin = "Container/Chips/REGISTER (1-BIT)2/Container/Inputs/STORE"
+points = PackedVector2Array(49871.4, 50546.1, 49871.4, 50546.1, 50269.4, 50546.1, 50269.4, 50281.1, 50325.4, 50281.1)
+
+[sub_resource type="Resource" id="Resource_0j7l1"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/STORE"
+target_pin = "Container/Chips/REGISTER (1-BIT)3/Container/Inputs/STORE"
+points = PackedVector2Array(49871.4, 50546.1, 49871.4, 50546.1, 49871.4, 50546.1, 50269.4, 50546.1, 50269.4, 50373.1, 50325.4, 50373.1)
+
+[sub_resource type="Resource" id="Resource_fmqbb"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Inputs/STORE"
+target_pin = "Container/Chips/REGISTER (1-BIT)4/Container/Inputs/STORE"
+points = PackedVector2Array(49871.4, 50546.1, 49871.4, 50546.1, 49871.4, 50546.1, 49871.4, 50546.1, 50269.4, 50546.1, 50269.4, 50465.1, 50325.4, 50465.1)
+
+[sub_resource type="Resource" id="Resource_t786r"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (1-BIT)/Container/Outputs/O"
+target_pin = "Container/Outputs/O3"
+points = PackedVector2Array(50487.4, 50189.1, 50667.4, 50189.1, 50667.4, 50062.1, 50958.4, 50062.1)
+
+[sub_resource type="Resource" id="Resource_upqef"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (1-BIT)2/Container/Outputs/O"
+target_pin = "Container/Outputs/O2"
+points = PackedVector2Array(50487.4, 50281.1, 50696.4, 50281.1, 50696.4, 50110.1, 50959.4, 50110.1)
+
+[sub_resource type="Resource" id="Resource_wvyrm"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (1-BIT)3/Container/Outputs/O"
+target_pin = "Container/Outputs/O1"
+points = PackedVector2Array(50487.4, 50373.1, 50727.4, 50373.1, 50727.4, 50156.1, 50959.4, 50156.1)
+
+[sub_resource type="Resource" id="Resource_xhfpv"]
+script = ExtResource("2_ud80k")
+source_pin = "Container/Chips/REGISTER (1-BIT)4/Container/Outputs/O"
+target_pin = "Container/Outputs/O0"
+points = PackedVector2Array(50487.4, 50465.1, 50770.4, 50465.1, 50770.4, 50202.1, 50959.4, 50202.1)
+
+[sub_resource type="Resource" id="Resource_v6chi"]
+script = ExtResource("1_tojs6")
+background_color = Color(0.431373, 0, 0.227451, 1)
+sub_chip_positions = Array[Vector2]([Vector2(50305.4, 50143.1), Vector2(50305.4, 50235.1), Vector2(50305.4, 50327.1), Vector2(50305.4, 50419.1)])
+wires = Array[ExtResource("2_ud80k")]([SubResource("Resource_hbojm"), SubResource("Resource_284kq"), SubResource("Resource_88b2x"), SubResource("Resource_ybd0t"), SubResource("Resource_efyvw"), SubResource("Resource_xlv50"), SubResource("Resource_wvwj1"), SubResource("Resource_o1bug"), SubResource("Resource_7o5lx"), SubResource("Resource_35b1b"), SubResource("Resource_0j7l1"), SubResource("Resource_fmqbb"), SubResource("Resource_t786r"), SubResource("Resource_upqef"), SubResource("Resource_wvyrm"), SubResource("Resource_xhfpv")])
+input_pins_positions = Array[Vector2]([Vector2(-156.566, 33.082), Vector2(-156.566, 79.082), Vector2(-156.566, 125.082), Vector2(-156.566, 171.082), Vector2(-156.566, 525.082), Vector2(-156.566, 571.082)])
+output_pins_positions = Array[Vector2]([Vector2(861.434, 41.082), Vector2(852.434, 89.082), Vector2(852.434, 135.082), Vector2(852.434, 181.082)])
+
+[sub_resource type="Resource" id="Resource_x1xj1"]
+script = ExtResource("3_6p5lw")
+name = "D3"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_ymj85"]
+script = ExtResource("3_6p5lw")
+name = "D2"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_2i8ap"]
+script = ExtResource("3_6p5lw")
+name = "D1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_ijsdi"]
+script = ExtResource("3_6p5lw")
+name = "D0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_ckc1i"]
+script = ExtResource("3_6p5lw")
+name = "STORE"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_h6dk3"]
+script = ExtResource("3_6p5lw")
+name = "CLOCK"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_l7040"]
+script = ExtResource("3_6p5lw")
+name = "O3"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_q8i13"]
+script = ExtResource("3_6p5lw")
+name = "O2"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_3dt4b"]
+script = ExtResource("3_6p5lw")
+name = "O1"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_8b3fc"]
+script = ExtResource("3_6p5lw")
+name = "O0"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_n6v5y"]
+script = ExtResource("4_njvvr")
+name = "REGISTER (4-BIT-SYNC)"
+type = 3
+input_pins = Array[ExtResource("3_6p5lw")]([SubResource("Resource_x1xj1"), SubResource("Resource_ymj85"), SubResource("Resource_2i8ap"), SubResource("Resource_ijsdi"), SubResource("Resource_ckc1i"), SubResource("Resource_h6dk3")])
+output_pins = Array[ExtResource("3_6p5lw")]([SubResource("Resource_l7040"), SubResource("Resource_q8i13"), SubResource("Resource_3dt4b"), SubResource("Resource_8b3fc")])
+sub_chips = Array[ExtResource("4_njvvr")]([ExtResource("5_uhmru"), ExtResource("5_uhmru"), ExtResource("5_uhmru"), ExtResource("5_uhmru")])
+connections = Dictionary[String, Array]({
+"Container/Chips/REGISTER (1-BIT)/Container/Outputs/O": ["Container/Outputs/O3"],
+"Container/Chips/REGISTER (1-BIT)2/Container/Outputs/O": ["Container/Outputs/O2"],
+"Container/Chips/REGISTER (1-BIT)3/Container/Outputs/O": ["Container/Outputs/O1"],
+"Container/Chips/REGISTER (1-BIT)4/Container/Outputs/O": ["Container/Outputs/O0"],
+"Container/Inputs/CLOCK": ["Container/Chips/REGISTER (1-BIT)/Container/Inputs/CLOCK", "Container/Chips/REGISTER (1-BIT)2/Container/Inputs/CLOCK", "Container/Chips/REGISTER (1-BIT)3/Container/Inputs/CLOCK", "Container/Chips/REGISTER (1-BIT)4/Container/Inputs/CLOCK"],
+"Container/Inputs/D0": ["Container/Chips/REGISTER (1-BIT)4/Container/Inputs/DATA"],
+"Container/Inputs/D1": ["Container/Chips/REGISTER (1-BIT)3/Container/Inputs/DATA"],
+"Container/Inputs/D2": ["Container/Chips/REGISTER (1-BIT)2/Container/Inputs/DATA"],
+"Container/Inputs/D3": ["Container/Chips/REGISTER (1-BIT)/Container/Inputs/DATA"],
+"Container/Inputs/STORE": ["Container/Chips/REGISTER (1-BIT)/Container/Inputs/STORE", "Container/Chips/REGISTER (1-BIT)2/Container/Inputs/STORE", "Container/Chips/REGISTER (1-BIT)3/Container/Inputs/STORE", "Container/Chips/REGISTER (1-BIT)4/Container/Inputs/STORE"]
+})
+description = SubResource("Resource_v6chi")
+
+[resource]
+script = ExtResource("4_njvvr")
+name = "TEST (SYNC)"
+type = 3
+input_pins = Array[ExtResource("3_6p5lw")]([SubResource("Resource_slyl6"), SubResource("Resource_8ghur"), SubResource("Resource_432i8"), SubResource("Resource_v7qdo"), SubResource("Resource_68upr"), SubResource("Resource_y50sn")])
+output_pins = Array[ExtResource("3_6p5lw")]([])
+sub_chips = Array[ExtResource("4_njvvr")]([SubResource("Resource_n6v5y"), SubResource("Resource_n6v5y"), ExtResource("6_0ocoi")])
+connections = Dictionary[String, Array]({
+"Container/Chips/ALU/Container/Outputs/O0": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D0"],
+"Container/Chips/ALU/Container/Outputs/O1": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D1"],
+"Container/Chips/ALU/Container/Outputs/O2": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D2"],
+"Container/Chips/ALU/Container/Outputs/O3": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/D3"],
+"Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O0": ["Container/Chips/ALU/Container/Inputs/A0"],
+"Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O1": ["Container/Chips/ALU/Container/Inputs/A1"],
+"Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O2": ["Container/Chips/ALU/Container/Inputs/A2"],
+"Container/Chips/REGISTER (4-BIT-SYNC)/Container/Outputs/O3": ["Container/Chips/ALU/Container/Inputs/A3"],
+"Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O0": ["Container/Chips/ALU/Container/Inputs/B0"],
+"Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O1": ["Container/Chips/ALU/Container/Inputs/B1"],
+"Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O2": ["Container/Chips/ALU/Container/Inputs/B2"],
+"Container/Chips/REGISTER (4-BIT-SYNC)2/Container/Outputs/O3": ["Container/Chips/ALU/Container/Inputs/B3"],
+"Container/Inputs/CLOCK": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/CLOCK"],
+"Container/Inputs/STORE": ["Container/Chips/REGISTER (4-BIT-SYNC)/Container/Inputs/STORE"]
+})
+description = SubResource("Resource_d3loi")

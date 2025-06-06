@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1mrfrvj8a8rb"]
+[gd_scene load_steps=2 format=3 uid="uid://hvf6csvi2sqs"]
 
-[ext_resource type="Script" uid="uid://b18w700qjmt72" path="res://scripts/simulation.gd" id="1_y5vwh"]
+[ext_resource type="Script" path="res://scripts/simulation.gd" id="1_y5vwh"]
 
 [node name="Sim" type="Node" node_paths=PackedStringArray("input_container", "output_container", "chip_container")]
 script = ExtResource("1_y5vwh")

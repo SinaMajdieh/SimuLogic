@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd8of46yd7mqr"]
+[gd_scene load_steps=15 format=3 uid="uid://dtwyq0vdwj3v"]
 
 [ext_resource type="PackedScene" uid="uid://wq7npml480cg" path="res://scenes/ui/bread_crumb.tscn" id="1_eb6dy"]
-[ext_resource type="Script" uid="uid://i7mw571w2btc" path="res://scripts/working bench/infinite.gd" id="2_trceg"]
+[ext_resource type="Script" path="res://scripts/working bench/infinite.gd" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://cy7j5u7se7823" path="res://scenes/work_bench.tscn" id="3_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dcvyoavw267e8" path="res://scenes/ui/chip/imported_chips_container.tscn" id="4_jkv2x"]
 [ext_resource type="Script" uid="uid://dg7jui82ima1c" path="res://scripts/ui/chip selection/chip_selection.gd" id="5_jbj1t"]
@@ -28,8 +28,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7dvkv")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TopBar" type="HBoxContainer" parent="UI"]
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.02
 offset_bottom = 23.0
 grow_horizontal = 2
 
@@ -57,7 +60,7 @@ transparent_bg = true
 handle_input_locally = false
 msaa_2d = 3
 screen_space_aa = 1
-size = Vector2i(1152, 648)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Infinite" type="Control" parent="WorkSpaceContainer/WorkSpaceSubViewport" node_paths=PackedStringArray("chips_canvas", "sub_viewport_container", "zoom_label")]

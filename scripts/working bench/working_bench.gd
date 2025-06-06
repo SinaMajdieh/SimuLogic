@@ -154,7 +154,6 @@ func export(chip_name: String, chip_color: Color) -> void:
 		return
 
 	Arch.save_blueprint(bp, chip_name)
-	Comm.add_chip_to_selection(bp)
 
 	empty_workbench()
 

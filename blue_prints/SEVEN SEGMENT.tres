@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=14 format=3 uid="uid://cdhu4hys77lli"]
+
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_xl17e"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_ggtkj"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_s5ivh"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_2xveb"]
+
+[sub_resource type="Resource" id="Resource_qal2g"]
+script = ExtResource("1_xl17e")
+background_color = Color(0, 0, 0, 1)
+sub_chip_positions = Array[Vector2]([])
+wires = Array[ExtResource("2_ggtkj")]([])
+metadata/_custom_type_script = "uid://d37ex0tf7tcwa"
+
+[sub_resource type="Resource" id="Resource_buo6v"]
+script = ExtResource("3_s5ivh")
+name = "Sign"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_m7ivb"]
+script = ExtResource("3_s5ivh")
+name = "A"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_ovrbw"]
+script = ExtResource("3_s5ivh")
+name = "B"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_grkkr"]
+script = ExtResource("3_s5ivh")
+name = "C"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_i2trd"]
+script = ExtResource("3_s5ivh")
+name = "D"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_y0ugg"]
+script = ExtResource("3_s5ivh")
+name = "E"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_hifsu"]
+script = ExtResource("3_s5ivh")
+name = "F"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[sub_resource type="Resource" id="Resource_j874i"]
+script = ExtResource("3_s5ivh")
+name = "G"
+type = 0
+path = ""
+state = false
+metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
+
+[resource]
+script = ExtResource("4_2xveb")
+name = "7 Segment"
+type = 2
+input_pins = Array[ExtResource("3_s5ivh")]([SubResource("Resource_buo6v"), SubResource("Resource_m7ivb"), SubResource("Resource_ovrbw"), SubResource("Resource_grkkr"), SubResource("Resource_i2trd"), SubResource("Resource_y0ugg"), SubResource("Resource_hifsu"), SubResource("Resource_j874i")])
+output_pins = Array[ExtResource("3_s5ivh")]([])
+sub_chips = Array[ExtResource("4_2xveb")]([])
+connections = Dictionary[String, Array]({})
+description = SubResource("Resource_qal2g")
+metadata/_custom_type_script = "uid://ceyvy08n5cesg"

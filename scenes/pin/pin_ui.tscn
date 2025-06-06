@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dctq12uh5gbmm"]
 
-[ext_resource type="Script" uid="uid://cki4olpjbnqkn" path="res://scripts/pin/pin_ui.gd" id="1_8oveg"]
+[ext_resource type="Script" path="res://scripts/pin/pin_ui.gd" id="1_8oveg"]
 [ext_resource type="Texture2D" uid="uid://dbtntdpvv4vy7" path="res://assets/images/pin.png" id="2_ocr7n"]
 [ext_resource type="Script" uid="uid://c443fohj4k1oq" path="res://scripts/ui/pin/input_manager.gd" id="3_wcwu7"]
 [ext_resource type="Script" uid="uid://cx7nqwxb0ejym" path="res://scripts/ui/pin/popup_menu.gd" id="4_ss5bw"]

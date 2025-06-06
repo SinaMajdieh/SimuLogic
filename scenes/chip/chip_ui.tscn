@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://di37drxubefgv"]
 
-[ext_resource type="Script" uid="uid://cyo4g23regymq" path="res://scripts/chip/chip_ui.gd" id="1_mtfo4"]
+[ext_resource type="Script" path="res://scripts/chip/chip_ui.gd" id="1_mtfo4"]
 [ext_resource type="Script" uid="uid://osvk7hstwgfs" path="res://scripts/chip/chip_body.gd" id="2_vcs8e"]
 [ext_resource type="Script" uid="uid://ctjt5t6g8dd0r" path="res://scripts/timer.gd" id="3_gb0ys"]
 
