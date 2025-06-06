@@ -10,4 +10,3 @@ void fragment() {
 		COLOR = tex_color;
 	}
 }
-

@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_aakvs"]
+[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_70q45"]
+[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_lvtfs"]
+[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_qgyk3"]
+[ext_resource type="Resource" path="res://blue_prints/OR.tres" id="5_kf631"]
+[ext_resource type="Resource" path="res://blue_prints/not.tres" id="6_kib5e"]
+
+[sub_resource type="Resource" id="Resource_enw7x"]
+script = ExtResource("2_70q45")
+source_pin = "Container/Inputs/I1"
+target_pin = "Container/Chips/OR/Container/Inputs/I0"
+points = PackedVector2Array(49857, 50345, 50069, 50353)
+
+[sub_resource type="Resource" id="Resource_geh2k"]
+script = ExtResource("2_70q45")
+source_pin = "Container/Inputs/I0"
+target_pin = "Container/Chips/OR/Container/Inputs/I1"
+points = PackedVector2Array(49857, 50391, 50069, 50379)
+
+[sub_resource type="Resource" id="Resource_2p6pk"]
+script = ExtResource("2_70q45")
+source_pin = "Container/Chips/OR/Container/Outputs/O"
+target_pin = "Container/Chips/NOT/Container/Inputs/A"
+points = PackedVector2Array(50135, 50366, 50216, 50365)
+
+[sub_resource type="Resource" id="Resource_6jgp5"]
+script = ExtResource("2_70q45")
+source_pin = "Container/Chips/NOT/Container/Outputs/B"
+target_pin = "Container/Outputs/O"
+points = PackedVector2Array(50293, 50365, 50508, 50365)
+
+[sub_resource type="Resource" id="Resource_5v3lo"]
+script = ExtResource("1_aakvs")
+background_color = Color(0.253111, 0.610061, 0.907191, 1)
+sub_chip_positions = Array[Vector2]([Vector2(50049, 50333), Vector2(50196, 50345)])
+wires = Array[ExtResource("2_70q45")]([SubResource("Resource_enw7x"), SubResource("Resource_geh2k"), SubResource("Resource_2p6pk"), SubResource("Resource_6jgp5")])
+input_pins_positions = Array[Vector2]([Vector2(-171, 324), Vector2(-171, 370)])
+output_pins_positions = Array[Vector2]([Vector2(411, 344)])
+
+[sub_resource type="Resource" id="Resource_nwwsk"]
+script = ExtResource("3_lvtfs")
+name = "I1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_p6uw1"]
+script = ExtResource("3_lvtfs")
+name = "I0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_2b5wq"]
+script = ExtResource("3_lvtfs")
+name = "O"
+type = 1
+path = ""
+state = true
+
+[resource]
+script = ExtResource("4_qgyk3")
+name = "NOR"
+type = 3
+input_pins = Array[ExtResource("3_lvtfs")]([SubResource("Resource_nwwsk"), SubResource("Resource_p6uw1")])
+output_pins = Array[ExtResource("3_lvtfs")]([SubResource("Resource_2b5wq")])
+sub_chips = Array[ExtResource("4_qgyk3")]([ExtResource("5_kf631"), ExtResource("6_kib5e")])
+connections = Dictionary[String, Array]({
+"Container/Chips/NOT/Container/Outputs/B": ["Container/Outputs/O"],
+"Container/Chips/OR/Container/Outputs/O": ["Container/Chips/NOT/Container/Inputs/A"],
+"Container/Inputs/I0": ["Container/Chips/OR/Container/Inputs/I1"],
+"Container/Inputs/I1": ["Container/Chips/OR/Container/Inputs/I0"]
+})
+description = SubResource("Resource_5v3lo")

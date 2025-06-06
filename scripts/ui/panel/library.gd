@@ -11,6 +11,7 @@ extends PanelBase
 # Organizes chips into built-in and custom categories.
 @export var built_in: VBoxContainer  # Stores built-in chips
 @export var custom: VBoxContainer  # Stores custom chips
+@export var search_bar: LineEdit
 
 # === SELECTION TRACKING ===
 # Stores the currently selected library item.
@@ -51,21 +52,12 @@ func set_buttons_enable(enable: bool) -> void:
 	$Center/Background/Items/Buttons/Add.disabled = not enable
 	$Center/Background/Items/Buttons/View.disabled = not enable
 
-# ======================
-# LOAD CHIP LIBRARY
-# ----------------------
-# Scans a directory for stored chip blueprints and adds them to the UI.
-# ======================
-func load_library(directory_path: String = Comm.chips_schematic_path) -> void:
-	var dir: DirAccess = DirAccess.open(directory_path)
-	if dir:
-		var files: PackedStringArray = dir.get_files()
-		for file_name in files:
-			# Filter only blueprint files
-			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
-				var resource: Resource = load("%s%s" % [directory_path, file_name]) as ChipBlueprint
-				if resource:
-					add_item(resource)
+func load_library() -> void:
+	clear_children(built_in)
+	clear_children(custom)
+	var schematics:  Array[ChipBlueprint] = Arch.load_schematics()
+	for schematic in schematics:
+		add_item(schematic)
 
 # ======================
 # ADD CHIP TO LIBRARY
@@ -100,7 +92,6 @@ func add() -> void:
 # Loads chip data and connects UI signals upon startup.
 # ======================
 func _ready() -> void:
-	load_library()
 	Comm.library_panel.connect(set_open)
 
 # ======================
@@ -127,3 +118,77 @@ func _on_view_pressed() -> void:
 	
 	WorkBenchComm.work_bench.import(selected.schematic)
 	_on_close_pressed()
+
+# ======================
+# TOGGLE SETTINGS SCREEN VISIBILITY
+# ----------------------
+# Opens or closes the simulation settings panel.
+# Resets values when displayed.
+# ======================
+func set_open(open: bool) -> void:
+	if open:
+		load_library()
+		search_bar.text = ""
+	visible = open
+
+# ======================
+# NODE CHILDREN REMOVAL:
+# ----------------------
+# This function removes all child nodes from the specified parent node.
+# It ensures proper cleanup and memory management by freeing each child.
+# ======================
+
+func clear_children(node: Node) -> void:
+	for child: Node in node.get_children():
+		node.remove_child(child)  # Detach child from parent node
+		child.queue_free()  # Free memory associated with the child
+
+# ======================
+# ITEM SEARCH SYSTEM:
+# ----------------------
+# This function filters and displays items based on a user query.
+# It hides non-matching items while ensuring selected items are properly deselected.
+# ======================
+
+func search(query: String) -> void:
+	query = query.to_lower()  # Normalize input for case-insensitive search
+
+	# Iterate over built-in items
+	for item: Node in built_in.get_children():
+		if not query in item.name.to_lower():
+			item.hide()
+			if selected == item:
+				deselect(selected)
+		else:
+			item.show()
+
+	# Iterate over custom items
+	for item: Node in custom.get_children():
+		if not query in item.name.to_lower():
+			item.hide()
+			if selected == item:
+				deselect(selected)
+		else:
+			item.show()
+
+# ======================
+# SHOW ALL ITEMS
+# ----------------------
+# Ensures all library items are visible.
+# ======================
+func show_all_items() -> void:
+	for item: Node in built_in.get_children():
+		item.show()
+	for item: Node in custom.get_children():
+		item.show()
+
+# ======================
+# HANDLE SEARCH BAR INPUT
+# ----------------------
+# Filters items based on search input or shows all if the field is empty.
+# ======================
+func _on_search_bar_text_changed(new_text: String) -> void:
+	if new_text.is_empty():
+		show_all_items()
+	else:
+		search(new_text)

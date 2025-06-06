@@ -34,7 +34,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_tflu4"]
 events = [SubResource("InputEventKey_shir3")]
 
-[node name="CreateChip" type="Control" node_paths=PackedStringArray("line_edit", "submit", "color_pick", "chip_type_options_button", "color_variation")]
+[node name="CreateChip" type="Control" node_paths=PackedStringArray("line_edit", "submit", "color_pick", "chip_type_options_button", "color_variation", "message_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,9 +47,9 @@ submit = NodePath("CenterContainer/PanelContainer/Layout/Buttons/Save")
 color_pick = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ColorPickerButton")
 chip_type_options_button = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ChipType")
 color_variation = NodePath("CenterContainer/PanelContainer/Layout/ChipColorSelection/HBoxContainer/ColorVariation")
+message_label = NodePath("CenterContainer/PanelContainer/Layout/MarginContainer/Message")
 
 [node name="Background" type="PanelContainer" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_shir3")
 layout_mode = 1
 anchors_preset = 15
@@ -141,6 +141,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 placeholder_text = "Chip Name"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Message" type="Label" parent="CenterContainer/PanelContainer/Layout/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Buttons" type="HBoxContainer" parent="CenterContainer/PanelContainer/Layout"]
 layout_mode = 2

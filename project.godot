@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Digital Simulation"
-run/main_scene="uid://bd8of46yd7mqr"
+run/main_scene="uid://dtwyq0vdwj3v"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
@@ -23,6 +23,7 @@ WorkBenchComm="*res://scripts/communication/working_bench.gd"
 Logger="*res://scripts/logger/logger.gd"
 ColorMan="*res://scripts/communication/colors.gd"
 Sim="*res://scenes/simulation.tscn"
+Arch="*res://scripts/resource/architecture.gd"
 
 [display]
 

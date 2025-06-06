@@ -23,9 +23,11 @@ func _input(event: InputEvent) -> void:
         return
 
     # Detect left-click and check if it occurred within this node's boundaries
-    if Input.is_action_just_pressed("ui_left_click") and get_global_rect().has_point(event.position):
-        InputBus.notify_chip_clicked(chip, event.position)  # Notify chip selection
+    if Input.is_action_just_pressed("ui_left_click"):
+        if get_global_rect().has_point(event.position):
+            InputBus.notify_chip_clicked(chip, event.position)  # Notify chip selection
 
     # Detect right-click and verify position within this node
-    elif Input.is_action_just_pressed("ui_right_click") and get_global_rect().has_point(event.position):
-        WorkBenchComm.import(chip.logic.schematic)  # Trigger chip import
+    elif Input.is_action_just_pressed("ui_right_click"):
+        if get_global_rect().has_point(event.position):
+            WorkBenchComm.import(chip.logic.schematic)  # Trigger chip import

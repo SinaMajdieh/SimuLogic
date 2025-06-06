@@ -1,0 +1,64 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://f87q1k7asq38"]
+
+[ext_resource type="FontFile" uid="uid://106o2v2h16wm" path="res://assets/fonts/jet_brains_mono/JetBrainsMono-SemiBold.ttf" id="1_k6o2v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6o2v"]
+bg_color = Color(0.537255, 0.705882, 0.980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciei1"]
+bg_color = Color(0.235294, 0.247059, 0.345098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gghl"]
+bg_color = Color(0.180392, 0.180392, 0.243137, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.537255, 0.705882, 0.980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub4iq"]
+bg_color = Color(0.180392, 0.180392, 0.243137, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.180392, 0.180392, 0.243137, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqqud"]
+bg_color = Color(0.235294, 0.247059, 0.345098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.235294, 0.247059, 0.345098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtgb4"]
+bg_color = Color(0.141176, 0.152941, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.278431, 0.352941, 1)
+
+[resource]
+CheckButton/colors/font_color = Color(0.803922, 0.839216, 0.956863, 1)
+CheckButton/styles/hover = SubResource("StyleBoxFlat_k6o2v")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_k6o2v")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_ciei1")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_k6o2v")
+LineEdit/colors/caret_color = Color(0.803922, 0.839216, 0.956863, 1)
+LineEdit/colors/clear_button_color = Color(0.980392, 0.701961, 0.529412, 1)
+LineEdit/colors/font_color = Color(0.803922, 0.839216, 0.956863, 1)
+LineEdit/colors/font_placeholder_color = Color(0.423529, 0.439216, 0.52549, 1)
+LineEdit/colors/font_uneditable_color = Color(0.423529, 0.439216, 0.52549, 1)
+LineEdit/colors/selection_color = Color(0.537255, 0.705882, 0.980392, 1)
+LineEdit/font_sizes/font_size = 24
+LineEdit/fonts/font = ExtResource("1_k6o2v")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_6gghl")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_ub4iq")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_gqqud")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_dtgb4")

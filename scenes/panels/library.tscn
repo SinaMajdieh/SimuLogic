@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj23bdffs2cox"]
+[gd_scene load_steps=8 format=3 uid="uid://bj23bdffs2cox"]
 
 [ext_resource type="Script" uid="uid://bxky1p43egddk" path="res://scripts/ui/panel/library.gd" id="1_43obm"]
+<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://cdyw86e3xkt7b" path="res://shaders/blur.gdshader" id="2_xktus"]
+=======
+[ext_resource type="Theme" uid="uid://f87q1k7asq38" path="res://themes/library.tres" id="1_oxv0q"]
+[ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="2_xktus"]
+[ext_resource type="PackedScene" uid="uid://dv37oeprk4ju7" path="res://scenes/panels/library_item.tscn" id="3_dtgb4"]
+>>>>>>> dev
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dtgb4"]
 shader = ExtResource("2_xktus")
@@ -9,16 +15,24 @@ shader_parameter/blur_amount = 2.0
 shader_parameter/mix_amount = 0.0
 shader_parameter/color_over = Color(0, 0, 0, 1)
 
-[node name="Library" type="Control" node_paths=PackedStringArray("built_in", "custom")]
+[sub_resource type="InputEventKey" id="InputEventKey_oxv0q"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_rx85g"]
+events = [SubResource("InputEventKey_oxv0q")]
+
+[node name="Library" type="Control" node_paths=PackedStringArray("built_in", "custom", "search_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oxv0q")
 script = ExtResource("1_43obm")
 built_in = NodePath("Center/Background/Items/BuiltInContainer/VBoxContainer")
 custom = NodePath("Center/Background/Items/CustomeContainer/VBoxContainer")
+search_bar = NodePath("Center/Background/Items/SeachBar")
 
 [node name="Blur" type="PanelContainer" parent="."]
 material = SubResource("ShaderMaterial_dtgb4")
@@ -47,12 +61,22 @@ layout_mode = 2
 [node name="Title" type="Label" parent="Center/Background/Items"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.898039, 0.913725, 0.941176, 1)
 theme_override_font_sizes/font_size = 30
 text = "Library"
 horizontal_alignment = 1
 
+[node name="SeachBar" type="LineEdit" parent="Center/Background/Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "Search..."
+clear_button_enabled = true
+caret_blink = true
+caret_force_displayed = true
+
 [node name="BuiltInTitle" type="Label" parent="Center/Background/Items"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.678431, 0.784314, 1)
 text = "Built-in"
 
 [node name="HSeparator" type="HSeparator" parent="Center/Background/Items"]
@@ -67,8 +91,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
+[node name="LibraryItem" parent="Center/Background/Items/BuiltInContainer/VBoxContainer" instance=ExtResource("3_dtgb4")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+
 [node name="CustomTitle" type="Label" parent="Center/Background/Items"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.678431, 0.784314, 1)
 text = "Custom"
 
 [node name="HSeparator2" type="HSeparator" parent="Center/Background/Items"]
@@ -105,8 +134,10 @@ text = "View"
 [node name="Close" type="Button" parent="Center/Background/Items/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+shortcut = SubResource("Shortcut_rx85g")
 text = "Close"
 
+[connection signal="text_changed" from="Center/Background/Items/SeachBar" to="." method="_on_search_bar_text_changed"]
 [connection signal="pressed" from="Center/Background/Items/Buttons/Add" to="." method="add"]
 [connection signal="pressed" from="Center/Background/Items/Buttons/View" to="." method="_on_view_pressed"]
 [connection signal="pressed" from="Center/Background/Items/Buttons/Close" to="." method="_on_close_pressed"]
