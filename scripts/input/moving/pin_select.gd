@@ -14,12 +14,12 @@ extends Node
 # Ignores interactions for output pins or inactive parent nodes.
 # ======================
 func _on_pin_clicked(pin: PinUI) -> void:
-    if not pin is InteractablePin:
-        return 
-    if not get_parent().is_active or pin.logic.pin_type == Pin.PinType.OUTPUT:
-        return
-    
-    pin.logic.state = not pin.logic.state  # Toggle pin state
+	if not pin is InteractablePin:
+		return 
+	if not get_parent().is_active or pin.logic.pin_type == Pin.PinType.OUTPUT:
+		return
+	
+	pin.logic.state = LogicUtils.from_bool(not LogicUtils.to_bool(pin.logic.state))  # Toggle pin state
 
 # ======================
 # INITIALIZE PIN INTERACTION
@@ -27,4 +27,4 @@ func _on_pin_clicked(pin: PinUI) -> void:
 # Connects the pin click event upon startup, ensuring proper signal handling.
 # ======================
 func _ready() -> void:
-    InputBus.pin_clicked.connect(_on_pin_clicked)
+	InputBus.pin_clicked.connect(_on_pin_clicked)

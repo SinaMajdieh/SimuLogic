@@ -44,8 +44,8 @@ enum ChipType {AND, NOT, SEVENSEGMENT, COMPOSIT}
 # This function extracts the boolean states of all input pins for use in logic operations.
 # It returns an array of true/false values corresponding to the pin states.
 # ======================
-func get_input_array() -> Array[bool]:
-	var result: Array[bool] = []
+func get_input_array() -> Array[LogicUtils.State]:
+	var result: Array[LogicUtils.State] = []
 	for pin in input_pins:
 		result.append(pin.state)  # Append each pin's state to the result array.
 	return result
@@ -58,15 +58,15 @@ func get_input_array() -> Array[bool]:
 # If it is another type (like SevenSegment), it skips logic handling.
 # ======================
 func input_updated() -> void:
-	var input: Array[bool] = get_input_array()
-	var output := false  # Default output state
+	var input: Array[LogicUtils.State] = get_input_array()
+	var output : LogicUtils.State = LogicUtils.State.Z  # Default output state
 	
 	# Apply logic based on chip type
 	match chip_type:
 		ChipType.AND:
-			output = input.all(func(val): return val)  # AND gate: true if all inputs are true
+			output = LogicUtils.from_bool(input.all(func(val): return LogicUtils.is_high(val)))  # AND gate: true if all inputs are true
 		ChipType.NOT:
-			output = not input[0]  # NOT gate: invert the first input
+			output = LogicUtils.from_bool(not LogicUtils.to_bool(input[0]))
 		_:
 			return  # Skip unsupported logic types
 		

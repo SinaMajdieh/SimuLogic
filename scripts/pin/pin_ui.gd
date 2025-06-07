@@ -61,8 +61,17 @@ func update_button_gui() -> void:
 		button_gui.button_pressed = false
 		button_gui.modulate = ColorMan.get_muted_color(pin_color)
 	else:
-		button_gui.button_pressed = logic.state
-		button_gui.modulate = ColorMan.get_glowing_color(pin_color) if logic.state else ColorMan.get_muted_color(pin_color)
+		button_gui.button_pressed = LogicUtils.to_bool(logic.state)
+		update_pin_color()
+
+func update_pin_color() -> void:
+	match logic.state:
+			LogicUtils.State.HIGH:
+				button_gui.modulate = ColorMan.get_glowing_color(pin_color)
+			LogicUtils.State.LOW:
+				button_gui.modulate = ColorMan.get_muted_color(pin_color)
+			LogicUtils.State.Z:
+				button_gui.modulate = Color.BLACK
 
 # ======================
 # GET PIN CENTER POSITION
@@ -99,7 +108,7 @@ static func build_ui(pin: Pin) -> PinUI:
 # Ensures the logic component is safely removed when the UI is deleted.
 # ======================
 func _on_tree_exited() -> void:
-	if logic and logic.get_parent():
-		logic.get_parent().remove_child(logic)
-	elif logic:
+	if logic:
+		if logic.get_parent():
+			logic.get_parent().remove_child(logic)
 		logic.queue_free()
