@@ -93,6 +93,7 @@ func add() -> void:
 # ======================
 func _ready() -> void:
 	Comm.library_panel.connect(set_open)
+	ShortcutManager.register_shortcut("open_library_shortcut", set_open, [true])
 
 # ======================
 # CLOSE LIBRARY PANEL
@@ -129,6 +130,7 @@ func set_open(open: bool) -> void:
 	if open:
 		load_library()
 		search_bar.text = ""
+		search_bar.grab_focus()
 	visible = open
 
 # ======================

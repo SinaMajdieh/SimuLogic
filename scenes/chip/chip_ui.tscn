@@ -1,17 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://di37drxubefgv"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_ui.gd" id="1_mtfo4"]
+[ext_resource type="Script" uid="uid://cyo4g23regymq" path="res://scripts/chip/chip_ui.gd" id="1_mtfo4"]
 [ext_resource type="Script" uid="uid://osvk7hstwgfs" path="res://scripts/chip/chip_body.gd" id="2_vcs8e"]
 [ext_resource type="Script" uid="uid://ctjt5t6g8dd0r" path="res://scripts/timer.gd" id="3_gb0ys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owa1i"]
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
+border_blend = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_7nt4l"]
 font_size = 15
 
 [node name="Component" type="PanelContainer" node_paths=PackedStringArray("input_container", "output_container", "sub_chip_container", "name_tag") groups=["chip"]]
+z_index = 1
 custom_minimum_size = Vector2(50, 25)
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,15 +34,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_owa1i")
 script = ExtResource("1_mtfo4")
-input_container = NodePath("Container/Inputs")
-output_container = NodePath("Container/Outputs")
+input_container = NodePath("Container/margin/Inputs")
+output_container = NodePath("Container/MarginContainer/Outputs")
 sub_chip_container = NodePath("Container/Chips")
 name_tag = NodePath("Container/Chips/Name")
 
 [node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Inputs" type="VBoxContainer" parent="Container"]
+[node name="margin" type="MarginContainer" parent="Container"]
+z_index = -1
+layout_mode = 2
+theme_override_constants/margin_left = -18
+
+[node name="Inputs" type="VBoxContainer" parent="Container/margin"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = -10
@@ -53,7 +64,12 @@ size_flags_vertical = 6
 label_settings = SubResource("LabelSettings_7nt4l")
 horizontal_alignment = 1
 
-[node name="Outputs" type="VBoxContainer" parent="Container"]
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+z_index = -1
+layout_mode = 2
+theme_override_constants/margin_right = -18
+
+[node name="Outputs" type="VBoxContainer" parent="Container/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = -10
