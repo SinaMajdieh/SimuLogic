@@ -1,0 +1,230 @@
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=40 format=3]
+
+[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_wvfhe"]
+[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_0objy"]
+[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_kxcth"]
+[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_e3hb2"]
+[ext_resource type="Resource" path="res://blue_prints/XOR.tres" id="5_cd86l"]
+[ext_resource type="Resource" path="res://blue_prints/NOR.tres" id="6_4ef18"]
+[ext_resource type="Resource" path="res://blue_prints/OR.tres" id="7_yfmqn"]
+[ext_resource type="Resource" path="res://blue_prints/and.tres" id="8_mtkyc"]
+
+[sub_resource type="Resource" id="Resource_u5d2d"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D3"
+target_pin = "Container/Chips/XOR2/Container/Inputs/I1"
+points = PackedVector2Array(49708, 50260, 49905, 50260, 49905, 50089, 50091, 50089)
+
+[sub_resource type="Resource" id="Resource_na5r5"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D3"
+target_pin = "Container/Chips/NOR/Container/Inputs/I1"
+points = PackedVector2Array(49708, 50260, 49708, 50260, 49905, 50260, 49905, 50220, 50090, 50220)
+
+[sub_resource type="Resource" id="Resource_wsdvy"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D3"
+target_pin = "Container/Chips/XOR/Container/Inputs/I0"
+points = PackedVector2Array(49708, 50260, 49708, 50260, 49708, 50260, 49904, 50260, 49904, 50488, 50084, 50488)
+
+[sub_resource type="Resource" id="Resource_nqd2j"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D2"
+target_pin = "Container/Chips/NOR/Container/Inputs/I0"
+points = PackedVector2Array(49708, 50306, 50054, 50306, 50054, 50246, 50090, 50246)
+
+[sub_resource type="Resource" id="Resource_eeveb"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D1"
+target_pin = "Container/Chips/NOR4/Container/Inputs/I0"
+points = PackedVector2Array(49708, 50352, 50956, 50352, 50956, 50323, 51012, 50323)
+
+[sub_resource type="Resource" id="Resource_fvuf6"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D1"
+target_pin = "Container/Chips/XOR/Container/Inputs/I1"
+points = PackedVector2Array(49708, 50352, 49708, 50352, 49885, 50352, 49885, 50514, 50084, 50514)
+
+[sub_resource type="Resource" id="Resource_a4x1l"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D0"
+target_pin = "Container/Chips/XOR3/Container/Inputs/I1"
+points = PackedVector2Array(49708, 50398, 49787, 50398, 49787, 50592, 51023, 50592)
+
+[sub_resource type="Resource" id="Resource_oj408"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Inputs/D0"
+target_pin = "Container/Chips/XOR2/Container/Inputs/I0"
+points = PackedVector2Array(49708, 50398, 49708, 50398, 49787, 50398, 49787, 50400, 49787, 50063, 50091, 50063)
+
+[sub_resource type="Resource" id="Resource_kvweh"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/XOR2/Container/Outputs/O"
+target_pin = "Container/Chips/NOR2/Container/Inputs/I1"
+points = PackedVector2Array(50166, 50076, 50473, 50074)
+
+[sub_resource type="Resource" id="Resource_kpmdi"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/XOR2/Container/Outputs/O"
+target_pin = "Container/Chips/OR/Container/Inputs/I1"
+points = PackedVector2Array(50166, 50076, 50166, 50074.5, 50395, 50074.5, 50395, 50305, 50719, 50305)
+
+[sub_resource type="Resource" id="Resource_5l28j"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR/Container/Outputs/O"
+target_pin = "Container/Chips/NOR3/Container/Inputs/I0"
+points = PackedVector2Array(50168, 50233, 50661, 50233, 50661, 50119, 50707, 50119)
+
+[sub_resource type="Resource" id="Resource_8ei0a"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR2/Container/Outputs/O"
+target_pin = "Container/Chips/NOR3/Container/Inputs/I1"
+points = PackedVector2Array(50551, 50087, 50707, 50093)
+
+[sub_resource type="Resource" id="Resource_x8t0i"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR/Container/Outputs/O"
+target_pin = "Container/Chips/OR/Container/Inputs/I0"
+points = PackedVector2Array(50168, 50233, 50168, 50233, 50661, 50233, 50661, 50212, 50661, 50279, 50719, 50279)
+
+[sub_resource type="Resource" id="Resource_m5e1c"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/OR/Container/Outputs/O"
+target_pin = "Container/Chips/NOR4/Container/Inputs/I1"
+points = PackedVector2Array(50785, 50292, 51012, 50297)
+
+[sub_resource type="Resource" id="Resource_lbx18"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/OR/Container/Outputs/O"
+target_pin = "Container/Chips/AND/Container/Inputs/A"
+points = PackedVector2Array(50785, 50292, 50785, 50296.1, 50969, 50296.1, 50969, 50402, 51017, 50402)
+
+[sub_resource type="Resource" id="Resource_axd22"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/XOR/Container/Outputs/O"
+target_pin = "Container/Chips/AND/Container/Inputs/B"
+points = PackedVector2Array(50159, 50501, 50971, 50501, 50971, 50428, 51017, 50428)
+
+[sub_resource type="Resource" id="Resource_ptb68"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/XOR/Container/Outputs/O"
+target_pin = "Container/Chips/NOR2/Container/Inputs/I0"
+points = PackedVector2Array(50159, 50501, 50159, 50501, 50420, 50501, 50420, 50100, 50473, 50100)
+
+[sub_resource type="Resource" id="Resource_irvqv"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR3/Container/Outputs/O"
+target_pin = "Container/Outputs/O3"
+points = PackedVector2Array(50785, 50106, 51390, 50106, 51390, 50249, 51473, 50249)
+
+[sub_resource type="Resource" id="Resource_r88uy"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR3/Container/Outputs/O"
+target_pin = "Container/Chips/XOR3/Container/Inputs/I0"
+points = PackedVector2Array(50785, 50106, 50785, 50106, 50880, 50106, 50880, 50566, 51023, 50566)
+
+[sub_resource type="Resource" id="Resource_j4kk2"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/XOR3/Container/Outputs/O"
+target_pin = "Container/Outputs/O0"
+points = PackedVector2Array(51098, 50579, 51393, 50579, 51393, 50387, 51473, 50387)
+
+[sub_resource type="Resource" id="Resource_n5pcr"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/AND/Container/Outputs/C"
+target_pin = "Container/Outputs/O1"
+points = PackedVector2Array(51094, 50415, 51374, 50415, 51374, 50341, 51473, 50341)
+
+[sub_resource type="Resource" id="Resource_xfaqq"]
+script = ExtResource("2_0objy")
+source_pin = "Container/Chips/NOR4/Container/Outputs/O"
+target_pin = "Container/Outputs/O2"
+points = PackedVector2Array(51090, 50310, 51374, 50310, 51374, 50295, 51473, 50295)
+
+[sub_resource type="Resource" id="Resource_d12c0"]
+script = ExtResource("1_wvfhe")
+background_color = Color(0.0370221, 0.125242, 0.505145, 1)
+sub_chip_positions = Array[Vector2]([Vector2(50064, 50468), Vector2(50071, 50043), Vector2(50070, 50200), Vector2(50453, 50054), Vector2(50687, 50073), Vector2(50699, 50259), Vector2(50992, 50277), Vector2(50997, 50382), Vector2(51003, 50546)])
+wires = Array[ExtResource("2_0objy")]([SubResource("Resource_u5d2d"), SubResource("Resource_na5r5"), SubResource("Resource_wsdvy"), SubResource("Resource_nqd2j"), SubResource("Resource_eeveb"), SubResource("Resource_fvuf6"), SubResource("Resource_a4x1l"), SubResource("Resource_oj408"), SubResource("Resource_kvweh"), SubResource("Resource_kpmdi"), SubResource("Resource_5l28j"), SubResource("Resource_8ei0a"), SubResource("Resource_x8t0i"), SubResource("Resource_m5e1c"), SubResource("Resource_lbx18"), SubResource("Resource_axd22"), SubResource("Resource_ptb68"), SubResource("Resource_irvqv"), SubResource("Resource_r88uy"), SubResource("Resource_j4kk2"), SubResource("Resource_n5pcr"), SubResource("Resource_xfaqq")])
+input_pins_positions = Array[Vector2]([Vector2(-320, 239), Vector2(-320, 285), Vector2(-320, 331), Vector2(-320, 377)])
+output_pins_positions = Array[Vector2]([Vector2(1376, 228), Vector2(1366, 274), Vector2(1366, 320), Vector2(1366, 366)])
+
+[sub_resource type="Resource" id="Resource_rv2rv"]
+script = ExtResource("3_kxcth")
+name = "D3"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_hf3ga"]
+script = ExtResource("3_kxcth")
+name = "D2"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_bedmr"]
+script = ExtResource("3_kxcth")
+name = "D1"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_7q8mm"]
+script = ExtResource("3_kxcth")
+name = "D0"
+type = 0
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_ymawu"]
+script = ExtResource("3_kxcth")
+name = "O3"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_453uh"]
+script = ExtResource("3_kxcth")
+name = "O2"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_yyjqv"]
+script = ExtResource("3_kxcth")
+name = "O1"
+type = 1
+path = ""
+state = false
+
+[sub_resource type="Resource" id="Resource_dfg2a"]
+script = ExtResource("3_kxcth")
+name = "O0"
+type = 1
+path = ""
+state = false
+
+[resource]
+script = ExtResource("4_e3hb2")
+name = "DABBLE"
+type = 3
+input_pins = Array[ExtResource("3_kxcth")]([SubResource("Resource_rv2rv"), SubResource("Resource_hf3ga"), SubResource("Resource_bedmr"), SubResource("Resource_7q8mm")])
+output_pins = Array[ExtResource("3_kxcth")]([SubResource("Resource_ymawu"), SubResource("Resource_453uh"), SubResource("Resource_yyjqv"), SubResource("Resource_dfg2a")])
+sub_chips = Array[ExtResource("4_e3hb2")]([ExtResource("5_cd86l"), ExtResource("5_cd86l"), ExtResource("6_4ef18"), ExtResource("6_4ef18"), ExtResource("6_4ef18"), ExtResource("7_yfmqn"), ExtResource("6_4ef18"), ExtResource("8_mtkyc"), ExtResource("5_cd86l")])
+connections = Dictionary[String, Array]({
+"Container/Chips/AND/Container/Outputs/C": ["Container/Outputs/O1"],
+"Container/Chips/NOR/Container/Outputs/O": ["Container/Chips/NOR3/Container/Inputs/I0", "Container/Chips/OR/Container/Inputs/I0"],
+"Container/Chips/NOR2/Container/Outputs/O": ["Container/Chips/NOR3/Container/Inputs/I1"],
+"Container/Chips/NOR3/Container/Outputs/O": ["Container/Outputs/O3", "Container/Chips/XOR3/Container/Inputs/I0"],
+"Container/Chips/NOR4/Container/Outputs/O": ["Container/Outputs/O2"],
+"Container/Chips/OR/Container/Outputs/O": ["Container/Chips/NOR4/Container/Inputs/I1", "Container/Chips/AND/Container/Inputs/A"],
+"Container/Chips/XOR/Container/Outputs/O": ["Container/Chips/AND/Container/Inputs/B", "Container/Chips/NOR2/Container/Inputs/I0"],
+"Container/Chips/XOR2/Container/Outputs/O": ["Container/Chips/NOR2/Container/Inputs/I1", "Container/Chips/OR/Container/Inputs/I1"],
+"Container/Chips/XOR3/Container/Outputs/O": ["Container/Outputs/O0"],
+"Container/Inputs/D0": ["Container/Chips/XOR3/Container/Inputs/I1", "Container/Chips/XOR2/Container/Inputs/I0"],
+"Container/Inputs/D1": ["Container/Chips/NOR4/Container/Inputs/I0", "Container/Chips/XOR/Container/Inputs/I1"],
+"Container/Inputs/D2": ["Container/Chips/NOR/Container/Inputs/I0"],
+"Container/Inputs/D3": ["Container/Chips/XOR2/Container/Inputs/I1", "Container/Chips/NOR/Container/Inputs/I1", "Container/Chips/XOR/Container/Inputs/I0"]
+})
+description = SubResource("Resource_d12c0")

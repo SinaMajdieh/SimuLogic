@@ -52,9 +52,9 @@ func _on_wire_clicked(wire: Wire, clicked_position: Vector2) -> void:
         clicked_wire = wire
 
     # Ignore interactions for wires lower in the layer hierarchy
-    if wire.layer_index < clicked_wire.layer_index:
-        return
-
+    # ! bug: if the code below in uncommented clicking on wire on a higher level and cancelling the clicking on a lower layer wire it won't go further so the wire wont be clicked
+    # if wire.layer_index < clicked_wire.layer_index:
+    #     return
     clicked_wire = wire
     pin_wiring_manager._start_preview(wire.source_pin.ui)
 

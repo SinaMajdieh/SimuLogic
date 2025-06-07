@@ -101,4 +101,5 @@ static func build_ui(pin: Pin) -> PinUI:
 func _on_tree_exited() -> void:
 	if logic and logic.get_parent():
 		logic.get_parent().remove_child(logic)
-	logic.queue_free()
+	elif logic:
+		logic.queue_free()
