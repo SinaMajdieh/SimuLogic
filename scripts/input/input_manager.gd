@@ -1,29 +1,36 @@
-class_name InputManager
+class_name InputManagerClass
 extends Node
 
 # ======================
 # INPUT MODE MANAGEMENT:
 # ----------------------
-# This class manages different input modes for user interactions.
-# It toggles between wiring, moving, and removing modes dynamically.
+# This class controls input handling and toggles between different interaction modes.
+# It supports wiring, moving, and removing components dynamically.
 # ======================
 
 # === INPUT MODE ENUMERATION ===
-# Defines available input modes for interaction.
+# Defines available input modes for user interaction.
 enum Mode {WIRING, MOVING, REMOVING}
 
-# === CURRENT MODE TRACKING ===
-# Stores the active input mode.
-var current_mode: Mode = Mode.WIRING
+# === SIGNAL DEFINITIONS ===
+# Notifies when the input mode has changed.
+signal mode_changed(mode: Mode)
+
+# === ACTIVE INPUT MODE TRACKING ===
+# Stores the currently selected input mode.
+var current_mode: Mode = Mode.WIRING:
+    set(value):
+        current_mode = value
+        mode_changed.emit(current_mode)
 
 # === INPUT PROCESSING STATUS ===
-# Controls whether input handling is currently enabled.
+# Determines if input handling is enabled or disabled.
 var is_active: bool = true
 
 # ======================
-# UPDATE ACTIVE INPUT MODE
+# SWITCH ACTIVE INPUT MODE
 # ----------------------
-# Switches to a new input mode and applies the changes to child InputMode instances.
+# Updates the mode and applies changes to child InputMode instances.
 # ======================
 func update_active_mode(mode: Mode) -> void:
     current_mode = mode
@@ -39,16 +46,16 @@ func update_active_mode(mode: Mode) -> void:
 # ======================
 # HANDLE INPUT EVENTS
 # ----------------------
-# Detects key presses and toggles input modes accordingly.
+# Detects user key presses and toggles input modes accordingly.
 # ======================
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventKey and event.is_pressed():
         toggle_mode(event.keycode)
 
 # ======================
-# TOGGLE INPUT MODE
+# TOGGLE INPUT MODE VIA KEY PRESS
 # ----------------------
-# Switches between different input modes when specific keys are pressed.
+# Switches between interaction modes based on specific key inputs.
 # ======================
 func toggle_mode(keycode: Key) -> void:
     if not is_active:
@@ -65,15 +72,15 @@ func toggle_mode(keycode: Key) -> void:
 # ======================
 # INITIALIZE INPUT MANAGER
 # ----------------------
-# Sets the default input mode upon startup.
+# Sets the default input mode when the scene is loaded.
 # ======================
 func _ready() -> void:
     update_active_mode(current_mode)
 
 # ======================
-# STOP INPUT PROCESSING
+# DISABLE INPUT HANDLING
 # ----------------------
-# Disables input handling and deactivates all input modes.
+# Stops processing input and deactivates all input modes.
 # ======================
 func stop_processing_input() -> void:
     is_active = false
@@ -84,9 +91,9 @@ func stop_processing_input() -> void:
             mode_instance.deactivate()
 
 # ======================
-# RESUME INPUT PROCESSING
+# ENABLE INPUT HANDLING
 # ----------------------
-# Enables input handling and reactivates the last selected mode.
+# Resumes input processing and reactivates the last selected mode.
 # ======================
 func continue_processing_input() -> void:
     is_active = true

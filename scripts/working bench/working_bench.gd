@@ -36,7 +36,6 @@ extends PanelContainer
 @onready var output_pin_container: Control = $Container/Outputs
 @onready var sub_chips_container: Control = $Container/Chips
 @export var wire_container: Node2D
-@onready var input_manager: Node = $InputManager
 
 # ======================
 # SIMULATION FRAME SETTINGS
@@ -96,7 +95,6 @@ func connect_signals() -> void:
 # ======================
 func _ready() -> void:
 	connect_signals()
-
 	# Import stored chip blueprints into workbench
 	for bp in chip_blueprints:
 		sub_chips_container.import_chip(bp)
@@ -113,9 +111,6 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_left_click"):
 		if get_global_rect().has_point(event.position):
 			InputBus.notify_work_bench_clicked(event.position)
-			input_manager.continue_processing_input()
-		else:
-			input_manager.stop_processing_input()
 
 # ======================
 # GENERATE CHIP BLUEPRINT

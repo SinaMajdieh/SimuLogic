@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cucu1ykyys881"]
+
+[ext_resource type="Script" uid="uid://0ula3iy0uw0b" path="res://scripts/ui/panel/side panel/side_panel.gd" id="1_lcjsh"]
+[ext_resource type="Texture2D" uid="uid://b01hmdrphjr58" path="res://assets/images/side panel/drag_icon.png" id="1_xd0iq"]
+[ext_resource type="Texture2D" uid="uid://cdci57wxfue43" path="res://assets/images/side panel/wire_icon.png" id="2_lcjsh"]
+[ext_resource type="Texture2D" uid="uid://3blgtq3neu0h" path="res://assets/images/side panel/remove_icon.png" id="3_2jeft"]
+[ext_resource type="Script" uid="uid://dx0xpj8ip6bxg" path="res://scripts/ui/panel/side panel/side_pannel_button.gd" id="3_etp2t"]
+
+[node name="SidePanel" type="MarginContainer" node_paths=PackedStringArray("buttons")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_lcjsh")
+buttons = [NodePath("Layout/AspectRatioContainer/Move"), NodePath("Layout/AspectRatioContainer2/Wire"), NodePath("Layout/AspectRatioContainer3/Remove")]
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Move" type="Button" parent="Layout/AspectRatioContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+tooltip_text = "Moving"
+toggle_mode = true
+icon = ExtResource("1_xd0iq")
+icon_alignment = 1
+script = ExtResource("3_etp2t")
+mode = 1
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Wire" type="Button" parent="Layout/AspectRatioContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+tooltip_text = "Wiring"
+toggle_mode = true
+icon = ExtResource("2_lcjsh")
+icon_alignment = 1
+script = ExtResource("3_etp2t")
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Remove" type="Button" parent="Layout/AspectRatioContainer3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+tooltip_text = "Removing"
+toggle_mode = true
+icon = ExtResource("3_2jeft")
+icon_alignment = 1
+script = ExtResource("3_etp2t")
+mode = 2

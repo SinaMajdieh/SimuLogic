@@ -21,6 +21,9 @@ var grid_spacing: int = 16:
         grid_spacing = value
         work_bench.queue_redraw()
 
+# Wether to snap to grid or not
+var snap_to_grid: bool = false
+
 # ======================
 # SIGNAL DEFINITIONS
 # ----------------------
@@ -101,3 +104,14 @@ func change_input_pins(amount: int) -> void:
 
 func change_output_pins(amount: int) -> void:
     output_pins_changed.emit(amount)
+
+func toggle_snap_to_grid() -> void:
+    WorkBenchComm.snap_to_grid = not WorkBenchComm.snap_to_grid
+
+func toggle_grid() -> void:
+    show_grid = not show_grid
+
+func _ready() -> void:
+    ShortcutManager.register_shortcut("snap_to_grid_shortcut", toggle_snap_to_grid)
+    #! ShortcutMnager cant handle overlapping shortcuts for example 'CTR+G' also triggers 'CTR' and 'g' both
+    #ShortcutManager.register_shortcut("grid_shortcut", toggle_grid)

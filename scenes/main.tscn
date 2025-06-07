@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtwyq0vdwj3v"]
+[gd_scene load_steps=16 format=3 uid="uid://dtwyq0vdwj3v"]
 
 [ext_resource type="PackedScene" uid="uid://wq7npml480cg" path="res://scenes/ui/bread_crumb.tscn" id="1_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://cucu1ykyys881" path="res://scenes/panels/side_panel.tscn" id="2_a8y0u"]
 [ext_resource type="Script" path="res://scripts/working bench/infinite.gd" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://cy7j5u7se7823" path="res://scenes/work_bench.tscn" id="3_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dcvyoavw267e8" path="res://scenes/ui/chip/imported_chips_container.tscn" id="4_jkv2x"]
@@ -50,6 +51,18 @@ size_flags_vertical = 1
 text = "Zoom"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SidePanel" parent="UI" instance=ExtResource("2_a8y0u")]
+anchors_preset = -1
+anchor_left = 0.98
+anchor_top = 0.068
+anchor_right = 0.98
+anchor_bottom = 0.068
+offset_left = -49.568
+offset_top = -0.064003
+offset_right = 0.432007
+offset_bottom = 149.936
+grow_vertical = 1
 
 [node name="WorkSpaceContainer" type="SubViewportContainer" parent="."]
 layout_mode = 2
