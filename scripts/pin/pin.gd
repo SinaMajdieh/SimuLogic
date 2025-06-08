@@ -40,16 +40,17 @@ var receive_state_from: Array[Pin] = []
 # ----------------------
 # Sets and retrieves the pin type (input or output).
 # ======================
-var pin_type: PinType:
+var type: PinType:
 	set(new_type):
-		pin_type = new_type
+		type = new_type
 
 # ======================
 # PIN STATE MANAGEMENT
 # ----------------------
 # Stores and updates pin state, triggering UI changes upon modification.
 # ======================
-var state: LogicUtils.State = LogicUtils.State.LOW:
+
+var state: LogicUtils.State = LogicUtils.State.Z:
 	set(new_state):
 		if new_state == state:
 			return
@@ -64,10 +65,10 @@ var state: LogicUtils.State = LogicUtils.State.LOW:
 # Checks whether the pin is an input or output.
 # ======================
 func is_input_pin() -> bool:
-	return pin_type == PinType.INPUT
+	return type == PinType.INPUT
 
 func is_output_pin() -> bool:
-	return pin_type == PinType.OUTPUT
+	return type == PinType.OUTPUT
 
 # ======================
 # SIGNAL DEFINITIONS
@@ -135,7 +136,7 @@ func connect_to(target_pin: Pin) -> void:
 	target_pin.receive_state_from.append(self)
 
 	if ui and target_pin.ui:
-		if target_pin.pin_type == PinType.INPUT or target_pin.ui is InteractablePin:
+		if target_pin.type == PinType.INPUT or target_pin.ui is InteractablePin:
 			target_pin.ui.pin_color = ui.pin_color
 
 	target_pin.update_pin_state()
@@ -187,7 +188,7 @@ func build_ui(interactable: bool = false) -> void:
 # ======================
 func synthesize(pin_data: PinData) -> void:
 	name = pin_data.name
-	pin_type = pin_data.type
+	type = pin_data.type
 
 # ======================
 # SERIALIZE PIN DATA
@@ -197,6 +198,6 @@ func synthesize(pin_data: PinData) -> void:
 func serialize() -> PinData:
 	var pin_data := PinData.new()
 	pin_data.name = name
-	pin_data.type = pin_type
+	pin_data.type = type
 	pin_data.state = state
 	return pin_data

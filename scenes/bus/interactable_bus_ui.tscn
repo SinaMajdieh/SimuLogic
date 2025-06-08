@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2sd1ejikutpe"]
+
+[ext_resource type="Script" uid="uid://dqb5ctyn3ic7v" path="res://scripts/ui/bus/bus_ui.gd" id="1_l1kbx"]
+[ext_resource type="Script" uid="uid://b3uceu7orq678" path="res://scripts/ui/bus/interactable_bus_button.gd" id="2_dgcij"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("grid_container", "item")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l1kbx")
+grid_container = NodePath("GridContainer")
+item = NodePath("GridContainer/AspectRatioContainer")
+color = Color(0.670588, 0.294118, 0.294118, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GridContainer"]
+visible = false
+custom_minimum_size = Vector2(10, 2)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_dgcij")

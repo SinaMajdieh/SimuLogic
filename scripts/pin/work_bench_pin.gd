@@ -28,7 +28,7 @@ func _ready() -> void:
 
 	# Adjust layout direction according to pin type
 	if logic:
-		match logic.pin_type:
+		match logic.type:
 			Pin.PinType.INPUT:
 				layout_direction = Control.LAYOUT_DIRECTION_LTR  # Input: left-to-right
 			Pin.PinType.OUTPUT:

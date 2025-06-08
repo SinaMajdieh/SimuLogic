@@ -16,7 +16,7 @@ extends Node
 func _on_pin_clicked(pin: PinUI) -> void:
 	if not pin is InteractablePin:
 		return 
-	if not get_parent().is_active or pin.logic.pin_type == Pin.PinType.OUTPUT:
+	if not get_parent().is_active or pin.logic.type == Pin.PinType.OUTPUT:
 		return
 	
 	pin.logic.state = LogicUtils.from_bool(not LogicUtils.to_bool(pin.logic.state))  # Toggle pin state

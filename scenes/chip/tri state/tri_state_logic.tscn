@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ap0wsl8r4xl"]
+
+[ext_resource type="Script" uid="uid://5todeaxxtnxb" path="res://scripts/chip/tri state/tri_state_model.gd" id="1_77exk"]
+[ext_resource type="Script" uid="uid://ctjt5t6g8dd0r" path="res://scripts/timer.gd" id="2_ccpit"]
+
+[node name="Component" type="Node" node_paths=PackedStringArray("input_container", "output_container", "sub_chip_container")]
+script = ExtResource("1_77exk")
+chip_type = 4
+input_container = NodePath("Container/Inputs")
+output_container = NodePath("Container/Outputs")
+sub_chip_container = NodePath("Container/Chips")
+
+[node name="Container" type="Node" parent="."]
+
+[node name="Inputs" type="Node" parent="Container"]
+
+[node name="Chips" type="Node" parent="Container"]
+
+[node name="Outputs" type="Node" parent="Container"]
+
+[node name="PreciseTimer" type="Node" parent="."]
+script = ExtResource("2_ccpit")
+metadata/_custom_type_script = "uid://ctjt5t6g8dd0r"

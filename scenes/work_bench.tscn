@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cy7j5u7se7823"]
 
 [ext_resource type="Script" uid="uid://b6wv050rt3hh5" path="res://scripts/working bench/working_bench.gd" id="1_pdxho"]
-[ext_resource type="Script" path="res://scripts/pin/pin_manager.gd" id="3_1bg2q"]
+[ext_resource type="Script" uid="uid://bba63tdhkgpeh" path="res://scripts/pin/pin_manager.gd" id="3_1bg2q"]
 [ext_resource type="Script" path="res://scripts/chip/chips_manager.gd" id="3_a5pla"]
 [ext_resource type="Script" uid="uid://cdp0ifrkk45gk" path="res://scripts/wire/wire_manager.gd" id="3_agj7r"]
 [ext_resource type="PackedScene" uid="uid://t0w1bae56yu7" path="res://scenes/wire/wire_preview.tscn" id="4_agj7r"]

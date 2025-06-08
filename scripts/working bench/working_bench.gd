@@ -108,7 +108,7 @@ func _ready() -> void:
 # Detects user interactions for managing activity.
 # ======================
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_left_click"):
+	if Input.is_action_just_pressed("ui_left_click") and event is InputEventMouseButton:
 		if get_global_rect().has_point(event.position):
 			InputBus.notify_work_bench_clicked(event.position)
 

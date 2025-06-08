@@ -24,7 +24,7 @@ var schematic: ChipBlueprint
 var ui: ChipUI  
 
 # Enumeration defining different chip types for logic processing
-enum ChipType {AND, NOT, SEVENSEGMENT, COMPOSIT}
+enum ChipType {AND, NOT, SEVENSEGMENT, COMPOSIT, TRI_STATE}
 
 # Stores all input and output pins attached to the chip
 @export var input_pins: Array[Pin]
@@ -219,5 +219,7 @@ static func get_chip(type: ChipType) -> Chip:
 	match type:
 		ChipType.SEVENSEGMENT:
 			return seven_segment_logic_scene.instantiate()
+		ChipType.TRI_STATE:
+			return TriState.tri_state_logic_scene.instantiate()
 		_:
 			return chip_logic_scene.instantiate()
