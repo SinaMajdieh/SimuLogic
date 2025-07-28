@@ -4,7 +4,7 @@
 
 SimuLogic is a modular digital logic simulator developed entirely in Godot 4. Designed as an independent academic challenge by an undergraduate electrical engineering student, the project explores low-level gate logic, chip nesting, and real-time signal propagation. The simulator enables users to construct, interact with, and analyze custom digital circuits in a scalable and structured environment.
 
-The long-term goal is to simulate a complete computer system from primitive logic gates within SimuLogic itself. This project has been recognized by academic faculty for its originality, modular architecture, and technical execution.
+The long-term goal is to simulate a complete computer system from primitive logic gates within SimuLogic itself.
 
 ## Features
 
