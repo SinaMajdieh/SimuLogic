@@ -18,12 +18,12 @@ extends Node
 # ----------------------
 # Adds a pin to its designated container based on type.
 # ======================
-func add_io_pin(pin: Pin) -> void:
-    match pin.pin_type:
-        Pin.PinType.INPUT:
-            input_container.add_child(pin)
-        Pin.PinType.OUTPUT:
-            output_container.add_child(pin)
+func add_io_pin(pin: Node) -> void:
+	match pin.type:
+		Pin.PinType.INPUT:
+			input_container.add_child(pin)
+		Pin.PinType.OUTPUT:
+			output_container.add_child(pin)
 
 # ======================
 # ADD CHIP TO CONTAINER
@@ -31,4 +31,4 @@ func add_io_pin(pin: Pin) -> void:
 # Registers a chip within the appropriate chip storage.
 # ======================
 func add_chip(chip: Chip) -> void:
-    chip_container.add_child(chip)
+	chip_container.add_child(chip)

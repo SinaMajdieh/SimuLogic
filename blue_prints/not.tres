@@ -19,7 +19,7 @@ script = ExtResource("2_lau1o")
 name = "A"
 type = 0
 path = ""
-state = false
+state = 2
 metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
 
 [sub_resource type="Resource" id="Resource_lau1o"]
@@ -27,7 +27,7 @@ script = ExtResource("2_lau1o")
 name = "B"
 type = 0
 path = ""
-state = false
+state = 2
 metadata/_custom_type_script = "uid://b3c55mtr2h7pg"
 
 [resource]

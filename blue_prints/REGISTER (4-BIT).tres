@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=54 format=3]
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=54 format=3 uid="uid://c5kbuda5scqc7"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_anmyx"]
-[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_xjvgq"]
-[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_0brvr"]
-[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_bkxis"]
-[ext_resource type="Resource" path="res://blue_prints/OR.tres" id="5_inh36"]
-[ext_resource type="Resource" path="res://blue_prints/not.tres" id="6_xbbg5"]
-[ext_resource type="Resource" path="res://blue_prints/and.tres" id="7_fysa3"]
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_anmyx"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_xjvgq"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_0brvr"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_bkxis"]
+[ext_resource type="Resource" uid="uid://btg2qbrncbnc8" path="res://blue_prints/OR.tres" id="5_inh36"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="6_xbbg5"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="7_fysa3"]
 
 [sub_resource type="Resource" id="Resource_efbjv"]
 script = ExtResource("2_xjvgq")

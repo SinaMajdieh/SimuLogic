@@ -5,4 +5,4 @@ extends Resource
 @export var name: String                  ## Unique name of the pin
 @export var type: Pin.PinType = Pin.PinType.INPUT  ## Defines pin type (Input/Output)
 @export var path: String                   ## Node path reference for the pin
-@export var state: bool = false             ## Current active state of the pin
+@export var state: LogicUtils.State = LogicUtils.State.Z             ## Current active state of the pin

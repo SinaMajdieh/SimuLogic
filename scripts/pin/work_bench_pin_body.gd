@@ -20,16 +20,16 @@ func _input(event: InputEvent) -> void:
 	# Ensure the pin reference is valid before processing input
 	if ui == null:
 		return
-
-	# Detect left-click and verify the event occurred within this node's boundaries
-	if Input.is_action_just_pressed("ui_left_click"):
-		if get_global_rect().has_point(event.position):
-			InputBus.notify_pin_body_clicked(ui, event.position)  # Notify pin selection
-	
-	# Detect right-click and verify the event occurred within this node's boundaries
-	elif Input.is_action_just_pressed("ui_right_click"):
-		if get_global_rect().has_point(event.position):
-			pass  # Reserved for future interactions
+	if event is InputEventMouseButton:
+		# Detect left-click and verify the event occurred within this node's boundaries
+		if Input.is_action_just_pressed("ui_left_click"):
+			if get_global_rect().has_point(event.position):
+				InputBus.notify_pin_body_clicked(ui, event.position)  # Notify pin selection
+		
+		# Detect right-click and verify the event occurred within this node's boundaries
+		elif Input.is_action_just_pressed("ui_right_click"):
+			if get_global_rect().has_point(event.position):
+				pass  # Reserved for future interactions
 
 # ======================
 # HANDLE MOUSE HOVER EVENTS

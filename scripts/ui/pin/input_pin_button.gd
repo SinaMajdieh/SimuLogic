@@ -21,10 +21,10 @@ signal add_pin(pin: Pin)
 # Instantiates a new pin with predefined attributes and emits a signal.
 # ======================
 func _on_pressed() -> void:
-    var pin: Pin = Pin.pin_logic_scene.instantiate()
-    pin.name = Pin.PinType.find_key(type)  # Assign a name based on type
-    pin.pin_type = type
-    pin.parent_chip = WorkBenchComm.work_bench.chip  # Set chip association
-    pin.build_ui(true)  # Initialize UI representation
-    
-    add_pin.emit(pin)  # Notify listeners of pin creation
+	var pin: Pin = Pin.pin_logic_scene.instantiate()
+	pin.name = Pin.PinType.find_key(type)  # Assign a name based on type
+	pin.type = type
+	pin.parent_chip = WorkBenchComm.work_bench.chip  # Set chip association
+	pin.build_ui(true)  # Initialize UI representation
+	
+	add_pin.emit(pin)  # Notify listeners of pin creation

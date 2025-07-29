@@ -15,8 +15,8 @@ extends Chip
 # Ensures the UI exists before attempting to update the segment colors.
 # ======================
 func input_updated() -> void:
-    var input: Array[bool] = get_input_array()  # Get the current input states
+	var input: Array[LogicUtils.State] = get_input_array()  # Get the current input states
 
-    # Apply updates only if UI is present
-    if ui:
-        ui.seven_segment_display.update_display(input)
+	# Apply updates only if UI is present
+	if ui:
+		ui.seven_segment_display.update_display(input)

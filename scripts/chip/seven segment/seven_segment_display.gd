@@ -37,7 +37,7 @@ static func new_display() -> SevenSegmentDisplay:
 # Modifies the display segments based on the provided input states.
 # Each segment changes to ON or OFF color based on its corresponding boolean value.
 # ======================
-func update_display(segments: Array[bool]) -> void:
+func update_display(segments: Array[LogicUtils.State]) -> void:
     # Validate that the input size matches the number of display segments
     if segments.size() != display_segments.size():
         Logger.log_with_time(Logger.Logs.ERRORS, "Seven segment expected %d inputs but received %d" % [display_segments.size(), segments.size()], true)
@@ -45,4 +45,4 @@ func update_display(segments: Array[bool]) -> void:
     
     # Apply colors based on active/inactive states
     for i: int in range(display_segments.size()):
-        display_segments[i].color = on_color if segments[i] else off_color
+        display_segments[i].color = on_color if LogicUtils.is_high(segments[i]) else off_color

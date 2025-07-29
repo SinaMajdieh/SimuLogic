@@ -36,6 +36,7 @@ var force_visible: bool = false
 func set_bg_color(color: Color) -> void:
     var stylebox: StyleBoxFlat = get("theme_override_styles/panel").duplicate()
     stylebox.bg_color = color
+    stylebox.border_color = ColorMan.get_glowing_color(color)
     set("theme_override_styles/panel", stylebox)  # Apply modified stylebox
 
 # ======================

@@ -10,7 +10,7 @@ extends Node
 
 # === MODE TYPE DEFINITION ===
 # Specifies the mode type associated with this input mode.
-@export var mode: InputManager.Mode
+@export var mode: InputManagerClass.Mode
 
 # === MODE ACTIVITY TRACKING ===
 # Determines whether the mode is currently active.
