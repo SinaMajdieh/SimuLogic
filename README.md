@@ -6,6 +6,28 @@ SimuLogic is a modular digital logic simulator developed entirely in Godot 4. De
 
 The long-term goal is to simulate a complete computer system from primitive logic gates within SimuLogic itself.
 
+## Screenshots and Demonstrations
+
+### Nested Chip Design
+
+![Nested Chip View](docs/assets/nested_chip_logic_units.gif)
+_An example of modular chip nesting with reusable logic blocks._
+
+### Signal Propagation
+
+![Signal Propagation](docs/assets/signal_propagation.gif)
+_Demonstrates event-driven updates and stable feedback behavior._
+
+### Component Library Interface
+
+![Component Library](docs/assets/chip_library.gif)
+_Search and insert pre-built components into the workbench._
+
+### Workbench Interaction
+
+![Workbench Panning and Zooming](docs/assets/zooming_and_panning.gif)
+_Scalable design canvas supporting dynamic navigation._
+
 ## Features
 
 - **Chip Nesting**: Create reusable logic units and embed them within other circuits.
