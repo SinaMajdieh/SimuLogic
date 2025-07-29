@@ -10,7 +10,7 @@ var ui: InteractableBusUI
 var type: Pin.PinType
 
 # Create N pins
-func build_bus(parent_chip: Chip, bus_type_: Pin.PinType, width: int = 4) -> void:
+func build_bus(parent_chip: Chip, bus_type_: Pin.PinType, width: int = bus_width) -> void:
 	bus_width = width
 	self.type = bus_type_
 	for i in width:
@@ -52,6 +52,7 @@ func synthesize(bus_data: BusData, parent_chip: Chip) -> void:
 func serialize() -> BusData:
 	var bus_data: BusData = BusData.new()
 	bus_data.name = name
+	print_debug(name)
 	bus_data.type = type
 	bus_data.bus_width = bus_width
 	return bus_data

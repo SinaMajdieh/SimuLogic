@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=38 format=3]
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=38 format=3 uid="uid://bsqsbwllminla"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_tpthb"]
-[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_krmcq"]
-[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_wbkau"]
-[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_sncj6"]
-[ext_resource type="Resource" path="res://blue_prints/FULL ADDER.tres" id="5_djduh"]
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_tpthb"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_krmcq"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_wbkau"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_sncj6"]
+[ext_resource type="Resource" uid="uid://d0ptuk1rp7trj" path="res://blue_prints/FULL ADDER.tres" id="5_djduh"]
 
 [sub_resource type="Resource" id="Resource_jke4a"]
 script = ExtResource("2_krmcq")
@@ -121,98 +121,98 @@ script = ExtResource("3_wbkau")
 name = "A3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_ip4hd"]
 script = ExtResource("3_wbkau")
 name = "A2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_vuvdt"]
 script = ExtResource("3_wbkau")
 name = "A1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_oibdm"]
 script = ExtResource("3_wbkau")
 name = "A0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_j1imp"]
 script = ExtResource("3_wbkau")
 name = "B3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_rkjr4"]
 script = ExtResource("3_wbkau")
 name = "B2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_50wnp"]
 script = ExtResource("3_wbkau")
 name = "B1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_nqnkl"]
 script = ExtResource("3_wbkau")
 name = "B0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_qdcv1"]
 script = ExtResource("3_wbkau")
 name = "CARRY IN"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_4pl0c"]
 script = ExtResource("3_wbkau")
 name = "O3"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_8s2g4"]
 script = ExtResource("3_wbkau")
 name = "O2"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_fioh5"]
 script = ExtResource("3_wbkau")
 name = "O1"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_cs6me"]
 script = ExtResource("3_wbkau")
 name = "O0"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_trabb"]
 script = ExtResource("3_wbkau")
 name = "CARRY OUT"
 type = 1
 path = ""
-state = false
+state = 2
 
 [resource]
 script = ExtResource("4_sncj6")

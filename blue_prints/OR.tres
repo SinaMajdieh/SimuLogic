@@ -50,21 +50,21 @@ script = ExtResource("3_r18k7")
 name = "I0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_83npj"]
 script = ExtResource("3_r18k7")
 name = "I1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_vvqj5"]
 script = ExtResource("3_r18k7")
 name = "O"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_q35as"]
 script = ExtResource("2_mn0en")
@@ -103,21 +103,21 @@ script = ExtResource("3_r18k7")
 name = "I0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_xj5ew"]
 script = ExtResource("3_r18k7")
 name = "I1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_fcmgo"]
 script = ExtResource("3_r18k7")
 name = "O"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_rhqgg"]
 script = ExtResource("4_rujll")

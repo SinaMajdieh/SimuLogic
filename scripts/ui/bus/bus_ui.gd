@@ -14,6 +14,8 @@ static var interactable_bus_ui_scene: PackedScene = preload("res://scenes/bus/in
 
 @export var color: Color
 
+@export var name_tag: LineEdit
+
 var buttons: Array[ColorRect] = []
 
 func _ready() -> void:
@@ -39,6 +41,11 @@ func update_gui() -> void:
 		return
 	for i: int in range(states.size()):
 		buttons[i].state = states[i]
+	var value: String = ""
+	for state in states:
+		value += str(int(LogicUtils.to_bool(state)))
+	name_tag.text = value
+
 
 static func build_ui(bus: Bus) -> InteractableBusUI:
 	var ui: InteractableBusUI = interactable_bus_ui_scene.instantiate()

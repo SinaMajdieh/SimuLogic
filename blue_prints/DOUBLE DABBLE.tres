@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=63 format=3]
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=63 format=3 uid="uid://bvr4lwylve4jf"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_fj66t"]
-[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_ni2bw"]
-[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_n01hb"]
-[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_ummyl"]
-[ext_resource type="Resource" path="res://blue_prints/DABBLE.tres" id="5_xfjj7"]
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_fj66t"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_ni2bw"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_n01hb"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_ummyl"]
+[ext_resource type="Resource" uid="uid://bf8fwxt8qdqxf" path="res://blue_prints/DABBLE.tres" id="5_xfjj7"]
 
 [sub_resource type="Resource" id="Resource_14lqe"]
 script = ExtResource("2_ni2bw")
@@ -235,140 +235,140 @@ script = ExtResource("3_n01hb")
 name = "A"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_tdeog"]
 script = ExtResource("3_n01hb")
 name = "B"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_jb6sn"]
 script = ExtResource("3_n01hb")
 name = "C"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_qgh84"]
 script = ExtResource("3_n01hb")
 name = "D"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_42j5t"]
 script = ExtResource("3_n01hb")
 name = "E"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_a58yk"]
 script = ExtResource("3_n01hb")
 name = "F"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_uktxi"]
 script = ExtResource("3_n01hb")
 name = "G"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_1jgde"]
 script = ExtResource("3_n01hb")
 name = "H"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_3owjg"]
 script = ExtResource("3_n01hb")
 name = "HUNDREDS 3"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_71bnf"]
 script = ExtResource("3_n01hb")
 name = "HUNDREDS 2"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_6ah0b"]
 script = ExtResource("3_n01hb")
 name = "HUNDREDS 1"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_xbrq3"]
 script = ExtResource("3_n01hb")
 name = "HUNDREDS 0"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_5kemy"]
 script = ExtResource("3_n01hb")
 name = "TENS 3"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_g6wvg"]
 script = ExtResource("3_n01hb")
 name = "TENS 2"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_6t2tn"]
 script = ExtResource("3_n01hb")
 name = "TENS 1"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_tyc73"]
 script = ExtResource("3_n01hb")
 name = "TENS 0"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_17d81"]
 script = ExtResource("3_n01hb")
 name = "ONES 3"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_m5mjf"]
 script = ExtResource("3_n01hb")
 name = "ONES 2"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_xxwsn"]
 script = ExtResource("3_n01hb")
 name = "ONES 1"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_hwilq"]
 script = ExtResource("3_n01hb")
 name = "ONES 0"
 type = 1
 path = ""
-state = false
+state = 2
 
 [resource]
 script = ExtResource("4_ummyl")

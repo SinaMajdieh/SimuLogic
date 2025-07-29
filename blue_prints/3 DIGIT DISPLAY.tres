@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=184 format=3]
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=184 format=3 uid="uid://dha7ct0atk667"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_kvseo"]
-[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_up8my"]
-[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_tps6y"]
-[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_p7x0o"]
-[ext_resource type="Resource" path="res://blue_prints/NEGATE.tres" id="5_mrcrb"]
-[ext_resource type="Resource" path="res://blue_prints/and.tres" id="6_53218"]
-[ext_resource type="Resource" path="res://blue_prints/DOUBLE DABBLE.tres" id="7_0e0d6"]
-[ext_resource type="Resource" path="res://blue_prints/XOR.tres" id="8_dlkkl"]
-[ext_resource type="Resource" path="res://blue_prints/not.tres" id="9_q7j62"]
-[ext_resource type="Resource" path="res://blue_prints/NAND.tres" id="10_wt4h7"]
-[ext_resource type="Resource" path="res://blue_prints/OR.tres" id="11_mvu4r"]
-[ext_resource type="Resource" path="res://blue_prints/SEVEN SEGMENT.tres" id="12_37avu"]
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_kvseo"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_up8my"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_tps6y"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_p7x0o"]
+[ext_resource type="Resource" uid="uid://bepgramubehch" path="res://blue_prints/NEGATE.tres" id="5_mrcrb"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="6_53218"]
+[ext_resource type="Resource" uid="uid://bvr4lwylve4jf" path="res://blue_prints/DOUBLE DABBLE.tres" id="7_0e0d6"]
+[ext_resource type="Resource" uid="uid://div867et1mqq3" path="res://blue_prints/XOR.tres" id="8_dlkkl"]
+[ext_resource type="Resource" uid="uid://5eo042h5wbq8" path="res://blue_prints/not.tres" id="9_q7j62"]
+[ext_resource type="Resource" uid="uid://bonr163njjatk" path="res://blue_prints/NAND.tres" id="10_wt4h7"]
+[ext_resource type="Resource" uid="uid://btg2qbrncbnc8" path="res://blue_prints/OR.tres" id="11_mvu4r"]
+[ext_resource type="Resource" uid="uid://cdhu4hys77lli" path="res://blue_prints/SEVEN SEGMENT.tres" id="12_37avu"]
 
 [sub_resource type="Resource" id="Resource_h5g2u"]
 script = ExtResource("2_up8my")
@@ -242,70 +242,70 @@ script = ExtResource("3_tps6y")
 name = "D7"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_gd4fh"]
 script = ExtResource("3_tps6y")
 name = "D6"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_j5anl"]
 script = ExtResource("3_tps6y")
 name = "D5"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_qiges"]
 script = ExtResource("3_tps6y")
 name = "D4"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_yoj4y"]
 script = ExtResource("3_tps6y")
 name = "D3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_f7b8a"]
 script = ExtResource("3_tps6y")
 name = "D2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_132k8"]
 script = ExtResource("3_tps6y")
 name = "D1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_ocxni"]
 script = ExtResource("3_tps6y")
 name = "D0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_n1vqx"]
 script = ExtResource("3_tps6y")
 name = "TWO'S COMPLEMENT"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_wt7n4"]
 script = ExtResource("3_tps6y")
 name = "RIPPLE BLANKING"
 type = 0
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_5xbb0"]
 script = ExtResource("2_up8my")
@@ -566,56 +566,56 @@ script = ExtResource("3_tps6y")
 name = "D3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_yy3if"]
 script = ExtResource("3_tps6y")
 name = "D2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_ho7tm"]
 script = ExtResource("3_tps6y")
 name = "D1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_w5e1n"]
 script = ExtResource("3_tps6y")
 name = "D0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_ugaxh"]
 script = ExtResource("3_tps6y")
 name = "RIPPLE BLANKING"
 type = 0
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_f2jck"]
 script = ExtResource("3_tps6y")
 name = "RIPPLE NEGATIVE"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_p7l4e"]
 script = ExtResource("3_tps6y")
 name = "RIPPLE BLANKING"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_4d3tb"]
 script = ExtResource("3_tps6y")
 name = "RIPPLE NEGATIVE"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_rgtia"]
 script = ExtResource("2_up8my")
@@ -846,77 +846,77 @@ script = ExtResource("3_tps6y")
 name = "D3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_js00u"]
 script = ExtResource("3_tps6y")
 name = "D2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_xy5m6"]
 script = ExtResource("3_tps6y")
 name = "D1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_t804d"]
 script = ExtResource("3_tps6y")
 name = "D0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_7fvhl"]
 script = ExtResource("3_tps6y")
 name = "A"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_v8r45"]
 script = ExtResource("3_tps6y")
 name = "B"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_jkn7e"]
 script = ExtResource("3_tps6y")
 name = "C"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_py7fd"]
 script = ExtResource("3_tps6y")
 name = "D"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_p6o3x"]
 script = ExtResource("3_tps6y")
 name = "E"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_sqahx"]
 script = ExtResource("3_tps6y")
 name = "F"
 type = 1
 path = ""
-state = true
+state = 2
 
 [sub_resource type="Resource" id="Resource_nnn8c"]
 script = ExtResource("3_tps6y")
 name = "G"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_gqu6u"]
 script = ExtResource("4_p7x0o")
@@ -997,35 +997,35 @@ script = ExtResource("3_tps6y")
 name = "I3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_aig13"]
 script = ExtResource("3_tps6y")
 name = "I2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_y2eue"]
 script = ExtResource("3_tps6y")
 name = "I1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_cnrsy"]
 script = ExtResource("3_tps6y")
 name = "I0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_1yttd"]
 script = ExtResource("3_tps6y")
 name = "O"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_w0ahy"]
 script = ExtResource("2_up8my")
@@ -1070,28 +1070,28 @@ script = ExtResource("3_tps6y")
 name = "I2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_mi7tg"]
 script = ExtResource("3_tps6y")
 name = "I1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_bxrxe"]
 script = ExtResource("3_tps6y")
 name = "I0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_x4nxr"]
 script = ExtResource("3_tps6y")
 name = "O"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_i1xwa"]
 script = ExtResource("4_p7x0o")

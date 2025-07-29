@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=40 format=3]
+[gd_resource type="Resource" script_class="ChipBlueprint" load_steps=40 format=3 uid="uid://bf8fwxt8qdqxf"]
 
-[ext_resource type="Script" path="res://scripts/chip/chip_description.gd" id="1_wvfhe"]
-[ext_resource type="Script" path="res://scripts/wire/wire_data.gd" id="2_0objy"]
-[ext_resource type="Script" path="res://scripts/pin/pin_data.gd" id="3_kxcth"]
-[ext_resource type="Script" path="res://scripts/chip/chip_blueprint.gd" id="4_e3hb2"]
-[ext_resource type="Resource" path="res://blue_prints/XOR.tres" id="5_cd86l"]
-[ext_resource type="Resource" path="res://blue_prints/NOR.tres" id="6_4ef18"]
-[ext_resource type="Resource" path="res://blue_prints/OR.tres" id="7_yfmqn"]
-[ext_resource type="Resource" path="res://blue_prints/and.tres" id="8_mtkyc"]
+[ext_resource type="Script" uid="uid://d37ex0tf7tcwa" path="res://scripts/chip/chip_description.gd" id="1_wvfhe"]
+[ext_resource type="Script" uid="uid://dib01xnvkc5qi" path="res://scripts/wire/wire_data.gd" id="2_0objy"]
+[ext_resource type="Script" uid="uid://b3c55mtr2h7pg" path="res://scripts/pin/pin_data.gd" id="3_kxcth"]
+[ext_resource type="Script" uid="uid://ceyvy08n5cesg" path="res://scripts/chip/chip_blueprint.gd" id="4_e3hb2"]
+[ext_resource type="Resource" uid="uid://div867et1mqq3" path="res://blue_prints/XOR.tres" id="5_cd86l"]
+[ext_resource type="Resource" uid="uid://busf65jw0okq0" path="res://blue_prints/NOR.tres" id="6_4ef18"]
+[ext_resource type="Resource" uid="uid://btg2qbrncbnc8" path="res://blue_prints/OR.tres" id="7_yfmqn"]
+[ext_resource type="Resource" uid="uid://c45hphkmi84sq" path="res://blue_prints/and.tres" id="8_mtkyc"]
 
 [sub_resource type="Resource" id="Resource_u5d2d"]
 script = ExtResource("2_0objy")
@@ -154,56 +154,56 @@ script = ExtResource("3_kxcth")
 name = "D3"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_hf3ga"]
 script = ExtResource("3_kxcth")
 name = "D2"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_bedmr"]
 script = ExtResource("3_kxcth")
 name = "D1"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_7q8mm"]
 script = ExtResource("3_kxcth")
 name = "D0"
 type = 0
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_ymawu"]
 script = ExtResource("3_kxcth")
 name = "O3"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_453uh"]
 script = ExtResource("3_kxcth")
 name = "O2"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_yyjqv"]
 script = ExtResource("3_kxcth")
 name = "O1"
 type = 1
 path = ""
-state = false
+state = 2
 
 [sub_resource type="Resource" id="Resource_dfg2a"]
 script = ExtResource("3_kxcth")
 name = "O0"
 type = 1
 path = ""
-state = false
+state = 2
 
 [resource]
 script = ExtResource("4_e3hb2")
