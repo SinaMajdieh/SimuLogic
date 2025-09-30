@@ -1,13 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bj23bdffs2cox"]
 
 [ext_resource type="Script" uid="uid://bxky1p43egddk" path="res://scripts/ui/panel/library.gd" id="1_43obm"]
-<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://cdyw86e3xkt7b" path="res://shaders/blur.gdshader" id="2_xktus"]
-=======
 [ext_resource type="Theme" uid="uid://f87q1k7asq38" path="res://themes/library.tres" id="1_oxv0q"]
 [ext_resource type="Shader" uid="uid://dy7t7we33jp56" path="res://shaders/blur.gdshader" id="2_xktus"]
 [ext_resource type="PackedScene" uid="uid://dv37oeprk4ju7" path="res://scenes/panels/library_item.tscn" id="3_dtgb4"]
->>>>>>> dev
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dtgb4"]
 shader = ExtResource("2_xktus")
