@@ -31,10 +31,6 @@ InputManager="*res://scenes/input/input_manager.tscn"
 
 window/stretch/scale_mode="integer"
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [global_group]
 
 queued=""
